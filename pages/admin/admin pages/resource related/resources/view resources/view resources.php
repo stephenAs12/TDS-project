@@ -387,7 +387,7 @@
                 </div>
                 <div class="modal-body" >
                     <div class="ExternalFiles" >
-                        <iframe src="../../../../../../assets/test.pdf" frameborder="0" width="100%" height="700"></iframe>
+                        <iframe src="../../../../../../file/TDS  Admin Panel.pdf" frameborder="0" width="100%" height="700"></iframe>
                     </div>
                 </div>
             </div>

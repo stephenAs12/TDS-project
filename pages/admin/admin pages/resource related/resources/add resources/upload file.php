@@ -22,28 +22,46 @@
             $uploads_dir = './../../../../../../file';
             #TO move the uploaded file to specific location
 
-            $imageFileType = strtolower(pathinfo($tname, PATHINFO_EXTENSION));
+            $imageFileType = strtolower(pathinfo($pname, PATHINFO_EXTENSION));
 
-            move_uploaded_file($tname, $uploads_dir . '/' . $pname);
+            
 
             #sql query to insert into database
             $sql = "INSERT into resource(title,file_name) VALUES('$title','$pname')";
             // || $imageFileType != "txt" || $imageFileType != "docx" || $imageFileType != "XLSX"
 
-            
-            if ($_FILES["file"]["size"] >= 5120) {
-                if ($imageFileType == "md") {
+            // $checker = true;
+
+            // if($checker==true){
+            //     $checker=false;
+            // }
+
+            if ($_FILES["file"]["size"] <= 1000000) {
+                if ($imageFileType == "pdf" || $imageFileType == "docx" || $imageFileType == "docx" || $imageFileType == "txt" || $imageFileType == "xlsx") {
                     if (mysqli_query($conn, $sql)) {
+                        move_uploaded_file($tname, $uploads_dir . '/' . $pname);
                         echo true;
                     } else {
-                        echo "Error";
+                        echo "Unknown Error Occurred";
                     }
-                }else{
-                    echo "file type must be pdf, txt, docx or xlsx";
+                } else {
+                    echo "file must be pdf, word, excel or txt";
                 }
             } else {
                 echo "file size must be less than 5mb";
             }
+
+
+
+
+
+            // if($checker==true){
+            //     echo true;
+            // }else{
+            //     echo $_FILES["file"]["size"];
+            // }
+
+
         }
 
 
