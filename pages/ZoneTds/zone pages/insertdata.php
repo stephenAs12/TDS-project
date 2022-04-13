@@ -20,7 +20,6 @@ $other=($_POST['otherservice']);
 $sql="INSERT INTO tdszone(`id`, `firstname`, `middlename`, `lastname`, `sex`, `educationlevel`, `major`, `minor`, `teacherlevel`, `empperiod`, `salary`, `service`, `multiplayer`, `otherservice`) VALUES ('null','$fname','$mname','$lname','$sex','$edul','$major','$minor','$tlevel','$date','$salary','$service','$multi','$other')";
 if(mysqli_query($conn,$sql)) {
     echo true;
-    
 }
 else{
     echo mysqli_error($conn);

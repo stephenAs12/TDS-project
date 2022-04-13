@@ -30,7 +30,6 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
 </head>
-
 <body>
     <!-- Left Panel -->
 
@@ -159,8 +158,6 @@
 
                     </div>
                 </div>
-
-
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -176,13 +173,11 @@
                             <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
-
                     <div class="language-select dropdown" id="language-select">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="language" aria-haspopup="true" aria-expanded="true">
                             <i class="flag-icon flag-icon-et"></i>
                         </a>
                     </div>
-
                     <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
                     <script>
                         function loadGoogleTranslate() {
@@ -234,10 +229,6 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- logout modal view -->
-
         <div class="breadcrumbs">
             <div class="col-sm-4">
                 <div class="page-header float-left">
@@ -258,11 +249,8 @@
                 </div>
             </div>
         </div>
-
         <?php
-
         $connectQuery = mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
-
         if (mysqli_connect_errno()) {
             echo mysqli_connect_error();
             exit();
@@ -341,14 +329,10 @@
     </div><!-- /#right-panel -->
 
     <!-- Right Panel -->
-
-
-
     <script src="../../../../../../vendors/jquery/dist/jquery.min.js"></script>
     <script src="../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../../../../../assets/js/main.js"></script>
-
     <script src="../../../../../../assets/table/js/jquery-3.5.1.js"></script>
     <script src="../../../../../../assets/table/js/jquery.dataTables.min.js"></script>
     <script src="../../../../../../assets/table/js/dataTables.bootstrap4.min.js"></script>

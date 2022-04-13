@@ -305,32 +305,6 @@
                                     </div>
                                 </div>
 
-                                <div>
-                                    <div class="form-group col-md-6">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-level-down" aria-hidden="true"></i></div>
-                                            <select name="selectlevel" id="selectlevel" class="form-control">
-                                                <option value="0">Please select Job Level</option>
-                                                <option value="1">Regional TDS</option>
-                                                <option value="2">Zone TDS</option>
-                                                <option value="3">Zone Director</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-md-6">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-                                            <select name="selectworeda" id="selectworeda" class="form-control">
-                                                <option value="0">Please select Address</option>
-                                                <option value="1">Bahir Dar</option>
-                                                <option value="2">Finote Selam</option>
-                                                <option value="3">Burie</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div style="margin-left: 15px; margin-right: 15px;">
                                     <div class="form-group">
                                         <div class="input-group">

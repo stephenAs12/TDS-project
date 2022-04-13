@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -14,7 +15,6 @@
     <link rel="stylesheet" href="../../vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="../../vendors/selectFX/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
-    
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
@@ -72,7 +72,7 @@
                         <ul class="sub-menu children dropdown-menu">
 
                             <li><i class="fa fa-plus-circle"></i><a href="zone pages/insert.php">Insert Data</a></li>
-                            <li><i class="fa fa-eye"></i><a href="../view user/view_user.php">Check
+                            <li><i class="fa fa-eye"></i><a href="../ZoneTds/zone pages/SelectTds.php">Check
                                     Data
                                 </a></li>
                             <li><i class="fa fa-plus-circle"></i><a

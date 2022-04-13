@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">
 <!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,6 +25,7 @@
     <link rel="stylesheet" href="../../../../../../assets/css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 </head>
+
 <body>
     <!-- Left Panel -->
     <aside id="left-panel" class="left-panel">
@@ -256,7 +258,9 @@
             ON users.aname=zone.zone_id;";
             $result = mysqli_query($connectQuery, $selectQuery);
             if (mysqli_num_rows($result) > 0) {
-            } else {
+
+            } 
+            else {
                 $msg = "No Record found";
             }
         }
@@ -266,7 +270,6 @@
         <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
-
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
@@ -289,7 +292,7 @@
                                         <?php
                                         while ($row = mysqli_fetch_array($result)) {
 
-                                            $action ='';
+                                            $action = '';
                                             if ($row['status'] == 0) {
                                                 // echo '<a href="status.php?user_id='.$row['user_id'].'&status=1" class="btn btn-primary btn-lg disabled" role="button">enable</a>';
                                                 $action = '<a href="status.php?user_id=' . $row['user_id'] . '&status=1"><button class="btn btn-success btn-sm">Enable</button></a>';

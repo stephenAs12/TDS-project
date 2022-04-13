@@ -15,7 +15,6 @@ if (isset($_POST['login'])) {
           while($row=mysqli_fetch_array($result))
           {
             
-            
               echo '<script type="text/javascript">alert("you are login successfully and you are logine as'.$row['usertype'].'"])</script>';
           }
       if (mysqli_num_rows($result)>0 && $row['usertype']="admin") {
@@ -35,8 +34,6 @@ if (isset($_POST['login'])) {
     else{
       echo 'no result';
     }
-
-   
   }
 ?>
 <html class="no-js" lang="en">

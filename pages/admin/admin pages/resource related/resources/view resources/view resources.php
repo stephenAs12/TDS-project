@@ -70,7 +70,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-user-secret"></i>My Account</a>
                         <ul class="sub-menu children dropdown-menu">
 
-                            <li><i class="fa fa-eye" ></i><a href="../../../account related/my account/view my account/view my account.php">View
+                            <li><i class="fa fa-eye"></i><a href="../../../account related/my account/view my account/view my account.php">View
                                     my account</a></li>
                             <li><i class="fa fa-pencil-square-o"></i><a href="../../../account related/my account/update my account/update my account.php">Update my
                                     account</a></li>
@@ -103,7 +103,7 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-rebel" style="color: white;"></i><span style="color: white;">Resource</span></a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-plus-square" ></i><a href="../../../resource related/resources/add resources/add resources.php">Add Resource</a></li>
+                            <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../resource related/resources/add resources/add resources.php">Add Resource</a></li>
                             <li><i class="menu-icon fa fa-eye" style="color: white;"></i><a href="../../../resource related/resources/view resources/view resources.php"><span style="color: white;">View Resource</span></a></li>
                         </ul>
                     </li>
@@ -239,6 +239,40 @@
 
         <!-- logout modal view -->
 
+
+        <!-- delete modal View -->
+
+
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticModalLabel">Are you sure ?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Hello Estifanos,
+
+                            Are you sure you want to get rid of this file?
+                        </p>
+                        <em>
+                            <b>NB:-</b> Once it's been deleted, there's no way to recover it.
+                        </em>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger"><a href="./page-login.php" style="text-decoration: none; color: white;">Confirm</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- delete modal view -->
+
         <div class="breadcrumbs">
             <div class="col-sm-4">
                 <div class="page-header float-left">
@@ -253,130 +287,105 @@
                         <ol class="breadcrumb text-right">
                             <li><a href="../../../../admin index.php">Dashboard</a></li>
                             <li><a href="#">Resources</a></li>
-                            <li class="active">Add Resources</li>
+                            <li class="active">View Resources</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
 
+        <?php
+        $connectQuery = mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
+
+        if (mysqli_connect_errno()) {
+            echo mysqli_connect_error();
+            exit();
+        } else {
+            $selectQuery = "SELECT * FROM `resource`";
+            $result = mysqli_query($connectQuery, $selectQuery);
+            if (mysqli_num_rows($result) > 0) {
+            } else {
+                $msg = "No Record found";
+            }
+        }
+
+        ?>
+
+
         <div class="content mt-3">
             <div class="animated fadeIn">
 
 
-                
 
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title pl-2">Previous Resources</strong>
-                            </div>
-                            <div class="card-body">
-                                <div>
-                                    <img style="margin-left: auto; margin-right: auto; display: block;" height="100cm" src="../../../../../../images/file.png" alt="Card image cap">
-                                    <h5 class="text-sm-center mt-2 mb-1">Name:- Transfer Guide 2014</h5>
-                                    <h6 class="text-sm-center mt-2 mb-1">Posted date:- Mar/10/2022</h6>
-                                </div>
-                                <hr>
-                                <div class="card-text text-sm-center">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewmodal">
-                                        View
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title pl-2">Previous Resources</strong>
-                            </div>
-                            <div class="card-body">
-                                <div>
-                                    <img style="margin-left: auto; margin-right: auto; display: block;" height="100cm" src="../../../../../../images/file.png" alt="Card image cap">
-                                    <h5 class="text-sm-center mt-2 mb-1">Name:- Transfer Guide 2014</h5>
-                                    <h6 class="text-sm-center mt-2 mb-1">Posted date:- Mar/10/2022</h6>
-                                </div>
-                                <hr>
-                                <div class="card-text text-sm-center">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewmodal">
-                                        View
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <?php
 
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title pl-2">Previous Resources</strong>
-                            </div>
-                            <div class="card-body">
-                                <div>
-                                    <img style="margin-left: auto; margin-right: auto; display: block;" height="100cm" src="../../../../../../images/file.png" alt="Card image cap">
-                                    <h5 class="text-sm-center mt-2 mb-1">Name:- Transfer Guide 2014</h5>
-                                    <h6 class="text-sm-center mt-2 mb-1">Posted date:- Mar/10/2022</h6>
+                while ($row = mysqli_fetch_array($result)) {
+                    $count = print_r(mysqli_num_rows($result), true);
+                    $check = false;
+                    if(mysqli_num_rows($result)>0){
+                        $check = true;
+                    }
+                    if($check){
+                        
+                        echo '
+                            
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong class="card-title pl-2">' . $row["title"] . '</strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <div>
+                                            <img style="margin-left: auto; margin-right: auto; display: block;" height="100cm" src="../../../../../../images/file.png" alt="Card image cap">
+                                            <h5 class="text-sm-center mt-2 mb-1">Title:- ' . $row["title"] . '</h5>
+                                            <h6 class="text-sm-center mt-2 mb-1">Posted date:- ' . $row["posted_date"] . '</h6>
+                                        </div>
+                                        <hr>
+                                        <div class="card-text text-sm-center">
+                                        <a href="../../../../../../file/' . $row["file_name"] . '"><button class="btn btn-primary btn-sm">View</button></a>
+                                        <a href="delete resource.php?id=' . $row['id'] . '&file_name=' . $row['file_name'] . '"><button class="btn btn-danger btn-sm">Delete</button></a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <hr>
-                                <div class="card-text text-sm-center">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewmodal">
-                                        View
-                                    </button>
-                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title pl-2">Previous Resources</strong>
-                            </div>
-                            <div class="card-body">
-                                <div>
-                                    <img style="margin-left: auto; margin-right: auto; display: block;" height="100cm" src="../../../../../../images/file.png" alt="Card image cap">
-                                    <h5 class="text-sm-center mt-2 mb-1">Name:- Transfer Guide 2014</h5>
-                                    <h6 class="text-sm-center mt-2 mb-1">Posted date:- Mar/10/2022</h6>
+                        ';
+                    }if(!$check){
+                        echo '
+                            
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong class="card-title pl-2">No file found</strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <div>
+                                            
+                                        </div>
+                                        <hr>
+                                        <div class="card-text text-sm-center">
+                                       
+                                        </div>
+                                    </div>
                                 </div>
-                                <hr>
-                                <div class="card-text text-sm-center">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewmodal">
-                                        View
-                                    </button>
-                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title pl-2">Previous Resources</strong>
-                            </div>
-                            <div class="card-body">
-                                <div>
-                                    <img style="margin-left: auto; margin-right: auto; display: block;" height="100cm" src="../../../../../../images/file.png" alt="Card image cap">
-                                    <h5 class="text-sm-center mt-2 mb-1">Name:- Transfer Guide 2014</h5>
-                                    <h6 class="text-sm-center mt-2 mb-1">Posted date:- Mar/10/2022</h6>
-                                </div>
-                                <hr>
-                                <div class="card-text text-sm-center">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewmodal">
-                                        View
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- .animated -->
-        </div><!-- .content -->
+                        ';
+                    }
+                }
+
+                ?>
+
+            </div>
+        </div><!-- .animated -->
+    </div><!-- .content -->
     </div><!-- /#right-panel -->
     <!-- Right Panel -->
 
-    <div class="modal fade" id="viewmodal" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+
+
+    <!-- <div class="modal fade" id="viewmodal" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -385,14 +394,14 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" >
-                    <div class="ExternalFiles" >
+                <div class="modal-body">
+                    <div class="ExternalFiles">
                         <iframe src="../../../../../../file/TDS  Admin Panel.pdf" frameborder="0" width="100%" height="700"></iframe>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 
