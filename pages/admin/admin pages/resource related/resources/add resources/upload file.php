@@ -37,7 +37,7 @@
             // }
 
             if ($_FILES["file"]["size"] <= 1000000) {
-                if ($imageFileType == "pdf" || $imageFileType == "docx" || $imageFileType == "docx" || $imageFileType == "txt" || $imageFileType == "xlsx") {
+                if ($imageFileType == "pdf" || $imageFileType == "docx" || $imageFileType == "docx" || $imageFileType == "txt" || $imageFileType == "xlsx" || $imageFileType == "jpg" || $imageFileType == "jpeg" || $imageFileType == "png") {
                     if (mysqli_query($conn, $sql)) {
                         move_uploaded_file($tname, $uploads_dir . '/' . $pname);
                         echo true;
@@ -45,7 +45,7 @@
                         echo "Unknown Error Occurred";
                     }
                 } else {
-                    echo "file must be pdf, word, excel or txt";
+                    echo "file must be pdf, word, excel, txt, jpg, jpeg, png";
                 }
             } else {
                 echo "file size must be less than 5mb";

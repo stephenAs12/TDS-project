@@ -176,7 +176,6 @@
 
                         <div class="card-body card-block">
                             <form action="insertdata.php" method="POST" class="">
-
                                 <div class="nameholder">
                                     <div class="form-group col-md-4">
                                         <div class="input-group">
@@ -217,7 +216,7 @@
                                 <div class="form-group col-md-6">
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-university"
-                                                aria-hidden="true"></i>
+                                             aria-hidden="true"></i>
                                         </div>
                                         <select name="educationlevel" id="selectlevel" class="form-control">
                                             <option value="2nd Degree">2nd Degree</option>
@@ -336,7 +335,7 @@
 
                     </div>
                 </div>
-            </div>
+</div>
             <script src="../../../vendors/jquery/dist/jquery.min.js"></script>
             <script src="../../vendors/popper.js/dist/umd/popper.min.js"></script>
             <script src="../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>

@@ -27,7 +27,6 @@ if (isset($_POST['login'])) {
         ?> 
         <script type="text/javascript">
           window.location.href="pages/ZoneTds/Dashboard.php"</script>
-
         <?php
       }
     }

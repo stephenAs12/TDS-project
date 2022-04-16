@@ -1,6 +1,5 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,10 +49,10 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>TDS</a>
                         <ul class="sub-menu children dropdown-menu">
-
+<!-- 
                             <li><i class="fa fa-eye"></i><a href="../view user/view_user.php">Check
                                     Data
-                                </a></li>
+                                </a></li> -->
                             <li><i class="fa fa-plus-circle"></i><a href="insert.php">Update Data</li>
                             <li><i class="fa fa-eye"></i><a href="../../my account/update my account/update.html">
                                     View Result</a></li>

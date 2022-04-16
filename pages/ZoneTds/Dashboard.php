@@ -1,4 +1,9 @@
+<?php
+session_start();
 
+
+
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -46,7 +51,6 @@
                 </a>
                 <a class="navbar-brand hidden" href="./"><img class="amhara-logo" width="30" height="30"
                         src="../../images/amhara.png" alt=""></a>
-
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -87,18 +91,11 @@
             </div>/.navbar-collapse
         </nav>
     </aside><!-- /#left-panel -->
-
-    <!-- Left Panel -->
-
-    <!-- Right Panel -->
-
     <div id="right-panel" class="right-panel">
 
         <!-- Header-->
         <header id="header" class="header">
-
             <div class="header-menu">
-
                 <div class="col-sm-7">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa-compress"></i></a>
                     <div class="header-left">
@@ -113,14 +110,12 @@
 
                     </div>
                 </div>
-
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../../images/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="../../images/admin image/adminn.jpg" alt="User Avatar">
                         </a>
-
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="../../my account/view my account/view.html"><i
                                     class="fa fa-user"></i> My Profile</a>
@@ -128,7 +123,6 @@
                             <a class="nav-link" href="../../StudentElection\admin\index.php"><i class="fa fa-power-off"></i> Logout</a>
                         </div>
                     </div>
-
                     <div class="language-select dropdown" id="language-select">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="language" aria-haspopup="true"
                             aria-expanded="true">
@@ -149,7 +143,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -177,7 +170,6 @@
             </div>
         </div>
         <div class="content mt-3">
-
             <div class="col-sm-12">
                 <div class="alert  alert-success alert-dismissible fade show" role="alert">
                     <span class="badge badge-pill badge-success">Success</span> You successfully read this important
@@ -187,7 +179,6 @@
                     </button>
                 </div>
             </div>
-
 
             <div class="col-sm-6 col-lg-3">
                 <div class="card text-white bg-flat-color-1">
@@ -344,7 +335,6 @@
                             <span class="count">10468</span>
                         </h4>
                         <p class="text-light">Directors</p>
-
                         <div class="chart-wrapper px-0" style="height:70px;" height="70">
                             <canvas id="widgetChart2"></canvas>
                         </div>
@@ -457,10 +447,6 @@
                 </div>
                 <!--/social-box-->
             </div>
-
-
-
-
             <script src="../../vendors/jquery/dist/jquery.min.js"></script>
             <script src="../../vendors/popper.js/dist/umd/popper.min.js"></script>
             <script src="../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
