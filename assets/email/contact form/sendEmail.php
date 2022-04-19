@@ -1,9 +1,6 @@
 <?php
     use PHPMailer\PHPMailer\PHPMailer;
-
     if (isset($_POST['name']) && isset($_POST['email'])) {
-
-
         $name = "TDS | Admin Panel";  // Name of your website or yours
         $to = "ruhamanat@gmail.com";  // mail of reciever
         $subject = "Confirm your account";
@@ -12,17 +9,14 @@
         <p><emp>Email/Username :- </emp><b>Email address</b></p>
         <p><emp>Email/Username :- </emp><b>Password</b></p>";
         $from = "estifanosaschale12@gmail.com";  // you mail
-        $password = "stephen12zxcvbnm";  // your mail password
-
+        $password = "*********";  // your mail password
         $fname = $_POST['name'];
         $email = $_POST['email'];
         // $subject = $_POST['subject'];
         // $body = $_POST['body'];
-
         require_once "PHPMailer/PHPMailer.php"; 
         require_once "PHPMailer/SMTP.php";
         require_once "PHPMailer/Exception.php";
-
         $mail = new PHPMailer();
 
         //SMTP Settings
@@ -40,7 +34,6 @@
         $mail->addAddress($to);
         $mail->Subject = $subject;
         $mail->Body = $body;
-
         if ($mail->send()) {
             $status = "success";
             $response = "Email is sent!";
@@ -48,7 +41,6 @@
             $status = "failed";
             $response = "Something is wrong: <br><br>" . $mail->ErrorInfo;
         }
-
         exit(json_encode(array("status" => $status, "response" => $response)));
     }
 ?>

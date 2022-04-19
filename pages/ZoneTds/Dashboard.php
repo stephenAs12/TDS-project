@@ -120,7 +120,7 @@ session_start();
                             <a class="nav-link" href="../../my account/view my account/view.html"><i
                                     class="fa fa-user"></i> My Profile</a>
 
-                            <a class="nav-link" href="../../StudentElection\admin\index.php"><i class="fa fa-power-off"></i> Logout</a>
+                            <a class="nav-link" href="./../../authentication/logout.php"><i class="fa fa-power-off"></i> Logout</a>
                         </div>
                     </div>
                     <div class="language-select dropdown" id="language-select">

@@ -265,7 +265,7 @@
 
                 <div class="row">
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">Update Zone</div>
                             <div class="card-body card-block">
@@ -322,109 +322,6 @@
                                         <button type="submit"
                                             class="btn btn-success btn-sm">Submit</button>
                                         
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header">Update Woreda</div>
-                            <div class="card-body card-block">
-                                <form action="" method="post" class="">
-
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></i></div>
-                                                    <input
-                                                    class="form-control"
-                                                    list="woredaDatalistOptions"
-                                                    id="woredaDataList"
-                                                    placeholder="search woreda..."
-                                                  />
-                                                  <datalist id="woredaDatalistOptions">
-                                                    <option value="Bahir Dar"></option>
-                                                    <option value="Finote Selam"></option>
-                                                    <option value="Gonder"></option>
-                                                    <option value="Enjibar"></option>
-                                                    <option value="Dessie"></option>
-                                                    <option value="Debre Markos"></option>
-                                                    <option value="Mota"></option>
-                                                    <option value="Debre Tabore"></option>
-                                                    <option value="Dangla"></option>
-                                                    <option value="Konbolcha"></option>
-                                                    <option value="Burie"></option>
-                                                    <option value="Bichena"></option>
-                                                    <option value="Wereta"></option>
-                                                  </datalist>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></i></div>
-                                                    <input
-                                                    class="form-control"
-                                                    list="datalistOptions"
-                                                    id="zoneDataList"
-                                                    placeholder="search zone..."
-                                                  />
-                                                  <datalist id="datalistOptions">
-                                                    <option value="West Gojjam"></option>
-                                                    <option value="East Gojjam"></option>
-                                                    <option value="Centeral Gonder"></option>
-                                                    <option value="Awi"></option>
-                                                    <option value="Wello"></option>
-                                                    <option value="West Gojjam"></option>
-                                                    <option value="East Gojjam"></option>
-                                                    <option value="Centeral Gonder"></option>
-                                                    <option value="Awi"></option>
-                                                    <option value="Wello"></option>
-                                                    <option value="West Gojjam"></option>
-                                                    <option value="East Gojjam"></option>
-                                                    <option value="Centeral Gonder"></option>
-                                                    <option value="Awi"></option>
-                                                    <option value="Wello"></option>
-                                                    <option value="West Gojjam"></option>
-                                                    <option value="East Gojjam"></option>
-                                                    <option value="Centeral Gonder"></option>
-                                                    <option value="Awi"></option>
-                                                    <option value="Wello"></option>
-                                                  </datalist>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-flag" aria-hidden="true"></i>
-                                            </div>
-                                            <input type="text" id="woredaname" name="woredaname"
-                                                placeholder="Woreda Name" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-code" aria-hidden="true"></i>
-                                            </div>
-                                            <input type="number" id="woredacode" name="woredacode"
-                                                placeholder="Woreda Code" class="form-control" min="1">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-times"
-                                                    aria-hidden="true"></i></div>
-                                            <input type="number" id="multiplayer" name="multiplayer"
-                                                placeholder="Multiplayer" class="form-control" step="0.1" min="1"
-                                                max="1.9">
-                                        </div>
-                                    </div>
-                                    <div class="form-actions form-group">
-                                        <button type="reset" class="btn btn-danger btn-sm">Clear</button>
-                                        <button type="submit"
-                                            class="btn btn-success btn-sm">Submit</button>
-                                       
                                     </div>
                                 </form>
                             </div>

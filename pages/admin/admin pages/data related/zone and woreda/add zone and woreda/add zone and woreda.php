@@ -269,7 +269,7 @@
 
                 <div class="row">
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">Add Zone</div>
                             <div class="card-body card-block">
@@ -295,63 +295,6 @@
 
 
                     <!-- woreda insertion -->
-
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header">Add Woreda</div>
-                            <div class="card-body card-block">
-                                <form id="add_woreda_form_id" class="">
-
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        
-                                    <?php
-                                        include 'add woreda/get zone data.php';
-                                        
-                                        echo "<div class='input-group-addon'><i class='fa fa-level-down' aria-hidden='true'></i></div>";
-                                        echo"<select name='zoneNAME_id' id='zone_id_id' class='form-control' required>";
-                                            echo"<option value='' selected hidden>Please select Zone</option>";
-                                            while($zone_row=mysqli_fetch_array($zon_resualt))
-                                            {
-                                                echo"<option value='$zone_row[zone_id]'>$zone_row[zone_name]</option>";
-                                            }
-                                            
-                                        echo"</select>";
-                                    ?>
-                                    </div>
-                                </div>
-
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-flag" aria-hidden="true"></i>
-                                            </div>
-                                            <input type="text" id="woreda_name_id" name="woreda_name_name" placeholder="Woreda Name" class="form-control" minlength="3" autocomplete="off" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-code" aria-hidden="true"></i>
-                                            </div>
-                                            <input type="number" id="woreda_code_id" name="woreda_code_code" placeholder="Woreda Code" class="form-control" min="1" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-times" aria-hidden="true"></i></div>
-                                            <input type="number" id="woreda_mul_id" name="woreda_mul_mul" placeholder="Multiplication point" class="form-control" step="0.1" min="1" max="1.9" required>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-actions form-group">
-                                        <button type="reset" class="btn btn-danger btn-sm">Clear</button>
-                                        <button type="submit" class="btn btn-success btn-sm">Submit</button>
-
-                                    </div>
-                                    
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
