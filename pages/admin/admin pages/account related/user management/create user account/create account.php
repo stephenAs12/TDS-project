@@ -374,26 +374,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
-                                                <input type="password" id="user_password_id" name="user_password_name" placeholder="Password *" class="form-control" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
-                                                <input type="password" id="user_cpassword_id" name="user_cpassword_name" placeholder="Confirm Password *" class="form-control" required>
-                                            </div>
-                                        </div>
                                     </div>
 
 
                                     <div class="form-actions form-group">
                                         <button type="reset" class="btn btn-danger btn-md">Clear</button>
-                                        <button type="submit" class="btn btn-success btn-md">Submit</button>
+                                        <button type="submit" id="submit" class="btn btn-success btn-md">Submit</button>
 
                                     </div>
                                 </form>

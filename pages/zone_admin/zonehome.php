@@ -434,12 +434,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                         <a class="dropdown-item" href="./admin pages/data related/transfer/before computed/before_computed.php">View</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div><br>
                             <h4 class="mb-0">
-                                <span class="count">1200</span>
+                                <span class="count">12</span>
                             </h4>
                             <p class="text-light">Supervisor</p>
-
                             <div class="chart-wrapper px-0" style="height:70px;" height="70">
                             </div>
 

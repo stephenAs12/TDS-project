@@ -351,7 +351,7 @@ session_start();
                                             
                                             echo "<div class='input-group-addon'><i class='fa fa-map-marker' aria-hidden='true'></i></div>";
                                             echo "<select name='address_name_name' id='address_name_id' class='form-control' required>";
-                                            echo "<option value='' selected hidden>Please select Zone *</option>";
+                                            echo "<option value='' selected hidden>Please select Woreda *</option>";
                                             while ($address_row = mysqli_fetch_array($address_resualt)) {
                                                 echo "<option value='$address_row[woreda_id]'>$address_row[woreda_name]</option>";
                                             }

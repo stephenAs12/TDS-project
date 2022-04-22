@@ -294,10 +294,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                                     <th>Phone</th>
                                                     <th>Email</th>
                                                     <th>Status</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <?php
                                             while ($row = mysqli_fetch_array($result)) {
+
+                                                
+
+                                                $status ='';
+                                                if ($row['status'] == 0) {
+                                                    // echo '<a href="status.php?user_id='.$row['user_id'].'&status=1" class="btn btn-primary btn-lg disabled" role="button">enable</a>';
+                                                    $status = '<span class="badge badge-pill badge-danger">Banned</span>';
+                                                } else {
+                                                    $status = '<span class="badge badge-pill badge-success">Active</span>';
+                                                }
 
                                                 $action = '';
                                                 if ($row['status'] == 0) {
@@ -314,6 +325,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                                     <td>' . $row["zone_name"] . '</td>
                                                     <td>' . $row["uphone"] . '</td>
                                                     <td>' . $row["uemail"] . '</td>
+                                                    <td>' . $status . '</td>
                                                     <td>' . $action . '</td>
                                                 </tr>
                                                 ';
@@ -327,6 +339,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                                     <th>Phone</th>
                                                     <th>Email</th>
                                                     <th>Status</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </tfoot>
                                         </table>

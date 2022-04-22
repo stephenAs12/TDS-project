@@ -28,6 +28,7 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 			$user_address = $user['aname'];
 			$user_full_name = $user['fname'].' '.$user['mname'].' '.$user['lname'];
 			$user_phone = $user['uphone'];
+			$user_image = $user['uimg'];
 			if ($email === $user_email) {
 				if (password_verify($password, $user_password)) {
 					if($user_status == "1"){
@@ -40,6 +41,7 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 					$_SESSION['user_status'] = $user_status;
 					$_SESSION['user_address'] = $user_address;
 					$_SESSION['user_phone'] = $user_phone;
+					$_SESSION['user_image'] = $user_image;
 					
 					if($user_role == "Regional Admin")
 					{

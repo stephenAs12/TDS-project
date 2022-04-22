@@ -1,7 +1,12 @@
 
 <?php
-$hasehd_password = password_hash('estif', PASSWORD_DEFAULT);
-echo $hasehd_password;
+
+function password_generate($chars) 
+{
+  $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+  return substr(str_shuffle($data), 0, $chars);
+}
+
 $connect =  mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
 $firstName       = (htmlspecialchars(stripslashes($_POST['first_name_name']))) ? htmlspecialchars(stripslashes($_POST['first_name_name'])) : '';
 $middleName       = (htmlspecialchars(stripslashes($_POST['middle_name_name']))) ? htmlspecialchars(stripslashes($_POST['middle_name_name']))  : '';
@@ -11,7 +16,7 @@ $jobLevel       = (htmlspecialchars(stripslashes($_POST['job_level_name']))) ? h
 $addressName    = (htmlspecialchars(stripslashes($_POST['address_name_name']))) ? htmlspecialchars(stripslashes($_POST['address_name_name']))  : '';
 $userPhone       = (htmlspecialchars(stripslashes($_POST['user_phone_name']))) ? htmlspecialchars(stripslashes($_POST['user_phone_name']))  : '';
 $userEmail       = (htmlspecialchars(stripslashes($_POST['user_email_name']))) ? htmlspecialchars(stripslashes($_POST['user_email_name']))  : '';
-$userPass       = (htmlspecialchars(stripslashes($_POST['user_password_name']))) ? htmlspecialchars(stripslashes($_POST['user_password_name']))  : '';
+$userPass = password_generate(12);
 $userPassword = password_hash($userPass, PASSWORD_DEFAULT);
 // $userPassword = encrypt_decrypt($userPass, 'encrypt');
 $sql = "INSERT INTO users(fname, mname, lname, urole, aname, uphone, uemail, password) VALUES ('$firstName','$middleName','$lastName','$jobLevel','$addressName','$userPhone','$userEmail','$userPassword')";
@@ -26,8 +31,8 @@ if (mysqli_query($connect, $sql)) {
     <p>Hello $firstName, For the first login, use this email address as the username and password.</p>
     <p><emp>Email/Username :- </emp><b>$userEmail</b></p>
     <p><emp>Password :- </emp><b>$userPass</b></p>";
-    $from = "estifanosaschale12@gmail.com";  // you mail
-    $password = "**********";  // your mail password
+    $from = "anrsebtds@gmail.com";  // you mail
+    $password = "qw12aszx";  // your mail password
     // $fname = $_POST['name'];
     // $email = $_POST['email'];
     // $subject = $_POST['subject'];
