@@ -55,10 +55,15 @@
 }else {
 
 	if($user_role == "Regional Admin"){
-		header("Location: ./../pages/admin/admin index.php");
-	}elseif($user_role == "zone Director"){
-		header("Location: ./../pages/ZoneTds/Dashboard.php");
-	} else{
+		header("Location: ../pages/Region/Regional admin/admin index.php");
+	}
+	elseif($user_role == "zone Director"){
+		header("Location: ../pages/Zone/ZoneTds/Dashboard.php");
+	} elseif($user_role == "Zone Admin"){
+		header("Location: ../pages/Zone/zone_admin/zonehome.php");
+	}elseif($user_role == "Woreda Admin"){
+		header("Location: ../pages/Woreda/Woreda Admin/woreda admin index.php");
+	}else{
 		header("Location: index.php");
 	}
 

@@ -42,16 +42,18 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 					$_SESSION['user_address'] = $user_address;
 					$_SESSION['user_phone'] = $user_phone;
 					$_SESSION['user_image'] = $user_image;
-					
+					$_SESSION['last_acted_on'] = time();
 					if($user_role == "Regional Admin")
 					{
-						header("Location: ./../pages/admin/admin index.php");
+						header("Location: ../pages/Region/Regional admin/admin index.php");
 					}
-					elseif($user_role == "zone Director"){
-						header("Location: ./../pages/ZoneTds/Dashboard.php");
-					}
-					elseif($user_role == "zone Admin"){
-						header("Location: ./../pages/zone_admin/zonehome.php");
+					// elseif($user_role == "zone Director"){
+					// 	header("Location: ../pages/Zone/ZoneTds/Dashboard.php");
+					// }
+					elseif($user_role == "Zone Admin"){
+						header("Location: ../pages/Zone/zone_admin/zonehome.php");
+					}elseif($user_role == "Woreda Admin"){
+						header("Location: ../pages/Woreda/Woreda Admin/woreda admin index.php");
 					} else{
 						// header("Location: ./../pages/zone_admin/zonehome.php");
 					}
