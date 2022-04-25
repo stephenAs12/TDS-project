@@ -22,13 +22,13 @@ session_start();
     <link rel="shortcut icon" href="./favicon.ico">
 
 
-    <link rel="stylesheet" href="../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../../../vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/font-awesome/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css"> -->
-    <link rel="stylesheet" href="../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
-    <!-- <link rel="stylesheet" href="../../vendors/selectFX/css/cs-skin-elastic.css"> -->
+    <link rel="stylesheet" href="../../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
+    <!-- <link rel="stylesheet" href="../../vendors/selectFX/css/cs-../skin-elastic.css"> -->
 
-    <link rel="stylesheet" href="../../../../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../../../../../assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <style>
@@ -57,10 +57,10 @@ session_start();
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau">
+                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../../images/amhara.png" alt="Amhara Education Bureau">
                     <p class="org-name">ANRSE</p>
                 </a>
-                <a class="navbar-brand hidden" href="../../../../admin index.php"><img class="amhara-logo" width="30" height="30" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau"></a>
+                <a class="navbar-brand hidden" href="../../../../admin index.php"><img class="amhara-logo" width="30" height="30" src="../../../../../../../images/amhara.png" alt=""></a>
 
             </div>
 
@@ -179,7 +179,7 @@ session_start();
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../../../../../../images/admin image/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="../../../../../../../images/admin image/adminn.jpg" alt="User Avatar">
                         </a>
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="../../my account/view my account/view my account.php"><i class="fa fa-user"></i>
@@ -230,7 +230,7 @@ session_start();
                     </div>
                     <div class="modal-body">
                         <p>
-                            Hello Estifanos,
+                            Hello,<?php echo  $_SESSION['user_fname'];?>
 
                             When logging out you are redirected to a Login page ¿Are you sure…?
 
@@ -324,7 +324,12 @@ session_start();
                                             echo "<select name='job_level_name' id='job_level_id' class='form-control' required>";
                                             echo "<option value='' selected hidden>Please select user role *</option>";
                                             while ($job_level_row = mysqli_fetch_array($job_level_resualt)) {
-                                                echo "<option value='$job_level_row[level_name] $job_level_row[job_name]'>$job_level_row[level_name] $job_level_row[job_name]</option>";
+                                                $wored_zone=$job_level_row['level_name']." ".$job_level_row['job_name'];
+                                                if ($wored_zone=="Woreda Admin" || $wored_zone=="Zone TDS expert") {
+                                                    # code...
+                                                    echo "<option value='$job_level_row[level_name] $job_level_row[job_name]'>$job_level_row[level_name] $job_level_row[job_name]</option>";
+                                                }
+                                                
                                             }
                                             echo "</select>";
                                             ?>
@@ -338,8 +343,6 @@ session_start();
                                             // include 'add user/get address.php';
 
                                        
-
-
                                             $conn = mysqli_connect("localhost", "root", "", "tds v1.0.1");
     
                                             if($conn === false){
@@ -348,7 +351,7 @@ session_start();
                                             }
                                             $woreda_list =$_SESSION['user_address'];
                                             $address_resualt = mysqli_query($conn, "SELECT * FROM woreda WHERE zoneid = $woreda_list");
-                                            
+                            
                                             echo "<div class='input-group-addon'><i class='fa fa-map-marker' aria-hidden='true'></i></div>";
                                             echo "<select name='address_name_name' id='address_name_id' class='form-control' required>";
                                             echo "<option value='' selected hidden>Please select Woreda *</option>";
@@ -405,12 +408,12 @@ session_start();
                     </div>
                 </div>
             </div>
-            <script src="../../../../../../vendors/jquery/dist/jquery.min.js"></script>
-            <script src="../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
-            <script src="../../../../../../vendors/jquery/dist/jquery.validate.js"></script>
-            <script src="../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-            <script src="../../../../../../assets/js/main.js"></script>
-            <script src="../../../../../../vendors/sweetalert/sweetalert2@11.js"></script>
+            <script src="../../../../../../../vendors/jquery/dist/jquery.min.js"></script>
+            <script src="../../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
+            <script src="../../../../../../../vendors/jquery/dist/jquery.validate.js"></script>
+            <script src="../../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script src="../../../../../../../assets/js/main.js"></script>
+            <script src="../../../../../../../vendors/sweetalert/sweetalert2@11.js"></script>
             <script src="./add user/insert user.js"></script>
 </body>
 

@@ -29,6 +29,7 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 			$user_full_name = $user['fname'].' '.$user['mname'].' '.$user['lname'];
 			$user_phone = $user['uphone'];
 			$user_image = $user['uimg'];
+			$user_first_login = $user['first_login'];
 			if ($email === $user_email) {
 				if (password_verify($password, $user_password)) {
 					if($user_status == "1"){
@@ -42,8 +43,10 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 					$_SESSION['user_address'] = $user_address;
 					$_SESSION['user_phone'] = $user_phone;
 					$_SESSION['user_image'] = $user_image;
+					$_SESSION['user_first_login'] = $user_first_login;
 					$_SESSION['last_acted_on'] = time();
-					if($user_role == "Regional Admin")
+					if($user_first_login == "1"){
+						if($user_role == "Regional Admin")
 					{
 						header("Location: ../pages/Region/Regional admin/admin index.php");
 					}
@@ -56,6 +59,9 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 						header("Location: ../pages/Woreda/Woreda Admin/woreda admin index.php");
 					} else{
 						// header("Location: ./../pages/zone_admin/zonehome.php");
+					}
+					}else{
+						header("Location: change password.php");
 					}
 					}else{
 						header("Location: login.php?error=Your account has been temporarily deactivated. Please contact your administrator.&email=$email");

@@ -221,9 +221,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         </div>
                         <div class="modal-body">
                             <p>
-                                Hello Estifanos,
+                                Hello,<?php echo  $_SESSION['user_fname'];?>
 
-                                When logging out you are redirected to a Login page ¿Are you sure…?
+                                When logging out you are redirected to a Login page Are you sure…?
 
                                 If you want to stay, click a Cancel button.
 
@@ -276,11 +276,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                 $connectQuery = mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
 
-                $zoneQuery = "SELECT zone_id FROM zone ORDER BY zone_id";
-                $run_zoneQuery = mysqli_query($connectQuery, $zoneQuery);
-                $zoneRow = mysqli_num_rows($run_zoneQuery);
+                // $zoneQuery = "SELECT woreda_id  FROM woreda ORDER BY woreda_id";
+                // $run_zoneQuery = mysqli_query($connectQuery, $zoneQuery);
+                // $zoneRow = mysqli_num_rows($run_zoneQuery);
+                $user_address=$_SESSION['user_address'];
 
-                $woredaQuery = "SELECT woreda_id FROM woreda ORDER BY woreda_id";
+                $woredaQuery = "SELECT woreda_id FROM woreda WHERE zoneid='$user_address'";
                 $run_woredaQuery = mysqli_query($connectQuery, $woredaQuery);
                 $woredaRow = mysqli_num_rows($run_woredaQuery);
 
