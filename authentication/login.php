@@ -63,6 +63,9 @@
 		header("Location: ../pages/Zone/zone_admin/zonehome.php");
 	}elseif($user_role == "Woreda Admin"){
 		header("Location: ../pages/Woreda/Woreda Admin/woreda admin index.php");
+	}
+	elseif($user_role == "Woreda TDS expert"){
+		header("Location: ../pages/Woreda/Woreda Expert/woreda TDS expert index.php");
 	}elseif($user_first_login == "0"){
 		header("Location: change password.php");
 	}else{

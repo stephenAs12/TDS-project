@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -14,15 +19,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="./apple-icon.png">
     <link rel="shortcut icon" href="./favicon.ico">
-    <link rel="stylesheet" href="../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../../../vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/fixedHeader.dataTables.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/fixedHeader.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/buttons.dataTables.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/main-style.css">
-    <link rel="stylesheet" href="../../../../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/fixedHeader.dataTables.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/fixedHeader.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/main-style.css">
+    <link rel="stylesheet" href="../../../../../../../assets/css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 </head>
 
@@ -34,7 +39,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau">
+                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../../images/amhara.png" alt="Amhara Education Bureau">
                     <p class="org-name">ANRSE</p>
                 </a>
                 <a class="navbar-brand hidden" href="../../../../admin index.php"><img class="amhara-logo" width="30" height="30" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau"></a>
@@ -44,7 +49,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="../../../../admin index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
+                        <a href="../../../../zonehome.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
                     </li>
                     <h3 class="menu-title">Account Related</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -150,7 +155,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../../../../../../images/admin image/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="../../../../../../../images/admin image/adminn.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -233,7 +238,7 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="../../../../admin index.php">Dashboard</a></li>
+                            <li><a href="../../../../zonehome.php">Dashboard</a></li>
                             <li><a href="#">User Managment</a></li>
                             <li class="active">View Users</li>
                         </ol>
@@ -246,6 +251,8 @@
 
         <?php
 
+        $zoneAdmin_address = $_SESSION['user_address'];
+
         $connectQuery = mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
 
         if (mysqli_connect_errno()) {
@@ -255,12 +262,10 @@
             $selectQuery = "SELECT users.user_id, users.status, users.fname, users.mname, users.urole, users.uphone, users.uemail, zone.zone_name
             FROM users
             INNER JOIN zone
-            ON users.aname=zone.zone_id;";
+            ON users.aname=zone.zone_id WHERE aname=$zoneAdmin_address;";
             $result = mysqli_query($connectQuery, $selectQuery);
             if (mysqli_num_rows($result) > 0) {
-
-            } 
-            else {
+            } else {
                 $msg = "No Record found";
             }
         }
@@ -292,15 +297,16 @@
                                         <?php
                                         while ($row = mysqli_fetch_array($result)) {
 
-                                            $action = '';
-                                            if ($row['status'] == 0) {
-                                                // echo '<a href="status.php?user_id='.$row['user_id'].'&status=1" class="btn btn-primary btn-lg disabled" role="button">enable</a>';
-                                                $action = '<a href="status.php?user_id=' . $row['user_id'] . '&status=1"><button class="btn btn-success btn-sm">Enable</button></a>';
-                                            } else {
-                                                $action = '<a href="status.php?user_id=' . $row['user_id'] . '&status=0"><button class="btn btn-danger btn-sm">Disable</button></a>';
-                                            }
+                                            if ($row['urole'] == 'Zone TDS expert' || $row['urole'] == 'Woreda Admin') {
+                                                $action = '';
+                                                if ($row['status'] == 0) {
+                                                    // echo '<a href="status.php?user_id='.$row['user_id'].'&status=1" class="btn btn-primary btn-lg disabled" role="button">enable</a>';
+                                                    $action = '<a href="status.php?user_id=' . $row['user_id'] . '&status=1"><button class="btn btn-success btn-sm">Enable</button></a>';
+                                                } else {
+                                                    $action = '<a href="status.php?user_id=' . $row['user_id'] . '&status=0"><button class="btn btn-danger btn-sm">Disable</button></a>';
+                                                }
 
-                                            echo '
+                                                echo '
                                                 <tr>
                                                     <td>' . $row["fname"] . '</td>
                                                     <td>' . $row["urole"] . '</td>
@@ -310,6 +316,7 @@
                                                     <td>' . $action . '</td>
                                                 </tr>
                                                 ';
+                                            }
                                         }
                                         ?>
                                         <tfoot>
@@ -333,21 +340,21 @@
         </div><!-- .content -->
     </div><!-- /#right-panel -->
     <!-- Right Panel -->
-    <script src="../../../../../../vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../../../../../assets/js/main.js"></script>
-    <script src="../../../../../../assets/table/js/jquery-3.5.1.js"></script>
-    <script src="../../../../../../assets/table/js/jquery.dataTables.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.fixedHeader.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.buttons.min.js"></script>
-    <script src="../../../../../../assets/table/js/jszip.min.js"></script>
-    <script src="../../../../../../assets/table/js/pdfmake.min.js"></script>
-    <script src="../../../../../../assets/table/js/vfs_fonts.js"></script>
-    <script src="../../../../../../assets/table/js/buttons.html5.min.js"></script>
-    <script src="../../../../../../assets/table/js/buttons.print.min.js"></script>
-    <script src="../../../../../../assets/table/js/main.js"></script>
+    <script src="../../../../../../../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../../../../../../assets/js/main.js"></script>
+    <script src="../../../../../../../assets/table/js/jquery-3.5.1.js"></script>
+    <script src="../../../../../../../assets/table/js/jquery.dataTables.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.buttons.min.js"></script>
+    <script src="../../../../../../../assets/table/js/jszip.min.js"></script>
+    <script src="../../../../../../../assets/table/js/pdfmake.min.js"></script>
+    <script src="../../../../../../../assets/table/js/vfs_fonts.js"></script>
+    <script src="../../../../../../../assets/table/js/buttons.html5.min.js"></script>
+    <script src="../../../../../../../assets/table/js/buttons.print.min.js"></script>
+    <script src="../../../../../../../assets/table/js/main.js"></script>
 </body>
 
 </html>

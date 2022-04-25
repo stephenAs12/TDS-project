@@ -4,7 +4,7 @@ include 'db_conn.php';
 
 if(isset($_POST['email']) && isset($_POST['password'])) {
 	
-	$email = $_POST['email'];
+    $email = $_POST['email'];
 	$password = $_POST['password'];
 
 	if (empty($email)) {
@@ -26,6 +26,7 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 			$user_role = $user['urole'];
 			$user_status = $user['status'];
 			$user_address = $user['aname'];
+			$user_woreda = $user['wname'];
 			$user_full_name = $user['fname'].' '.$user['mname'].' '.$user['lname'];
 			$user_phone = $user['uphone'];
 			$user_image = $user['uimg'];
@@ -41,6 +42,7 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 					$_SESSION['user_role'] = $user_role;
 					$_SESSION['user_status'] = $user_status;
 					$_SESSION['user_address'] = $user_address;
+					$_SESSION['user_woreda'] = $user_woreda;
 					$_SESSION['user_phone'] = $user_phone;
 					$_SESSION['user_image'] = $user_image;
 					$_SESSION['user_first_login'] = $user_first_login;
@@ -57,6 +59,8 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 						header("Location: ../pages/Zone/zone_admin/zonehome.php");
 					}elseif($user_role == "Woreda Admin"){
 						header("Location: ../pages/Woreda/Woreda Admin/woreda admin index.php");
+					}elseif($user_role == "Woreda TDS expert"){
+						header("Location: ../pages/Woreda/Woreda Expert/woreda TDS expert index.php");
 					} else{
 						// header("Location: ./../pages/zone_admin/zonehome.php");
 					}
@@ -78,4 +82,3 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 		}
 	}
 }
-?>

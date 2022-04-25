@@ -1,3 +1,11 @@
+<?php
+
+
+session_start();
+
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && $_SESSION['user_role']=="Woreda Admin") {
+?>
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -17,13 +25,13 @@
     <link rel="shortcut icon" href="./favicon.ico">
 
 
-    <link rel="stylesheet" href="../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../../../vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/font-awesome/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css"> -->
-    <link rel="stylesheet" href="../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
     <!-- <link rel="stylesheet" href="../../vendors/selectFX/css/cs-skin-elastic.css"> -->
 
-    <link rel="stylesheet" href="../../../../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../../../../../assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -43,10 +51,10 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau">
+                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../../images/amhara.png" alt="Amhara Education Bureau">
                     <p class="org-name">ANRSE</p>
                 </a>
-                <a class="navbar-brand hidden" href="../../../../admin index.php"><img class="amhara-logo" width="30" height="30" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau"></a>
+                <a class="navbar-brand hidden" href="../../../../admin index.php"><img class="amhara-logo" width="30" height="30" src="../../../../../../../images/amhara.png" alt="Amhara Education Bureau"></a>
 
             </div>
 
@@ -80,12 +88,11 @@
                     <h3 class="menu-title">Data Related</h3><!-- /.menu-title -->
 
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker" style="color: white;"></i><span style="color: white;">Zone and Woreda</span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker" style="color: white;"></i><span style="color: white;">Schools</span></a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-plus-square" style="color: white;"></i><a href="../../../data related/zone and woreda/add zone and woreda/add zone and woreda.php"><span style="color: white;">Add</span></a></li>
-                            <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/zone and woreda/update zone and woreda/update zone and woreda.php">Update</a></li>
-                            <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view zone/view zone.php">View zone</a></li>
-                            <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view woreda/view woreda.php">View Woreda</a></li>
+                            <li><i class="menu-icon fa fa-plus-square" style="color: white;"></i><a href="../add school/add school.php"><span style="color: white;">Add</span></a></li>
+                            <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../update school/update school.php">Update</a></li>
+                            <li><i class="menu-icon fa fa-eye"></i><a href="../view school/view schools.php">View Schools</a></li>
                         </ul>
 
                     </li>
@@ -165,12 +172,12 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../../../../../../images/admin image/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="../../../../../../../images/admin image/admin.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
 
-
+                        <p><?php echo $_SESSION['user_fname'].' '.$_SESSION['user_mname']; ?></p>
                             <a class="nav-link" href="../../../account related/my account/view my account/view my account.php"><i class="fa fa-user"></i>
                                 My Profile</a>
 
@@ -219,7 +226,7 @@
                     </div>
                     <div class="modal-body">
                         <p>
-                            Hello Estifanos,
+                        Hello <?php echo  $_SESSION['user_fname'];?>,
 
                             When logging out you are redirected to a Login page ¿Are you sure…?
 
@@ -230,7 +237,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary"><a href="./page-login.php" style="text-decoration: none; color: white;">Confirm</a></button>
+                        <button type="button" class="btn btn-primary"><a href="../../../../../../../authentication/logout.php" style="text-decoration: none; color: white;">Confirm</a></button>
                     </div>
                 </div>
             </div>
@@ -246,7 +253,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Admin's Dashboard</h1>
+                    <h1><?php echo $_SESSION['user_role']; ?> Dashboard</h1>
                     </div>
                 </div>
             </div>
@@ -255,8 +262,8 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="../../../../admin index.php">Dashboard</a></li>
-                            <li><a href="#">Zone and Woreda</a></li>
-                            <li class="active">Add zone and woreda</li>
+                            <li><a href="#">Schools</a></li>
+                            <li class="active">Add School</li>
                         </ol>
                     </div>
                 </div>
@@ -271,21 +278,22 @@
 
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header">Add Zone</div>
+                            <div class="card-header">Add School</div>
                             <div class="card-body card-block">
-                                <form id="zone_form_id" class="">
+                                <form id="school_form_id" class="">
 
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
                                             </div>
-                                            <input type="text" name="zone_name_name" id="zone_name_id" placeholder="Zone Name" class="form-control" autocomplete="off" minlength="3" required>
+                                            <input type="text" name="school_name_name" id="school_name_id" placeholder="School Name" class="form-control" autocomplete="off" minlength="3" required>
                                         </div>
                                     </div>
+                                    
 
                                     <div class="form-actions form-group">
                                         <button type="reset" class="btn btn-danger btn-sm">Clear</button>
-                                        <button type="submit" id="zone_submit_id" name="submit" class="btn btn-success btn-sm">Submit</button>
+                                        <button type="submit" id="school_submit_id" name="submit" class="btn btn-success btn-sm">Submit</button>
 
                                     </div>
                                 </form>
@@ -301,15 +309,14 @@
     </div><!-- /#right-panel -->
     <!-- Right Panel -->
 
-    <script src="../../../../../../vendors/jquery/dist/jquery-3.4.1.js"></script>
-    <script src="../../../../../../vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../../../../../../vendors/jquery/dist/jquery.validate.js"></script>
-    <script src="../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../../../../../assets/js/main.js"></script>
-    <script src="../../../../../../vendors/sweetalert/sweetalert2@11.js"></script>
-    <script src="./add zone/insert zone.js"></script>
-    <script src="./add woreda/insert woreda.js"></script>
+    <script src="../../../../../../../vendors/jquery/dist/jquery-3.4.1.js"></script>
+    <script src="../../../../../../../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../../../../../../../vendors/jquery/dist/jquery.validate.js"></script>
+    <script src="../../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../../../../../../assets/js/main.js"></script>
+    <script src="../../../../../../../vendors/sweetalert/sweetalert2@11.js"></script>
+    <script src="insert school.js"></script>
 
 
 
@@ -321,3 +328,9 @@
 </html>
 
 <?php
+
+} else {
+    header("location: ../../../../authentication/login.php");
+}
+
+?>

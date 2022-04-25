@@ -53,7 +53,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 <div id="main-menu" class="main-menu collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="./admin index.php"> <i class="menu-icon fa fa-dashboard"></i><span style="color: white;">Dashboard</span> </a>
+                            <a href="./zonehome.php"> <i class="menu-icon fa fa-dashboard"></i><span style="color: white;">Dashboard</span> </a>
                         </li>
                         <h3 class="menu-title">Account Related</h3><!-- /.menu-title -->
                         <li class="menu-item-has-children dropdown">
@@ -221,7 +221,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         </div>
                         <div class="modal-body">
                             <p>
-                                Hello,<?php echo  $_SESSION['user_fname'];?>
+                                Hello,<?php echo  $_SESSION['user_fname']; ?>
 
                                 When logging out you are redirected to a Login page Are you sure…?
 
@@ -262,7 +262,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                 <div class="col-sm-12">
                     <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                        Hello <?php echo  $_SESSION['user_fname'];?>, Your Dashboard <span class="badge badge-pill badge-success">Successfully</span>
+                        Hello <?php echo  $_SESSION['user_fname']; ?>, Your Dashboard <span class="badge badge-pill badge-success">Successfully</span>
                         rendered !
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -275,13 +275,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 <?php
 
                 $connectQuery = mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
-
-                // $zoneQuery = "SELECT woreda_id  FROM woreda ORDER BY woreda_id";
-                // $run_zoneQuery = mysqli_query($connectQuery, $zoneQuery);
-                // $zoneRow = mysqli_num_rows($run_zoneQuery);
-                $user_address=$_SESSION['user_address'];
-
-                $woredaQuery = "SELECT woreda_id FROM woreda WHERE zoneid='$user_address'";
+                $zoneadress = $_SESSION['user_address'];
+                $woredaQuery = "SELECT woreda_id FROM woreda WHERE zoneid='$zoneadress'";
                 $run_woredaQuery = mysqli_query($connectQuery, $woredaQuery);
                 $woredaRow = mysqli_num_rows($run_woredaQuery);
 
@@ -294,7 +289,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 $zoneTdsRow = mysqli_num_rows($run_zoneTdsQuery);
 
                 ?>
-             
+
                 <!--/.col-->
 
                 <div class="col-sm-6 col-lg-3">
@@ -329,38 +324,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 </div>
                 <!--/.col-->
 
-                <div class="col-sm-6 col-lg-3">
-                    <div class="card text-white bg-flat-color-3">
-                        <div class="card-body pb-0">
-                            <div class="dropdown float-right">
-                                <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton3" data-toggle="dropdown">
-                                    <i class="fa fa-cog"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                                    <div class="dropdown-menu-content">
-                                        <a class="dropdown-item" href="./admin pages/account related/user management/view users/view_user.php">View</a>
-                                        <a class="dropdown-item" href="./admin pages/account related/user management/create user account/create account.php">Add
-                                            Member</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="mb-0">
-                                <span class="count">
-                                    <?php
-                                    echo $regionTdsRow;
-                                    ?>
-                                </span>
-                            </h4>
-                            <p class="text-light">Bureau TDS experts</p>
 
-                        </div>
-
-                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
-                        </div>
-                    </div>
-                </div>
-                <!--/.col-->
-
+               
+           <!-- zone tds counter -->
                 <div class="col-sm-6 col-lg-3">
                     <div class="card text-white bg-flat-color-4">
                         <div class="card-body pb-0">

@@ -23,7 +23,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
         <link rel="apple-touch-icon" href="./apple-icon.png">
         <link rel="shortcut icon" href="./favicon.ico">
 
-        <link rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../vendors/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../vendors/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="../../vendors/flag-icon-css/css/flag-icon.min.css">
         <link rel="stylesheet" href="../../assets/css/style.css">

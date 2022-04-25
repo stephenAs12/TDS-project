@@ -8,8 +8,8 @@ jQuery(document).ready(function(){
     var addressName = jQuery('#address_name_id').val();
     var userPhone = jQuery('#user_phone_id').val();
     var userEmail = jQuery('#user_email_id').val();
-    var userPassword = jQuery('#user_password_id').val();
-    var userCpassword = jQuery('#user_cpassword_id').val();
+    // var userPassword = jQuery('#user_password_id').val();
+    // var userCpassword = jQuery('#user_cpassword_id').val();
     jQuery('#add_user_form').validate({ 
         rules: {
             'first_name_name': {

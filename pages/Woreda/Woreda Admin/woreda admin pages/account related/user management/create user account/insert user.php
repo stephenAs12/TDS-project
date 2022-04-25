@@ -1,6 +1,8 @@
 
 <?php
 
+session_start();
+
 function password_generate($chars) 
 {
   $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
@@ -12,14 +14,15 @@ $firstName       = (htmlspecialchars(stripslashes($_POST['first_name_name']))) ?
 $middleName       = (htmlspecialchars(stripslashes($_POST['middle_name_name']))) ? htmlspecialchars(stripslashes($_POST['middle_name_name']))  : '';
 $lastName       = (htmlspecialchars(stripslashes($_POST['last_name_name']))) ? htmlspecialchars(stripslashes($_POST['last_name_name']))  : '';
 // $userImage   = ($_POST['user_image_name']) ? $_POST['user_image_name'] : '';
-$jobLevel       = (htmlspecialchars(stripslashes($_POST['job_level_name']))) ? htmlspecialchars(stripslashes($_POST['job_level_name']))  : '';
-$addressName    = (htmlspecialchars(stripslashes($_POST['address_name_name']))) ? htmlspecialchars(stripslashes($_POST['address_name_name']))  : '';
+$jobLevel       = "Woreda TDS expert";
+$addressName    = $_SESSION['user_address'];
+$userWoreda    = $_SESSION['user_woreda'];
 $userPhone       = (htmlspecialchars(stripslashes($_POST['user_phone_name']))) ? htmlspecialchars(stripslashes($_POST['user_phone_name']))  : '';
 $userEmail       = (htmlspecialchars(stripslashes($_POST['user_email_name']))) ? htmlspecialchars(stripslashes($_POST['user_email_name']))  : '';
 $userPass = password_generate(12);
 $userPassword = password_hash($userPass, PASSWORD_DEFAULT);
 // $userPassword = encrypt_decrypt($userPass, 'encrypt');
-$sql = "INSERT INTO users(fname, mname, lname, urole, aname, uphone, uemail, password) VALUES ('$firstName','$middleName','$lastName','$jobLevel','$addressName','$userPhone','$userEmail','$userPassword')";
+$sql = "INSERT INTO users(fname, mname, lname, urole, aname, wname, uphone, uemail, password) VALUES ('$firstName','$middleName','$lastName','$jobLevel','$addressName', '$userWoreda', '$userPhone','$userEmail','$userPassword')";
 
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -37,9 +40,9 @@ if (mysqli_query($connect, $sql)) {
     // $email = $_POST['email'];
     // $subject = $_POST['subject'];
     // $body = $_POST['body'];
-    require_once "./../../../../../../assets/email/contact form/PHPMailer/PHPMailer.php";
-    require_once "./../../../../../../assets/email/contact form/PHPMailer/SMTP.php";
-    require_once "./../../../../../../assets/email/contact form/PHPMailer/Exception.php";
+    require_once "./../../../../../../../assets/email/contact form/PHPMailer/PHPMailer.php";
+    require_once "./../../../../../../../assets/email/contact form/PHPMailer/SMTP.php";
+    require_once "./../../../../../../../assets/email/contact form/PHPMailer/Exception.php";
     $mail = new PHPMailer();
     //SMTP Settings
     $mail->isSMTP();

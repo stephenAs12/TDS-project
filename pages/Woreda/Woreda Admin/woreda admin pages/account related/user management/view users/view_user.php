@@ -3,7 +3,7 @@
 
 session_start();
 
-if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) == 'Regional Admin') {
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && $_SESSION['user_role'] == "Woreda Admin" ) {
 ?>
 
 
@@ -255,16 +255,15 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
             <?php
 
+            $woredaAdmin_woreda=$_SESSION['user_woreda'];
+
             $connectQuery = mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
 
             if (mysqli_connect_errno()) {
                 echo mysqli_connect_error();
                 exit();
             } else {
-                $selectQuery = "SELECT users.user_id, users.status, users.fname, users.mname, users.urole, users.uphone, users.uemail, zone.zone_name
-            FROM users
-            INNER JOIN zone
-            ON users.aname=zone.zone_id WHERE users.urole='zone Admin' OR users.urole='Region Tds expert'";
+                $selectQuery = "SELECT * FROM users WHERE urole='Woreda TDS expert' AND wname=$woredaAdmin_woreda";
                 $result = mysqli_query($connectQuery, $selectQuery);
                 if (mysqli_num_rows($result) > 0) {
                 } else {
@@ -289,8 +288,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
-                                                    <th>Role</th>
-                                                    <th>Address</th>
                                                     <th>Phone</th>
                                                     <th>Email</th>
                                                     <th>Status</th>
@@ -320,9 +317,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                                                 echo '
                                                 <tr>
-                                                    <td>' . $row["fname"] . '</td>
-                                                    <td>' . $row["urole"] . '</td>
-                                                    <td>' . $row["zone_name"] . '</td>
+                                                    <td>' . $row["fname"] . ' ' . $row["mname"] . '</td>
                                                     <td>' . $row["uphone"] . '</td>
                                                     <td>' . $row["uemail"] . '</td>
                                                     <td>' . $status . '</td>
@@ -334,8 +329,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                             <tfoot>
                                                 <tr>
                                                     <th>Name</th>
-                                                    <th>Role</th>
-                                                    <th>Address</th>
                                                     <th>Phone</th>
                                                     <th>Email</th>
                                                     <th>Status</th>

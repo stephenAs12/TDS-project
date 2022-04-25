@@ -68,7 +68,7 @@ session_start();
                 <ul class="nav navbar-nav">
                     <li>
                         <script src=""></script>
-                        <a href="../../../../admin index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="../../../../zonehome.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <h3 class="menu-title">Account Related</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -381,7 +381,7 @@ session_start();
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="form-group col-md-4">
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
                                             <input type="password" id="user_password_id" name="user_password_name" placeholder="Password *" class="form-control" required>
@@ -393,7 +393,7 @@ session_start();
                                             <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
                                             <input type="password" id="user_cpassword_id" name="user_cpassword_name" placeholder="Confirm Password *" class="form-control" required>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
 

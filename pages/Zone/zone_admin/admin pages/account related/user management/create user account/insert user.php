@@ -1,5 +1,12 @@
-
 <?php
+session_start();
+?>
+<?php
+function password_generate($chars) 
+{
+  $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+  return substr(str_shuffle($data), 0, $chars);
+}
 $hasehd_password = password_hash('estif', PASSWORD_DEFAULT);
 echo $hasehd_password;
 $connect =  mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
@@ -11,10 +18,12 @@ $jobLevel       = (htmlspecialchars(stripslashes($_POST['job_level_name']))) ? h
 $addressName    = (htmlspecialchars(stripslashes($_POST['address_name_name']))) ? htmlspecialchars(stripslashes($_POST['address_name_name']))  : '';
 $userPhone       = (htmlspecialchars(stripslashes($_POST['user_phone_name']))) ? htmlspecialchars(stripslashes($_POST['user_phone_name']))  : '';
 $userEmail       = (htmlspecialchars(stripslashes($_POST['user_email_name']))) ? htmlspecialchars(stripslashes($_POST['user_email_name']))  : '';
-$userPass       = (htmlspecialchars(stripslashes($_POST['user_password_name']))) ? htmlspecialchars(stripslashes($_POST['user_password_name']))  : '';
+$userPass = password_generate(12);
 $userPassword = password_hash($userPass, PASSWORD_DEFAULT);
+$woredaadmin=$_SESSION['user_address'];
+
 // $userPassword = encrypt_decrypt($userPass, 'encrypt');
-$sql = "INSERT INTO users(fname, mname, lname, urole, aname, uphone, uemail, password) VALUES ('$firstName','$middleName','$lastName','$jobLevel','$addressName','$userPhone','$userEmail','$userPassword')";
+$sql = "INSERT INTO users(fname, mname, lname, urole, aname, wname, uphone, uemail, password) VALUES ('$firstName','$middleName','$lastName','$jobLevel','$woredaadmin', '$addressName', '$userPhone','$userEmail','$userPassword')";
 
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -26,15 +35,15 @@ if (mysqli_query($connect, $sql)) {
     <p>Hello $firstName, For the first login, use this email address as the username and password.</p>
     <p><emp>Email/Username :- </emp><b>$userEmail</b></p>
     <p><emp>Password :- </emp><b>$userPass</b></p>";
-    $from = "estifanosaschale12@gmail.com";  // you mail
-    $password = "**********";  // your mail password
+    $from = "anrsebtds@gmail.com";  // you mail
+    $password = "qw12aszx";  // your mail password
     // $fname = $_POST['name'];
     // $email = $_POST['email'];
     // $subject = $_POST['subject'];
     // $body = $_POST['body'];
-    require_once "./../../../../../../assets/email/contact form/PHPMailer/PHPMailer.php";
-    require_once "./../../../../../../assets/email/contact form/PHPMailer/SMTP.php";
-    require_once "./../../../../../../assets/email/contact form/PHPMailer/Exception.php";
+    require_once "./../../../../../../../assets/email/contact form/PHPMailer/PHPMailer.php";
+    require_once "./../../../../../../../assets/email/contact form/PHPMailer/SMTP.php";
+    require_once "./../../../../../../../assets/email/contact form/PHPMailer/Exception.php";
     $mail = new PHPMailer();
     //SMTP Settings
     $mail->isSMTP();
@@ -55,7 +64,8 @@ if (mysqli_query($connect, $sql)) {
     } else {
         $response = "Something is wrong: <br><br>" . $mail->ErrorInfo;
     }
-    exit(json_encode(array("response" => $response)));
+    // exit(json_encode(array("response" => $response)));
 } else {
     echo mysqli_error($connect);
 }
+
