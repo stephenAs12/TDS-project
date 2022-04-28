@@ -16,16 +16,16 @@
     <link rel="shortcut icon" href="./favicon.ico">
 
 
-    <link rel="stylesheet" href="../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../../../vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/fixedHeader.dataTables.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/fixedHeader.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/buttons.dataTables.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/main-style.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/fixedHeader.dataTables.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/fixedHeader.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/main-style.css">
 
-    <link rel="stylesheet" href="../../../../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../../../../../assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 

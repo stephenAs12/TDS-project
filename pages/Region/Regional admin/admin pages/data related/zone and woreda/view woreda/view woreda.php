@@ -16,16 +16,16 @@
     <link rel="shortcut icon" href="./favicon.ico">
 
 
-    <link rel="stylesheet" href="../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../../../vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/fixedHeader.dataTables.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/fixedHeader.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/buttons.dataTables.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/main-style.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/fixedHeader.dataTables.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/fixedHeader.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/main-style.css">
 
-    <link rel="stylesheet" href="../../../../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../../../../../assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -329,21 +329,21 @@
     </div><!-- /#right-panel -->
 
     <!-- Right Panel -->
-    <script src="../../../../../../vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../../../../../assets/js/main.js"></script>
-    <script src="../../../../../../assets/table/js/jquery-3.5.1.js"></script>
-    <script src="../../../../../../assets/table/js/jquery.dataTables.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.fixedHeader.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.buttons.min.js"></script>
-    <script src="../../../../../../assets/table/js/jszip.min.js"></script>
-    <script src="../../../../../../assets/table/js/pdfmake.min.js"></script>
-    <script src="../../../../../../assets/table/js/vfs_fonts.js"></script>
-    <script src="../../../../../../assets/table/js/buttons.html5.min.js"></script>
-    <script src="../../../../../../assets/table/js/buttons.print.min.js"></script>
-    <script src="../../../../../../assets/table/js/main.js"></script>
+    <script src="../../../../../../../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../../../../../../assets/js/main.js"></script>
+    <script src="../../../../../../../assets/table/js/jquery-3.5.1.js"></script>
+    <script src="../../../../../../../assets/table/js/jquery.dataTables.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.buttons.min.js"></script>
+    <script src="../../../../../../../assets/table/js/jszip.min.js"></script>
+    <script src="../../../../../../../assets/table/js/pdfmake.min.js"></script>
+    <script src="../../../../../../../assets/table/js/vfs_fonts.js"></script>
+    <script src="../../../../../../../assets/table/js/buttons.html5.min.js"></script>
+    <script src="../../../../../../../assets/table/js/buttons.print.min.js"></script>
+    <script src="../../../../../../../assets/table/js/main.js"></script>
     <!-- <script src="../../../../../../assets/table/js/secondary.js"></script> -->
 
 

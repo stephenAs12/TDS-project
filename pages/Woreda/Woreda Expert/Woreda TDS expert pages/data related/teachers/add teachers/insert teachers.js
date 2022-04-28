@@ -1,22 +1,35 @@
 
 jQuery(document).ready(function () {
 
-    var zoneName = jQuery('#zone_name_id').val();
+    var knownID = jQuery('#teacher_id_id').val();
+    var firstName = jQuery('#first_name_id').val();
+    var middleName = jQuery('#middle_name_id').val();
+    var lastName = jQuery('#last_name_id').val();
+    var Sex = jQuery('sex_radio').val();
+    var Disability = jQuery('disable_radio').val();
+    var martialStatus = jQuery('married_radio').val();
+    var Nominee = jQuery('nominee_radio').val();
+    var School = jQuery('#school_id').val();
+    var educationLevel = jQuery('#education_level_id').val();
+    var Major = jQuery('#major_id').val();
+    var employmentPeriod = jQuery('#employment_period_id').val();
+    var Service = jQuery('#service_id').val();
+    var otherService = jQuery('#other_id').val();
+    
 
 
-
-    jQuery('#zone_form_id').validate({
+    jQuery('#teacher_form_id').validate({
         rules: {
-            'zone_name_name': {
+            'teacher_id_name': {
                 required: true,
                 minlength: 1
             },
         },
         submitHandler: function () {
-            var formData = new FormData(document.getElementById("zone_form_id"));
+            var formData = new FormData(document.getElementById("teacher_form_id"));
             jQuery.ajax({
                 type: 'POST',
-                url: 'insert zone.php',
+                url: 'insert teachers.php',
                 data: formData,
                 processData: false,
                 contentType: false,
@@ -52,7 +65,7 @@ jQuery(document).ready(function () {
                     }
 
                     if (data) {
-                        jQuery('[zonename="zoneName"]').val('');
+                        jQuery('[firstname="firstName"]').val('');
                     }
                     if (parseInt(data) !== parseInt(1)) {
                         let timerInterval

@@ -90,7 +90,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                         <h3 class="menu-title">Data Related</h3><!-- /.menu-title -->
 
-                        <li class="menu-item-has-children dropdown">
+                        <li class="menu-item-has-children dropdown"> 
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Schools</a>
                             <ul class="sub-menu children dropdown-menu">
                                 <li><i class="menu-icon fa fa-plus-square"></i><a href="./woreda admin pages/data related/school/add school/add school.php">Add</a></li>
@@ -99,6 +99,17 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                             </ul>
 
                         </li>
+
+                        <li class="menu-item-has-children dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Ask</a>
+                            <ul class="sub-menu children dropdown-menu">
+                                <li><i class="menu-icon fa fa-plus-square"></i><a href="./woreda admin pages/data related/required teacher/add requirement/add requirement.php">require teacher</a></li>
+                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="./woreda admin pages/data related/school/update school/update school.php">Update</a></li>
+                                <li><i class="menu-icon fa fa-eye"></i><a href="./woreda admin pages/data related/school/view school/view schools.php">View required teacher</a></li>
+                            </ul>
+
+                        </li>
+
                         <li class="menu-item-has-children dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-exchange"></i>Transfer</a>
                             <ul class="sub-menu children dropdown-menu">

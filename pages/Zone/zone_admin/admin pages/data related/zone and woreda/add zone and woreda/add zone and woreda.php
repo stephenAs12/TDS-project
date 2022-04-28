@@ -77,7 +77,7 @@
                     <h3 class="menu-title">Data Related</h3><!-- /.menu-title -->
 
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker" style="color: white;"></i><span style="color: white;">Zone and Woreda</span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker" style="color: white;"></i><span style="color: white;"> Woreda</span></a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-plus-square" style="color: white;"></i><a href="../../../data related/zone and woreda/add zone and woreda/add zone and woreda.php"><span style="color: white;">Add</span></a></li>
                             <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/zone and woreda/update zone and woreda/update zone and woreda.php">Update</a></li>
@@ -162,7 +162,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../../../../../../../images/admin image/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="../../../../../../../images/admin image/adminn.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -227,7 +227,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary"><a href="./page-login.php" style="text-decoration: none; color: white;">Confirm</a></button>
+                        <button type="button" class="btn btn-primary"><a href="../../../../../../../authentication/logout.php" style="text-decoration: none; color: white;">Confirm</a></button>
                     </div>
                 </div>
             </div>
@@ -297,7 +297,7 @@
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-flag" aria-hidden="true"></i>
                                             </div>
-                                            <input type="text" id="woreda_name_id" name="woreda_name_name" placeholder="Woreda Name" class="form-control" minlength="3" autocomplete="off" required>
+                                            <input type="text" id="woreda_name_id" name="woreda_name_name" placeholder="Woreda Name" class="form-control" minlength="2" autocomplete="off" required>
                                         </div>
                                     </div>
                                     <div class="form-group">

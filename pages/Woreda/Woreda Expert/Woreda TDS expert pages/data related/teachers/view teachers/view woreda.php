@@ -29,10 +29,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
-
-
 </head>
-
 <body>
     <!-- Left Panel -->
 
@@ -85,8 +82,8 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../data related/zone and woreda/add zone and woreda/add zone and woreda.php">Add</a></li>
                             <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/zone and woreda/update zone and woreda/update zone and woreda.php">Update</a></li>
-                            <li><i class="menu-icon fa fa-eye" style="color: white;"></i><a href="../../../data related/zone and woreda/view zone/view zone.php"><span style="color: white;">View zone</span></a></li>
-                            <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view woreda/view woreda.php">View Woreda</a></li>
+                            <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view zone/view zone.php">View zone</a></li>
+                            <li><i class="menu-icon fa fa-eye" style="color: white;"></i><a href="../../../data related/zone and woreda/view woreda/view woreda.php"><span style="color: white;">View Woreda</span></a></li>
                         </ul>
 
                     </li>
@@ -161,8 +158,6 @@
 
                     </div>
                 </div>
-
-
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -178,13 +173,11 @@
                             <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
-
                     <div class="language-select dropdown" id="language-select">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="language" aria-haspopup="true" aria-expanded="true">
                             <i class="flag-icon flag-icon-et"></i>
                         </a>
                     </div>
-
                     <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
                     <script>
                         function loadGoogleTranslate() {
@@ -236,10 +229,6 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- logout modal view -->
-
         <div class="breadcrumbs">
             <div class="col-sm-4">
                 <div class="page-header float-left">
@@ -254,25 +243,23 @@
                         <ol class="breadcrumb text-right">
                             <li><a href="../../../../admin index.php">Dashboard</a></li>
                             <li><a href="#">Zone and Woreda</a></li>
-                            <li class="active">View Zone</li>
+                            <li class="active">View woreda</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
-
         <?php
-
         $connectQuery = mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
-
         if (mysqli_connect_errno()) {
             echo mysqli_connect_error();
             exit();
-        } else {
-            $selectQuery = "SELECT zone.zone_name, users.fname, users.mname, users.lname
-            FROM zone
-            LEFT JOIN users
-            ON zone.zone_id = users.aname";
+        } 
+        else {
+            $selectQuery = "SELECT zone.zone_name, woreda.woreda_name, woreda.woreda_code, woreda.multiplication_point
+            FROM woreda
+            INNER JOIN zone
+            ON woreda.zoneid=zone.zone_id ORDER BY zone.zone_name ASC;";
             $result = mysqli_query($connectQuery, $selectQuery);
             if (mysqli_num_rows($result) > 0) {
             } else {
@@ -289,7 +276,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Registered Zone List</strong>
+                                <strong class="card-title">Registered Woreda List</strong>
                             </div>
                             <div class="card-body">
 
@@ -298,7 +285,9 @@
                                         <thead>
                                             <tr>
                                                 <th>Zone Name</th>
-                                                <th>Expert Name</th>
+                                                <th>Woreda Name</th>
+                                                <th>Woreda Code</th>
+                                                <th>Multiplayer</th>
                                             </tr>
                                         </thead>
                                         <?php
@@ -308,7 +297,9 @@
                                             echo '
                                                 <tr>
                                                     <td>' . $row["zone_name"] . '</td>
-                                                    <td>' . $row["fname"] .' '.$row["mname"].' '.$row["lname"].'</td>
+                                                    <td>' . $row["woreda_name"] . '</td>
+                                                    <td>' . $row["woreda_code"] . '</td>
+                                                    <td>' . $row["multiplication_point"] . '</td>
                                                 </tr>
                                                 ';
                                         }
@@ -317,7 +308,9 @@
                                         <tfoot>
                                             <tr>
                                                 <th>Zone Name</th>
-                                                <th>Expert Name</th>
+                                                <th>Woreda Name</th>
+                                                <th>Woreda Code</th>
+                                                <th>Multiplayer</th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -336,13 +329,10 @@
     </div><!-- /#right-panel -->
 
     <!-- Right Panel -->
-
-
     <script src="../../../../../../vendors/jquery/dist/jquery.min.js"></script>
     <script src="../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../../../../../assets/js/main.js"></script>
-
     <script src="../../../../../../assets/table/js/jquery-3.5.1.js"></script>
     <script src="../../../../../../assets/table/js/jquery.dataTables.min.js"></script>
     <script src="../../../../../../assets/table/js/dataTables.bootstrap4.min.js"></script>
@@ -354,6 +344,8 @@
     <script src="../../../../../../assets/table/js/buttons.html5.min.js"></script>
     <script src="../../../../../../assets/table/js/buttons.print.min.js"></script>
     <script src="../../../../../../assets/table/js/main.js"></script>
+    <!-- <script src="../../../../../../assets/table/js/secondary.js"></script> -->
+
 
 
 </body>

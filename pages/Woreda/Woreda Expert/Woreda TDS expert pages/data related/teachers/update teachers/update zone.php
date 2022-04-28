@@ -7,7 +7,7 @@
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>TDS | Admin Panel</title>
     <meta name="description" content="TDS | Admin Panel">
@@ -26,7 +26,6 @@
     <link rel="stylesheet" href="../../../../../../assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
 
 
 
@@ -72,8 +71,8 @@
 
                             <li><i class="fa fa-eye" style="color: white;"></i><a href="../../../account related/my account/view my account/view my account.php">View
                                     my account</a></li>
-                            <li><i class="fa fa-pencil-square-o"></i><a href="../../../account related/my account/update my account/update my account.php">Update my
-                                    account</a></li>
+                            <li><i class="fa fa-pencil-square-o"></i><a href="../../../account related/my account/update my account/update my account.php">Update my                          
+                                        account</a></li>
                         </ul>
                     </li>
 
@@ -82,8 +81,8 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker" style="color: white;"></i><span style="color: white;">Zone and Woreda</span></a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-plus-square" style="color: white;"></i><a href="../../../data related/zone and woreda/add zone and woreda/add zone and woreda.php"><span style="color: white;">Add</span></a></li>
-                            <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/zone and woreda/update zone and woreda/update zone and woreda.php">Update</a></li>
+                            <li><i class="menu-icon fa fa-plus-square" ></i><a href="../../../data related/zone and woreda/add zone and woreda/add zone and woreda.php">Add</a></li>
+                            <li><i class="menu-icon fa fa-pencil-square-o" style="color: white;"></i><a href="../../../data related/zone and woreda/update zone and woreda/update zone and woreda.php"><span style="color: white;">Update</span></a></li>
                             <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view zone/view zone.php">View zone</a></li>
                             <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view woreda/view woreda.php">View Woreda</a></li>
                         </ul>
@@ -239,9 +238,6 @@
 
         <!-- logout modal view -->
 
-        <span id="error_message" class="text-danger"></span>
-        <span id="success_message" class="text-success"></span>
-
         <div class="breadcrumbs">
             <div class="col-sm-4">
                 <div class="page-header float-left">
@@ -256,7 +252,7 @@
                         <ol class="breadcrumb text-right">
                             <li><a href="../../../../admin index.php">Dashboard</a></li>
                             <li><a href="#">Zone and Woreda</a></li>
-                            <li class="active">Add zone and woreda</li>
+                            <li class="active">Update zone and woreda</li>
                         </ol>
                     </div>
                 </div>
@@ -271,53 +267,76 @@
 
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header">Add Zone</div>
+                            <div class="card-header">Update Zone</div>
                             <div class="card-body card-block">
-                                <form id="zone_form_id" class="">
+                                <form action="" method="post" class="">
+
+                                    
 
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
+                                            <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></i></div>
+                                                    <input
+                                                    class="form-control"
+                                                    list="datalistOptions"
+                                                    id="zoneDataList"
+                                                    placeholder="search zone..."
+                                                  />
+                                                  <datalist id="datalistOptions">
+                                                    <option value="West Gojjam"></option>
+                                                    <option value="East Gojjam"></option>
+                                                    <option value="Centeral Gonder"></option>
+                                                    <option value="Awi"></option>
+                                                    <option value="Wello"></option>
+                                                    <option value="West Gojjam"></option>
+                                                    <option value="East Gojjam"></option>
+                                                    <option value="Centeral Gonder"></option>
+                                                    <option value="Awi"></option>
+                                                    <option value="Wello"></option>
+                                                    <option value="West Gojjam"></option>
+                                                    <option value="East Gojjam"></option>
+                                                    <option value="Centeral Gonder"></option>
+                                                    <option value="Awi"></option>
+                                                    <option value="Wello"></option>
+                                                    <option value="West Gojjam"></option>
+                                                    <option value="East Gojjam"></option>
+                                                    <option value="Centeral Gonder"></option>
+                                                    <option value="Awi"></option>
+                                                    <option value="Wello"></option>
+                                                  </datalist>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-university"
+                                                    aria-hidden="true"></i>
                                             </div>
-                                            <input type="text" name="zone_name_name" id="zone_name_id" placeholder="Zone Name" class="form-control" autocomplete="off" minlength="3" required>
+                                            <input type="text" id="zonename" name="zonename" placeholder="Zone Name"
+                                                class="form-control">
                                         </div>
                                     </div>
 
                                     <div class="form-actions form-group">
                                         <button type="reset" class="btn btn-danger btn-sm">Clear</button>
-                                        <button type="submit" id="zone_submit_id" name="submit" class="btn btn-success btn-sm">Submit</button>
-
+                                        <button type="submit"
+                                            class="btn btn-success btn-sm">Submit</button>
+                                        
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
-
-                    <!-- woreda insertion -->
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
     </div><!-- /#right-panel -->
     <!-- Right Panel -->
 
-    <script src="../../../../../../vendors/jquery/dist/jquery-3.4.1.js"></script>
+
     <script src="../../../../../../vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../../../../../../vendors/jquery/dist/jquery.validate.js"></script>
     <script src="../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../../../../../assets/js/main.js"></script>
-    <script src="../../../../../../vendors/sweetalert/sweetalert2@11.js"></script>
-    <script src="./add zone/insert zone.js"></script>
-    <script src="./add woreda/insert woreda.js"></script>
-
-
-
-
-
-
-</body>
 
 </html>
-
-<?php

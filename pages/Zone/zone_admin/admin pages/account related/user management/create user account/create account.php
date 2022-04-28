@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 
@@ -230,7 +230,7 @@ session_start();
                     </div>
                     <div class="modal-body">
                         <p>
-                            Hello,<?php echo  $_SESSION['user_fname'];?>
+                            Hello,<?php echo  $_SESSION['user_fname']; ?>
 
                             When logging out you are redirected to a Login page ¿Are you sure…?
 
@@ -241,7 +241,7 @@ session_start();
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary"><a href="./page-login.php" style="text-decoration: none; color: white;">Confirm</a></button>
+                        <button type="button" class="btn btn-primary"><a href="../../../../../../../authentication/logout.php" style="text-decoration: none; color: white;">Confirm</a></button>
                     </div>
                 </div>
             </div>
@@ -306,6 +306,7 @@ session_start();
                                         </div>
                                     </div>
                                 </div>
+                               
 
                                 <!-- <div style="margin-left:15px; margin-right: 15px;">
                                     <div class="form-group">
@@ -324,12 +325,11 @@ session_start();
                                             echo "<select name='job_level_name' id='job_level_id' class='form-control' required>";
                                             echo "<option value='' selected hidden>Please select user role *</option>";
                                             while ($job_level_row = mysqli_fetch_array($job_level_resualt)) {
-                                                $wored_zone=$job_level_row['level_name']." ".$job_level_row['job_name'];
-                                                if ($wored_zone=="Woreda Admin" || $wored_zone=="Zone TDS expert") {
+                                                $wored_zone = $job_level_row['level_name'] . " " . $job_level_row['job_name'];
+                                                if ($wored_zone == "Woreda Admin" || $wored_zone == "Zone TDS expert") {
                                                     # code...
                                                     echo "<option value='$job_level_row[level_name] $job_level_row[job_name]'>$job_level_row[level_name] $job_level_row[job_name]</option>";
                                                 }
-                                                
                                             }
                                             echo "</select>";
                                             ?>
@@ -342,16 +342,16 @@ session_start();
                                             <?php
                                             // include 'add user/get address.php';
 
-                                       
+
                                             $conn = mysqli_connect("localhost", "root", "", "tds v1.0.1");
-    
-                                            if($conn === false){
+
+                                            if ($conn === false) {
                                                 die("ERROR: Could not connect. "
                                                     . mysqli_connect_error());
                                             }
-                                            $woreda_list =$_SESSION['user_address'];
+                                            $woreda_list = $_SESSION['user_address'];
                                             $address_resualt = mysqli_query($conn, "SELECT * FROM woreda WHERE zoneid = $woreda_list");
-                            
+
                                             echo "<div class='input-group-addon'><i class='fa fa-map-marker' aria-hidden='true'></i></div>";
                                             echo "<select name='address_name_name' id='address_name_id' class='form-control' required>";
                                             echo "<option value='' selected hidden>Please select Woreda *</option>";
