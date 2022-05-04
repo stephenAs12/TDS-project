@@ -64,7 +64,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 <div id="main-menu" class="main-menu collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="./admin index.php"> <i class="menu-icon fa fa-dashboard"></i><span style="color: white;">Dashboard</span> </a>
+                            <a href="./woreda admin index.php"> <i class="menu-icon fa fa-dashboard"></i><span style="color: white;">Dashboard</span> </a>
                         </li>
                         <h3 class="menu-title">Account Related</h3><!-- /.menu-title -->
                         <li class="menu-item-has-children dropdown">

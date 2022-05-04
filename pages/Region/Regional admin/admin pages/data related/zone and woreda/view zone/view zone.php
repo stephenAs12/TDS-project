@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) == 'Regional Admin' && isset($_SESSION['user_first_login']) && $_SESSION['user_first_login'] == "1") {
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -8,7 +13,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TDS | Admin Panel</title>
+    <title>View Zone</title>
     <meta name="description" content="TDS | Admin Panel">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -44,7 +49,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau">
+                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../../images/amhara.png" alt="Amhara Education Bureau">
                     <p class="org-name">ANRSE</p>
                 </a>
                 <a class="navbar-brand hidden" href="../../../../admin index.php"><img class="amhara-logo" width="30" height="30" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau"></a>
@@ -166,7 +171,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../../../../../../images/admin image/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="../../../../../../../images/admin image/admin.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -231,7 +236,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary"><a href="./page-login.php" style="text-decoration: none; color: white;">Confirm</a></button>
+                        <button type="button" class="btn btn-primary"><a href="../../../../../../../authentication/logout.php" style="text-decoration: none; color: white;">Confirm</a></button>
                     </div>
                 </div>
             </div>
@@ -253,7 +258,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="../../../../admin index.php">Dashboard</a></li>
-                            <li><a href="#">Zone and Woreda</a></li>
+                            
                             <li class="active">View Zone</li>
                         </ol>
                     </div>
@@ -272,7 +277,7 @@
             $selectQuery = "SELECT zone.zone_name, users.fname, users.mname, users.lname
             FROM zone
             LEFT JOIN users
-            ON zone.zone_id = users.aname";
+            ON zone.zone_id = users.aname WHERE zone.zone_name IS NOT NULL";
             $result = mysqli_query($connectQuery, $selectQuery);
             if (mysqli_num_rows($result) > 0) {
             } else {
@@ -357,5 +362,15 @@
 
 
 </body>
-
 </html>
+
+
+<?php
+
+} 
+
+else{
+    header("location: ../../../authentication/login.php");
+}
+
+?>

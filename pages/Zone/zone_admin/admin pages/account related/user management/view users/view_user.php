@@ -1,7 +1,7 @@
+
 <?php
-
 session_start();
-
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && isset($_SESSION['user_first_login']) && $_SESSION['user_first_login'] == "1" && $_SESSION['user_role']=='Zone Admin') {
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -14,7 +14,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TDS | Admin Panel</title>
+    <title>View Users</title>
     <meta name="description" content="TDS | Admin Panel">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="./apple-icon.png">
@@ -358,3 +358,11 @@ session_start();
 </body>
 
 </html>
+<?php
+} 
+
+else {
+    header("location: ../../../authentication/login.php");
+}
+
+?>

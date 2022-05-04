@@ -1,3 +1,13 @@
+
+
+<?php
+
+
+session_start();
+
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) == 'Regional Admin' && isset($_SESSION['user_first_login']) && $_SESSION['user_first_login'] == "1") {
+?>
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -16,13 +26,13 @@
     <link rel="shortcut icon" href="./favicon.ico">
 
 
-    <link rel="stylesheet" href="../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../../../vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/font-awesome/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css"> -->
-    <link rel="stylesheet" href="../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
     <!-- <link rel="stylesheet" href="../../vendors/selectFX/css/cs-skin-elastic.css"> -->
 
-    <link rel="stylesheet" href="../../../../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../../../../../assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -41,7 +51,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau">
+                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../../images/amhara.png" alt="Amhara Education Bureau">
                     <p class="org-name">ANRSE</p>
                 </a>
                 <a class="navbar-brand hidden" href="../../../../admin index.php"><img class="amhara-logo" width="30" height="30" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau"></a>
@@ -80,8 +90,8 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Zone and Woreda</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../data related/zone and woreda/add zone and woreda/add zone and woreda.php">Add</a></li>
-                            <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/zone and woreda/update zone and woreda/update zone and woreda.php">Update</a></li>
+                            <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../data related/zone and woreda/add zone/add zone.php">Add</a></li>
+                            <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/zone and woreda/update zone/update zone.php">Update</a></li>
                             <li><i class="menu-icon fa fa-eye" style="color: white;"></i><a href="../../../data related/zone and woreda/view zone/view zone.php">View zone</a></li>
                             <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view woreda/view woreda.php">View Woreda</a></li>
                         </ul>
@@ -165,7 +175,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../../../../../../images/admin image/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="../../../../../../../images/admin image/admin.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -230,7 +240,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary"><a href="./page-login.php" style="text-decoration: none; color: white;">Confirm</a></button>
+                        <button type="button" class="btn btn-primary"><a href="../../../../../../../authentication/logout.php" style="text-decoration: none; color: white;">Confirm</a></button>
                     </div>
                 </div>
             </div>
@@ -994,18 +1004,29 @@
     <!-- Right Panel -->
 
 
-    <script src="../../../../../../vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../../../../../assets/js/main.js"></script>
+    <script src="../../../../../../../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../../../../../../assets/js/main.js"></script>
 
-    <script src="../../../../../../vendors/Table/js/jquery.js"></script>
-    <script src="../../../../../../vendors/Table/js/datatable.js"></script>
-    <script src="../../../../../../vendors/Table/js/datatable_bt.js"></script>
+    <script src="../../../../../../../vendors/Table/js/jquery.js"></script>
+    <script src="../../../../../../../vendors/Table/js/datatable.js"></script>
+    <script src="../../../../../../../vendors/Table/js/datatable_bt.js"></script>
 
-    <script src="../../../../../../vendors/Table/js/app.js"></script>
+    <script src="../../../../../../../vendors/Table/js/app.js"></script>
 
 
 </body>
 
 </html>
+
+<?php
+
+} 
+
+
+else {
+    header("location: ../../../authentication/login.php");
+}
+
+?>

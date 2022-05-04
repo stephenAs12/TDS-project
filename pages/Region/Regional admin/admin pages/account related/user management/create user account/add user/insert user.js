@@ -30,10 +30,6 @@ jQuery(document).ready(function(){
                 required: true,
                 minlength: 1
             },
-            'address_name_name': {
-                required: true,
-                minlength: 1
-            },
             'user_phone_name': {
                 required: true,
                 minlength: 10,
@@ -91,7 +87,7 @@ jQuery(document).ready(function(){
                         jQuery('[lastname="lastName"]').val('');
                         // jQuery('[userimage="userImage"]').val('');
                         jQuery('[joblevel="jobLevel"]').val('');
-                        jQuery('[addressname="addressName"]').val('');
+                        // jQuery('[addressname="addressName"]').val('');
                         jQuery('[userphone="userPhone"]').val('');
                         jQuery('[useremail="userEmail"]').val('');
                     }

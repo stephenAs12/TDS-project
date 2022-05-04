@@ -1,3 +1,8 @@
+
+<?php
+session_start();
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && isset($_SESSION['user_first_login']) && $_SESSION['user_first_login'] == "1" && $_SESSION['user_role']=='Zone Admin') {
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -9,7 +14,7 @@
 <head>
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TDS | Admin Panel</title>
+    <title>Update Woreda</title>
     <meta name="description" content="TDS | Admin Panel">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -229,7 +234,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary"><a href="./page-login.php" style="text-decoration: none; color: white;">Confirm</a></button>
+                        <button type="button" class="btn btn-primary"><a href="../../../../../../../authentication/logout.php" style="text-decoration: none; color: white;">Confirm</a></button>
                     </div>
                 </div>
             </div>
@@ -251,7 +256,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="../../../../admin index.php">Dashboard</a></li>
-                            <li><a href="#">Zone and Woreda</a></li>
+                            
                             <li class="active">Update zone and woreda</li>
                         </ol>
                     </div>
@@ -300,7 +305,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></i></div>
                                                     <input
@@ -332,7 +337,7 @@
                                                     <option value="Wello"></option>
                                                   </datalist>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-group">
                                         <div class="input-group">
@@ -376,9 +381,17 @@
     <!-- Right Panel -->
 
 
-    <script src="../../../../../../vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../../../../../assets/js/main.js"></script>
+    <script src="../../../../../../../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../../../../../../assets/js/main.js"></script>
 
 </html>
+<?php
+} 
+
+else {
+    header("location: ../../../authentication/login.php");
+}
+
+?>

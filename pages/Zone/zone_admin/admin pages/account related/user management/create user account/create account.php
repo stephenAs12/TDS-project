@@ -1,7 +1,6 @@
 <?php
-
 session_start();
-
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && isset($_SESSION['user_first_login']) && $_SESSION['user_first_login'] == "1" && $_SESSION['user_role']=='Zone Admin') {
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -14,7 +13,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TDS | Admin Panel</title>
+    <title>Create Account</title>
     <meta name="description" content="TDS | Admin Panel">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -43,6 +42,20 @@ session_start();
             color: red;
         }
     </style>
+       <script>
+        function Enableddl(chkddl)
+        {
+            var ddl=document.getElementById("address_name_id");
+            ddl.disabled=chkddl.checked ? false:true;
+            if (!ddl.disabled) {
+                ddl.focus();
+
+                
+            }
+
+        }
+    </script>
+    
 </head>
 
 <body>
@@ -252,7 +265,7 @@ session_start();
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Admin's Dashboard</h1>
+                        <h1>Zone Admin's Dashboard</h1>
                     </div>
                 </div>
             </div>
@@ -261,7 +274,7 @@ session_start();
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="../../../../admin index.php">Dashboard</a></li>
-                            <li><a href="#">User Managment</a></li>
+                            
                             <li class="active">Create User Account</li>
                         </ol>
                     </div>
@@ -330,11 +343,26 @@ session_start();
                                                     # code...
                                                     echo "<option value='$job_level_row[level_name] $job_level_row[job_name]'>$job_level_row[level_name] $job_level_row[job_name]</option>";
                                                 }
+                                             
                                             }
                                             echo "</select>";
                                             ?>
                                         </div>
                                     </div>
+                                    <div class="form-group col-md-12">
+                                        <input type="checkbox" id="chkddl" onclick="Enableddl(this)">
+                                        accept the check box to enable dropdwon
+                                        <!-- <select name="" id="DDL" disabled="disabled">
+                                            <option value="" selected disabled>one</option>
+                                            <option value="">two</option>
+                                            <option value="">three</option>
+                                            id="address_name_id"
+                                        </select> -->
+
+
+                                    </div>
+                                   
+
 
 
                                     <div class="form-group col-md-6">
@@ -353,8 +381,8 @@ session_start();
                                             $address_resualt = mysqli_query($conn, "SELECT * FROM woreda WHERE zoneid = $woreda_list");
 
                                             echo "<div class='input-group-addon'><i class='fa fa-map-marker' aria-hidden='true'></i></div>";
-                                            echo "<select name='address_name_name' id='address_name_id' class='form-control' required>";
-                                            echo "<option value='' selected hidden>Please select Woreda *</option>";
+                                            echo "<select    id='address_name_id' disabled='disabled' name='address_name_name'  class='form-control'>";
+                                            echo "<option value='' selected  hidden >Please select Woreda *</option>";
                                             while ($address_row = mysqli_fetch_array($address_resualt)) {
                                                 echo "<option value='$address_row[woreda_id]'>$address_row[woreda_name]</option>";
                                             }
@@ -416,5 +444,13 @@ session_start();
             <script src="../../../../../../../vendors/sweetalert/sweetalert2@11.js"></script>
             <script src="./add user/insert user.js"></script>
 </body>
-
 </html>
+
+<?php
+} 
+
+else {
+    header("location: ../../../authentication/login.php");
+}
+
+?>

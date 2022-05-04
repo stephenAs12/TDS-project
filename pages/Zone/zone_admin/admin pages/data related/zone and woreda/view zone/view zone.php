@@ -1,3 +1,10 @@
+
+<?php
+session_start();
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && isset($_SESSION['user_first_login']) && $_SESSION['user_first_login'] == "1" && $_SESSION['user_role']=='Zone Admin') {
+?>
+
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -8,13 +15,12 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TDS | Admin Panel</title>
+    <title>View Zone</title>
     <meta name="description" content="TDS | Admin Panel">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="./apple-icon.png">
     <link rel="shortcut icon" href="./favicon.ico">
-
 
     <link rel="stylesheet" href="../../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../../../../../vendors/font-awesome/css/font-awesome.min.css">
@@ -44,7 +50,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau">
+                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../../images/amhara.png" alt="Amhara Education Bureau">
                     <p class="org-name">ANRSE</p>
                 </a>
                 <a class="navbar-brand hidden" href="../../../../admin index.php"><img class="amhara-logo" width="30" height="30" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau"></a>
@@ -166,7 +172,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../../../../../../images/admin image/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="../../../../../../../images/admin image/admin.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -231,7 +237,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary"><a href="./page-login.php" style="text-decoration: none; color: white;">Confirm</a></button>
+                        <button type="button" class="btn btn-primary"><a href="../../../../../../../authentication/logout.php" style="text-decoration: none; color: white;">Confirm</a></button>
                     </div>
                 </div>
             </div>
@@ -338,24 +344,33 @@
     <!-- Right Panel -->
 
 
-    <script src="../../../../../../vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../../../../../assets/js/main.js"></script>
+    <script src="../../../../../../../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../../../../../../assets/js/main.js"></script>
 
-    <script src="../../../../../../assets/table/js/jquery-3.5.1.js"></script>
-    <script src="../../../../../../assets/table/js/jquery.dataTables.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.fixedHeader.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.buttons.min.js"></script>
-    <script src="../../../../../../assets/table/js/jszip.min.js"></script>
-    <script src="../../../../../../assets/table/js/pdfmake.min.js"></script>
-    <script src="../../../../../../assets/table/js/vfs_fonts.js"></script>
-    <script src="../../../../../../assets/table/js/buttons.html5.min.js"></script>
-    <script src="../../../../../../assets/table/js/buttons.print.min.js"></script>
-    <script src="../../../../../../assets/table/js/main.js"></script>
+    <script src="../../../../../../../assets/table/js/jquery-3.5.1.js"></script>
+    <script src="../../../../../../../assets/table/js/jquery.dataTables.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.buttons.min.js"></script>
+    <script src="../../../../../../../assets/table/js/jszip.min.js"></script>
+    <script src="../../../../../../../assets/table/js/pdfmake.min.js"></script>
+    <script src="../../../../../../../assets/table/js/vfs_fonts.js"></script>
+    <script src="../../../../../../../assets/table/js/buttons.html5.min.js"></script>
+    <script src="../../../../../../../assets/table/js/buttons.print.min.js"></script>
+    <script src="../../../../../../../assets/table/js/main.js"></script>
 
 
 </body>
 
 </html>
+
+<?php
+} 
+
+else {
+    header("location: ../../../authentication/login.php");
+}
+
+?>

@@ -3,8 +3,8 @@
 
 session_start();
 
-if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) == 'Regional Admin') {
-?>
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && $_SESSION['user_role']=='Regional Admin') {
+    ?>
 
 
     <!doctype html>
@@ -18,7 +18,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TDS | Admin Panel</title>
+        <title>View Users</title>
         <meta name="description" content="TDS | Admin Panel">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="./apple-icon.png">
@@ -34,7 +34,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
         <link rel="stylesheet" href="../../../../../../../assets/css/style.css">
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     </head>
-
     <body>
         <!-- Left Panel -->
         <aside id="left-panel" class="left-panel">
@@ -80,8 +79,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         <li class="menu-item-has-children dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Zone and Woreda</a>
                             <ul class="sub-menu children dropdown-menu">
-                                <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../data related/zone and woreda/add zone and woreda/add zone and woreda.php">Add</a></li>
-                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/zone and woreda/update zone and woreda/update zone and woreda.php">Update</a></li>
+                                <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../data related/zone and woreda/add zone/add zone.php">Add</a></li>
+                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/zone and woreda/update zone/update zone.php">Update</a></li>
                                 <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view zone/view zone.php">View zone</a></li>
                                 <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view woreda/view woreda.php">View Woreda</a></li>
                             </ul>

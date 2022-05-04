@@ -90,8 +90,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         <li class="menu-item-has-children dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Zone and Woreda</a>
                             <ul class="sub-menu children dropdown-menu">
-                                <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../data related/zone and woreda/add zone and woreda/add zone and woreda.php">Add</a></li>
-                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/zone and woreda/update zone and woreda/update zone and woreda.php">Update</a></li>
+                                <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../data related/zone and woreda/add zone/add zone.php">Add</a></li>
+                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/zone and woreda/update zone/update zone.php">Update</a></li>
                                 <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view zone/view zone.php">View zone</a></li>
                                 <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view woreda/view woreda.php">View Woreda</a></li>
                             </ul>
@@ -407,7 +407,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
 <?php
 
-} else {
+} 
+else {
     header("location: ../../../../../../../authentication/login.php");
 }
 
@@ -423,4 +424,3 @@ if( isset($_SESSION['last_acted_on']) && (time() - $_SESSION['last_acted_on'] > 
 }
 
 ?>
-<script src="../../../../../../../authentication/"></script>

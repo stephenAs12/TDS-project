@@ -19,6 +19,7 @@
 	  	      method="post" 
 	  	      style="width: 30rem">
 	  		<h1 class="text-center pb-5 display-4">LOGIN</h1>
+			  
 	  		<?php if (isset($_GET['error'])) { ?>
 	  		<div class="alert alert-danger" role="alert">
 			  <?=htmlspecialchars($_GET['error'])?>
@@ -45,7 +46,10 @@
 		  </div>
 		  <button type="submit" 
 		          class="btn btn-primary">LOGIN
+				  
 		  </button>
+		  <hr>
+		  <p><a type="submit" href="request_forgot_password.php" class="text-right display-15"><i><u>forgot password?</u></i></a></p>
 		</form>
 	  </div>
 </body>
@@ -69,7 +73,8 @@
 	}elseif($user_first_login == "0"){
 		header("Location: change password.php");
 	}else{
-		header("Location: index.php");
+		session_destroy();
+		header("Location: login.php");
 	}
 
 //    header("Location: index.php");

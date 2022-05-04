@@ -1,3 +1,9 @@
+
+<?php
+session_start();
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && isset($_SESSION['user_first_login']) && $_SESSION['user_first_login'] == "1" && $_SESSION['user_role']=='Zone Admin') {
+?>
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -8,7 +14,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TDS | Admin Panel</title>
+    <title>Developers</title>
     <meta name="description" content="TDS | Admin Panel">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -165,7 +171,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../../../../../../../images/admin image/adminn.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="../../../../../../images/admin image/adminn.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -174,7 +180,7 @@
                             <a class="nav-link" href="../../account related/my account/view my account/view my account.php"><i class="fa fa-user"></i>
                                 My Profile</a>
 
-                            <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-power-off"></i>Logout</a>
+                            <a class="nav-link" href="" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
 
@@ -230,7 +236,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary"><a href="./page-login.php" style="text-decoration: none; color: white;">Confirm</a></button>
+                        <button type="button" class="btn btn-primary"><a href="../../../../../../authentication/logout.php" style="text-decoration: none; color: white;">Confirm</a></button>
                     </div>
                 </div>
             </div>
@@ -273,7 +279,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="mx-auto d-block">
-                                    <img class="rounded-circle mx-auto d-block" src="../../../../../images/admin image/admin.jpg" alt="Card image cap">
+                                    <img class="rounded-circle mx-auto d-block" src="../../../../../../images/admin image/admin.jpg" alt="Card image cap">
                                     <h5 class="text-sm-center mt-2 mb-1">Estifanos Aschale</h5>
                                     <div class="location text-sm-center"><i class="fa fa-map-marker"></i> Bahir Dar, Ethiopia</div>
                                     <div class="location text-sm-center"><i class="fa fa-mobile" aria-hidden="true"></i> (251) 123 4567</div>
@@ -304,7 +310,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="mx-auto d-block">
-                                    <img class="rounded-circle mx-auto d-block" src="../../../../../images/admin image/adminn.jpg" alt="Card image cap">
+                                    <img class="rounded-circle mx-auto d-block" src="../../../../../../images/admin image/adminn.jpg" alt="Card image cap">
                                     <h5 class="text-sm-center mt-2 mb-1">Nigussie Sefinew</h5>
                                     <div class="location text-sm-center"><i class="fa fa-map-marker"></i> Bahir Dar, Ethiopia</div>
                                     <div class="location text-sm-center"><i class="fa fa-mobile" aria-hidden="true"></i> (251) 232 2708</div>
@@ -350,3 +356,11 @@
 </body>
 
 </html>
+<?php
+} 
+
+else {
+    header("location: ../../../authentication/login.php");
+}
+
+?>

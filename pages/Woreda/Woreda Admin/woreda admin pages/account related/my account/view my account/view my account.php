@@ -2,8 +2,7 @@
 
 
 session_start();
-
-if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) == 'Regional Admin') {
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && isset($_SESSION['user_first_login']) && $_SESSION['user_first_login'] == "1" &&  $_SESSION['user_role'] == 'Woreda Admin') {
 ?>
 
 
@@ -14,11 +13,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
     <!--[if gt IE 8]><!-->
     <html class="no-js" lang="en">
     <!--<![endif]-->
-
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TDS | Admin Panel</title>
+        <title>View Account</title>
         <meta name="description" content="TDS | Admin Panel">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -61,7 +59,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 <div id="main-menu" class="main-menu collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="../../../../admin index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
+                            <a href="../../../../Woreda admin index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
                         </li>
                         <h3 class="menu-title">Account Related</h3><!-- /.menu-title -->
                         <li class="menu-item-has-children dropdown">
@@ -88,15 +86,23 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         <h3 class="menu-title">Data Related</h3><!-- /.menu-title -->
 
                         <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Zone and Woreda</a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Schools </a>
                             <ul class="sub-menu children dropdown-menu">
-                                <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../data related/zone and woreda/add zone and woreda/add zone and woreda.php">Add</a></li>
-                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/zone and woreda/update zone and woreda/update zone and woreda.php">Update</a></li>
-                                <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view zone/view zone.php">View zone</a></li>
-                                <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view woreda/view woreda.php">View Woreda</a></li>
+                                <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../data related/school/add school/add school.php">Add Schools</a></li>
+                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/school/update school/update school.php">Update Schools</a></li>
+
                             </ul>
 
                         </li>
+                        <li class="menu-item-has-children dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Ask</a>
+                            <ul class="sub-menu children dropdown-menu">
+                                <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../data related/required teacher/add requirement/add requirement.php">require teacher</a></li>
+                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/required teacher/update school/update school.php">Update</a></li>
+                                <li><i class="menu-icon fa fa-eye"></i><a href="./woreda admin pages/data related/school/view school/view schools.php">View required teacher</a></li>
+                            </ul>
+
+                      </li>
                         <li class="menu-item-has-children dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-exchange"></i>Transfer</a>
                             <ul class="sub-menu children dropdown-menu">
@@ -260,7 +266,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
                                 <li><a href="../../../../admin index.php">Dashboard</a></li>
-                                <li><a href="#">My Account</a></li>
+                               
                                 <li class="active">View My Account</li>
                             </ol>
                         </div>

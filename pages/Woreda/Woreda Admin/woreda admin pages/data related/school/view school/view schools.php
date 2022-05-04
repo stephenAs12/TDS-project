@@ -8,7 +8,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TDS | Admin Panel</title>
+    <title>View Schools</title>
     <meta name="description" content="TDS | Admin Panel">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,16 +16,16 @@
     <link rel="shortcut icon" href="./favicon.ico">
 
 
-    <link rel="stylesheet" href="../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../../../vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/fixedHeader.dataTables.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/fixedHeader.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/buttons.dataTables.min.css">
-    <link rel="stylesheet" href="../../../../../../assets/table/css/main-style.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/fixedHeader.dataTables.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/fixedHeader.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="../../../../../../../assets/table/css/main-style.css">
 
-    <link rel="stylesheet" href="../../../../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../../../../../assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -41,17 +41,17 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau">
+                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../../images/amhara.png" alt="Amhara Education Bureau">
                     <p class="org-name">ANRSE</p>
                 </a>
-                <a class="navbar-brand hidden" href="../../../../admin index.php"><img class="amhara-logo" width="30" height="30" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau"></a>
+                <a class="navbar-brand hidden" href="../../../../admin index.php"><img class="amhara-logo" width="30" height="30" src="../../../../../../../images/amhara.png" alt="Amhara Education Bureau"></a>
 
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="../../../../admin index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
+                        <a href="../../../../woreda admin index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
                     </li>
                     <h3 class="menu-title">Account Related</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -82,11 +82,18 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../data related/zone and woreda/add zone and woreda/add zone and woreda.php">Add</a></li>
                             <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/zone and woreda/update zone and woreda/update zone and woreda.php">Update</a></li>
-                            <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view zone/view zone.php">View zone</a></li>
-                            <li><i class="menu-icon fa fa-eye" style="color: white;"></i><a href="../../../data related/zone and woreda/view woreda/view woreda.php"><span style="color: white;">View Woreda</span></a></li>
                         </ul>
 
                     </li>
+                    <li class="menu-item-has-children dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Ask</a>
+                            <ul class="sub-menu children dropdown-menu">
+                                <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../data related/required teacher/add requirement/add requirement.php">require teacher</a></li>
+                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/required teacher/update school/update school.php">Update</a></li>
+                                <li><i class="menu-icon fa fa-eye"></i><a href="./woreda admin pages/data related/school/view school/view schools.php">View required teacher</a></li>
+                            </ul>
+
+                      </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-exchange"></i>Transfer</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -161,7 +168,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../../../../../../images/admin image/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="../../../../../../../images/admin image/admin.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -329,21 +336,21 @@
     </div><!-- /#right-panel -->
 
     <!-- Right Panel -->
-    <script src="../../../../../../vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../../../../../assets/js/main.js"></script>
-    <script src="../../../../../../assets/table/js/jquery-3.5.1.js"></script>
-    <script src="../../../../../../assets/table/js/jquery.dataTables.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.fixedHeader.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.buttons.min.js"></script>
-    <script src="../../../../../../assets/table/js/jszip.min.js"></script>
-    <script src="../../../../../../assets/table/js/pdfmake.min.js"></script>
-    <script src="../../../../../../assets/table/js/vfs_fonts.js"></script>
-    <script src="../../../../../../assets/table/js/buttons.html5.min.js"></script>
-    <script src="../../../../../../assets/table/js/buttons.print.min.js"></script>
-    <script src="../../../../../../assets/table/js/main.js"></script>
+    <script src="../../../../../../../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../../../../../../assets/js/main.js"></script>
+    <script src="../../../../../../../assets/table/js/jquery-3.5.1.js"></script>
+    <script src="../../../../../../../assets/table/js/jquery.dataTables.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.buttons.min.js"></script>
+    <script src="../../../../../../../assets/table/js/jszip.min.js"></script>
+    <script src="../../../../../../../assets/table/js/pdfmake.min.js"></script>
+    <script src="../../../../../../../assets/table/js/vfs_fonts.js"></script>
+    <script src="../../../../../../../assets/table/js/buttons.html5.min.js"></script>
+    <script src="../../../../../../../assets/table/js/buttons.print.min.js"></script>
+    <script src="../../../../../../../assets/table/js/main.js"></script>
     <!-- <script src="../../../../../../assets/table/js/secondary.js"></script> -->
 
 

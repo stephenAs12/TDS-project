@@ -3,7 +3,7 @@
 
 session_start();
 
-if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) == 'Regional Admin') {
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'Regional Admin') {
 ?>
     <!doctype html>
     <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -16,7 +16,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TDS | Admin Panel</title>
+        <title>Create User Account</title>
         <meta name="description" content="TDS | Admin Panel">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -99,8 +99,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         <li class="menu-item-has-children dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Zone and Woreda</a>
                             <ul class="sub-menu children dropdown-menu">
-                                <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../data related/zone and woreda/add zone and woreda/add zone and woreda.php">Add</a></li>
-                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/zone and woreda/update zone and woreda/update zone and woreda.php">Update</a></li>
+                                <li><i class="menu-icon fa fa-plus-square"></i><a href="../../../data related/zone and woreda/add zone/add zone.php">Add</a></li>
+                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../../data related/zone and woreda/update zone/update zone.php">Update</a></li>
                                 <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view zone/view zone.php">View zone</a></li>
                                 <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view woreda/view woreda.php">View Woreda</a></li>
                             </ul>
@@ -266,7 +266,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
                                 <li><a href="../../../../admin index.php">Dashboard</a></li>
-                                <li><a href="#">User Managment</a></li>
+
                                 <li class="active">Create User Account</li>
                             </ol>
                         </div>
@@ -331,7 +331,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                                 echo "<select name='job_level_name' id='job_level_id' class='form-control' required>";
                                                 echo "<option value='' selected hidden>Please select user role *</option>";
                                                 while ($job_level_row = mysqli_fetch_array($job_level_resualt)) {
-                                                    echo "<option value='$job_level_row[level_name] $job_level_row[job_name]'>$job_level_row[level_name] $job_level_row[job_name]</option>";
+                                                    if ($job_level_row["level_name"] . " " . $job_level_row["job_name"] == "Zone Admin" || $job_level_row["level_name"] . " " . $job_level_row["job_name"] == "Region TDS expert") {
+                                                        echo "<option value='$job_level_row[level_name] $job_level_row[job_name]'>$job_level_row[level_name] $job_level_row[job_name]</option>";
+                                                    }
                                                 }
                                                 echo "</select>";
                                                 ?>
@@ -342,13 +344,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                         <div class="form-group col-md-6">
                                             <div class="input-group">
                                                 <?php
-                                                include 'add user/get address.php';
+                                                // include 'add user/get address.php';
                                                 echo "<div class='input-group-addon'><i class='fa fa-map-marker' aria-hidden='true'></i></div>";
                                                 echo "<select name='address_name_name' id='address_name_id' class='form-control' required>";
                                                 echo "<option value='' selected hidden>Please select Zone *</option>";
-                                                while ($address_row = mysqli_fetch_array($address_resualt)) {
-                                                    echo "<option value='$address_row[zone_id]'>$address_row[zone_name]</option>";
-                                                }
+                                                // while ($address_row = mysqli_fetch_array($address_resualt)) {
+                                                //     echo "<option value='$address_row[zone_id]'>$address_row[zone_name]</option>";
+                                                // }
                                                 echo "</select>";
                                                 ?>
                                             </div>
@@ -399,6 +401,45 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 <script src="../../../../../../../vendors/sweetalert/sweetalert2@11.js"></script>
                 <script src="./add user/insert user.js"></script>
 
+                <script>
+                    jQuery(document).ready(function() {
+                        jQuery("#job_level_id").change(function() {
+                            var jobValue = jQuery(this).val();
+                            if(jobValue=="Region TDS expert"){
+                                jQuery("#address_name_id").removeAttr("required");
+                            }
+
+                            jQuery.ajax({
+                                url: "add user/get address.php",
+                                method: "POST",
+                                data: {job_val:jobValue},
+                                success: function(data){
+                                    jQuery("#address_name_id").html(data);
+                                }
+                            });
+
+                            // if (jobValue == "Region TDS expert") {
+                            //     jQuery("#address_name_id").removeAttr("required");
+                            //     jQuery("#address_name_id").val(function() {
+                            //         jQuery('#address_name_id').attr('readonly', true);
+                            //         document.getElementById("address_name_id").innerHTML = "Read-Only attribute enabled";
+                            //         console.log(jobValue);
+                            //     });
+
+                            // }
+                            // if (jobValue == "Zone Admin") {
+                            //     jQuery("#address_name_id").val(function() {
+                            //         jQuery("#address_name_id").removeAttr("readonly");
+                            //         document.getElementById("address_name_id").innerHTML = "Read-Only attribute disabled";
+                            //         console.log(jobValue);
+                            //     });
+
+                            // }
+
+                        });
+                    });
+                </script>
+
 
 
 
@@ -418,6 +459,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
     </body>
 
     </html>
+
 
 <?php
 

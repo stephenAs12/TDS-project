@@ -16,7 +16,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TDS | Admin Panel</title>
+        <title>Admin Dashboard </title>
         <meta name="description" content="TDS | Admin Panel">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -55,7 +55,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                     </button>
 
                     <a class="navbar-brand" href="./admin index.php"><img width="45" height="45" src="../../../images/amhara.png" alt="Amhara Education Bureau">
-                        <p class="org-name">ANRSE</p>
+                    <marquee><p class="org-name"><p><a href="#" class="text-success"> የመምህራን ዝውውር መስሪያ ሶፍትዌር </a></p></p></marquee>
                     </a>
                     <a class="navbar-brand hidden" href="./"><img class="amhara-logo" width="30" height="30" src="../../../images/amhara.png" alt="Amhara Education Bureau"></a>
 
@@ -93,8 +93,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         <li class="menu-item-has-children dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Zone and Woreda</a>
                             <ul class="sub-menu children dropdown-menu">
-                                <li><i class="menu-icon fa fa-plus-square"></i><a href="./admin pages/data related/zone and woreda/add zone and woreda/add zone and woreda.php">Add</a></li>
-                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="./admin pages/data related/zone and woreda/update zone and woreda/update zone and woreda.php">Update</a></li>
+                                <li><i class="menu-icon fa fa-plus-square"></i><a href="./admin pages/data related/zone and woreda/add zone/add zone.php">Add</a></li>
+                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="./admin pages/data related/zone and woreda/update zone/update zone.php">Update</a></li>
                                 <li><i class="menu-icon fa fa-eye"></i><a href="./admin pages/data related/zone and woreda/view zone/view zone.php">View zone</a></li>
                                 <li><i class="menu-icon fa fa-eye"></i><a href="./admin pages/data related/zone and woreda/view woreda/view woreda.php">View Woreda</a></li>
                             </ul>
@@ -184,7 +184,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                             <div class="user-menu dropdown-menu">
 
-                                    <p><?php echo $_SESSION['user_fname'].' '.$_SESSION['user_mname']; ?></p>
+                                <p><?php echo $_SESSION['user_fname'] . ' ' . $_SESSION['user_mname']; ?></p>
                                 <a class="nav-link" href="./admin pages/account related/my account/view my account/view my account.php"><i class="fa fa-user"></i>
                                     My Profile</a>
 
@@ -220,8 +220,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
             <!-- Header-->
 
             <!-- logout modal View -->
-
-
             <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
@@ -233,7 +231,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         </div>
                         <div class="modal-body">
                             <p>
-                                Hello <?php echo  $_SESSION['user_fname'];?>,
+                                Hello <?php echo  $_SESSION['user_fname']; ?>,
 
                                 When logging out you are redirected to a Login page ¿Are you sure…?
 
@@ -317,8 +315,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <div class="dropdown-menu-content">
                                         <a class="dropdown-item" href="./admin pages/data related/zone and woreda/view zone/view zone.php">View</a>
-                                        <a class="dropdown-item" href="./admin pages/data related/zone and woreda/add zone and woreda/add zone and woreda.php">Add
+                                        <a class="dropdown-item" href="./admin pages/data related/zone and woreda/zone and woreda/add zone.php">Add
                                             Zone</a>
+                                            
                                     </div>
                                 </div>
                             </div>
@@ -339,7 +338,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                     </div>
                 </div>
                 <!--/.col-->
-
                 <div class="col-sm-6 col-lg-3">
                     <div class="card text-white bg-flat-color-2">
                         <div class="card-body pb-0">
@@ -350,8 +348,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                                     <div class="dropdown-menu-content">
                                         <a class="dropdown-item" href="./admin pages/data related/zone and woreda/view zone/view zone.php">View</a>
-                                        <a class="dropdown-item" href="./admin pages/data related/zone and woreda/add zone and woreda/add zone and woreda.php">Add
-                                            Woreda</a>
+                                        <!-- <a class="dropdown-item" href="./admin pages/data related/zone and woreda/add zone and woreda/add zone and woreda.php">Add
+                                            Woreda</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -449,7 +447,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                 </div>
                             </div>
                             <h4 class="mb-0">
-                                <span class="count">1200</span>
+                                <span class="count">0</span>
                             </h4>
                             <p class="text-light">Supervisor</p>
 
@@ -476,7 +474,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                 </div>
                             </div>
                             <h4 class="mb-0">
-                                <span class="count">512</span>
+                                <span class="count">0</span>
                             </h4>
                             <p class="text-light">Directors</p>
 
@@ -502,7 +500,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                 </div>
                             </div>
                             <h4 class="mb-0">
-                                <span class="count">4612</span>
+                                <span class="count">0</span>
                             </h4>
                             <p class="text-light">Teachers</p>
 
@@ -528,7 +526,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                 </div>
                             </div>
                             <h4 class="mb-0">
-                                <span class="count">6200</span>
+                                <span class="count">0</span>
                             </h4>
                             <p class="text-light">Total TDS</p>
 
@@ -570,7 +568,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
     </html>
 <?php
 
-} else {
+} 
+else {
     header("location: ../../../authentication/login.php");
 }
 

@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
     var lastName = jQuery('#last_name_id').val();
     // var userImage = jQuery('#user_image_id').val();
     var jobLevel = jQuery('#job_level_id').val();
-    var addressName = jQuery('#address_name_id').val();
+    // var addressName = jQuery('#address_name_id').val();
     var userPhone = jQuery('#user_phone_id').val();
     var userEmail = jQuery('#user_email_id').val();
     // var userPassword = jQuery('#user_password_id').val();
@@ -32,10 +32,10 @@ jQuery(document).ready(function(){
                 required: true,
                 minlength: 1
             },
-            'address_name_name': {
-                required: true,
-                minlength: 1
-            },
+            // 'address_name_name': {
+            //     required: true,
+            //     minlength: 1
+            // },
             'user_phone_name': {
                 required: true,
                 minlength: 10,
@@ -98,7 +98,7 @@ jQuery(document).ready(function(){
                         jQuery('[lastname="lastName"]').val('');
                         // jQuery('[userimage="userImage"]').val('');
                         jQuery('[joblevel="jobLevel"]').val('');
-                        jQuery('[addressname="addressName"]').val('');
+                        // jQuery('[addressname="addressName"]').val('');
                         jQuery('[userphone="userPhone"]').val('');
                         jQuery('[useremail="userEmail"]').val('');
                         jQuery('[userpassword="userPassword"]').val('');

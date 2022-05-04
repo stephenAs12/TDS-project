@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TDS | Admin Panel</title>
+    <title>Update Schools</title>
     <meta name="description" content="TDS | Admin Panel">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,13 +17,13 @@
     <link rel="shortcut icon" href="./favicon.ico">
 
 
-    <link rel="stylesheet" href="../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../../../vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/font-awesome/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css"> -->
-    <link rel="stylesheet" href="../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
     <!-- <link rel="stylesheet" href="../../vendors/selectFX/css/cs-skin-elastic.css"> -->
 
-    <link rel="stylesheet" href="../../../../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../../../../../assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -42,7 +42,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau">
+                <a class="navbar-brand" href="../../../../admin index.php"><img width="45" height="45" src="../../../../../../../images/amhara.png" alt="Amhara Education Bureau">
                     <p class="org-name">ANRSE</p>
                 </a>
                 <a class="navbar-brand hidden" href="../../../../admin index.php"><img class="amhara-logo" width="30" height="30" src="../../../../../../images/amhara.png" alt="Amhara Education Bureau"></a>
@@ -52,7 +52,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="../../../../admin index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
+                        <a href="../../../../woreda admin index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
                     </li>
                     <h3 class="menu-title">Account Related</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -79,15 +79,25 @@
                     <h3 class="menu-title">Data Related</h3><!-- /.menu-title -->
 
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker" style="color: white;"></i><span style="color: white;">Zone and Woreda</span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker" style="color: white;"></i><span style="color: white;">Schools</span></a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-plus-square" ></i><a href="../../../data related/zone and woreda/add zone and woreda/add zone and woreda.php">Add</a></li>
-                            <li><i class="menu-icon fa fa-pencil-square-o" style="color: white;"></i><a href="../../../data related/zone and woreda/update zone and woreda/update zone and woreda.php"><span style="color: white;">Update</span></a></li>
-                            <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view zone/view zone.php">View zone</a></li>
-                            <li><i class="menu-icon fa fa-eye"></i><a href="../../../data related/zone and woreda/view woreda/view woreda.php">View Woreda</a></li>
+                            <li><i class="menu-icon fa fa-plus-square" ></i><a href="../../../data related/school/add school/add school.php">Add</a></li>
+                            <li><i class="menu-icon fa fa-pencil-square-o" style="color: white;"></i><a href="../../../data related/school/update school/update school.php"><span style="color: white;">Update Schools</span></a></li>
+                           
                         </ul>
 
                     </li>
+                    <li class="menu-item-has-children dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Ask</a>
+                            <ul class="sub-menu children dropdown-menu">
+                                <li><i class="menu-icon fa fa-plus-square"></i><a href="../../required teacher/add requirement/add requirement.php">require teacher</a></li>
+                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="../../required teacher/update school/update school.php">Update</a></li>
+                                <li><i class="menu-icon fa fa-eye"></i><a href="./woreda admin pages/data related/school/view school/view schools.php">View required teacher</a></li>
+                            </ul>
+
+                    </li>
+                    
+                   
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-exchange"></i>Transfer</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -96,6 +106,7 @@
                         </ul>
 
                     </li>
+                    
 
                     <h3 class="menu-title">Resource Related</h3><!-- /.menu-title -->
 
@@ -164,7 +175,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../../../../../../images/admin image/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="../../../../../../../images/admin image/admin.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -173,7 +184,7 @@
                             <a class="nav-link" href="../../../account related/my account/view my account/view my account.php"><i class="fa fa-user"></i>
                                 My Profile</a>
 
-                            <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-power-off"></i>Logout</a>
+                            <!-- <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-power-off"></i>Logout</a> -->
                         </div>
                     </div>
 
@@ -229,7 +240,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary"><a href="./page-login.php" style="text-decoration: none; color: white;">Confirm</a></button>
+                        <button type="button" class="btn btn-primary"><a href="../../../../../../../authentication/logout.php" style="text-decoration: none; color: white;">Confirm</a></button>
                     </div>
                 </div>
             </div>
@@ -242,7 +253,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Admin's Dashboard</h1>
+                        <h1>Woreda Admin's Dashboard</h1>
                     </div>
                 </div>
             </div>
@@ -250,8 +261,8 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="../../../../admin index.php">Dashboard</a></li>
-                            <li><a href="#">Zone and Woreda</a></li>
+                            <li><a href="../../../../woreda admin index.php">Dashboard</a></li>
+                            
                             <li class="active">Update zone and woreda</li>
                         </ol>
                     </div>
@@ -334,9 +345,9 @@
     <!-- Right Panel -->
 
 
-    <script src="../../../../../../vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../../../../../assets/js/main.js"></script>
+    <script src="../../../../../../../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../../../../../../assets/js/main.js"></script>
 
 </html>

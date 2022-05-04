@@ -1,6 +1,7 @@
+
 <?php
 session_start();
-if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) == 'Zone Admin') {
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && isset($_SESSION['user_first_login']) && $_SESSION['user_first_login'] == "1" && $_SESSION['user_role']=='Zone Admin') {
 ?>
     <!doctype html>
     <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -13,7 +14,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TDS | Zone Panel</title>
+        <title>Admin Dashboard</title>
         <meta name="description" content="TDS | Admin Panel">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="./apple-icon.png">
@@ -72,7 +73,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                                 <li><i class="fa fa-eye"></i><a href="./admin pages/account related/my account/view my account/view my account.php">View
                                         my account</a></li>
-                                <li><i class="fa fa-pencil-square-o"></i><a href="./admin pages/account related/my account/update my account/update my account.php">Update my
+                                <li><i class="fa fa-pencil-square-o"></i><a href="./admin pages/account related/my account/update my account/update_myaccount.php">Update my
                                         account</a></li>
                             </ul>
                         </li>
@@ -519,9 +520,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
     </body>
 
     </html>
-<?php
 
-} else {
+    
+<?php
+} 
+
+else {
     header("location: ../../../authentication/login.php");
 }
 

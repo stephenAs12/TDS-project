@@ -19,6 +19,9 @@ $userEmail       = (htmlspecialchars(stripslashes($_POST['user_email_name']))) ?
 $userPass = password_generate(12);
 $userPassword = password_hash($userPass, PASSWORD_DEFAULT);
 // $userPassword = encrypt_decrypt($userPass, 'encrypt');
+if(empty($addressName)){
+    $addressName = 282;
+}
 $sql = "INSERT INTO users(fname, mname, lname, urole, aname, uphone, uemail, password) VALUES ('$firstName','$middleName','$lastName','$jobLevel','$addressName','$userPhone','$userEmail','$userPassword')";
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -53,6 +56,7 @@ if (mysqli_query($connect, $sql)) {
     $mail->isHTML(true);
     $mail->setFrom($from, $name);
     $mail->addAddress($to);
+    $mail->addReplyTo('no-reply@gmail.com', 'No reply');
     $mail->Subject = $subject;
     $mail->Body = $body;
     if ($mail->send()) {
@@ -62,5 +66,5 @@ if (mysqli_query($connect, $sql)) {
     }
     exit(json_encode(array("response" => $response)));
 } else {
-    echo mysqli_error($connect);
+    echo $addressName." >> ".mysqli_error($connect);
 }
