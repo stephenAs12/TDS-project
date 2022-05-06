@@ -274,11 +274,11 @@
         
         function password_generate($chars) 
         {
-          $data = 'abcefghijklmnopqrstuvwxyz';
+          $data = '123456789';
           return substr(str_shuffle($data), 0, $chars);
         }
 
-        $teacherId = password_generate(6);
+        $teacherId = password_generate(2);
 
         ?>
 

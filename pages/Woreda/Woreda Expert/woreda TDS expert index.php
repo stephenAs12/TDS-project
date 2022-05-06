@@ -1,8 +1,5 @@
 <?php
-
-
 session_start();
-
 if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) == 'Woreda Admin') {
 ?>
     <!doctype html>
@@ -99,9 +96,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                             </ul>
 
                         </li>
+                        
                         <li class="menu-item-has-children dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-exchange"></i>Transfer</a>
                             <ul class="sub-menu children dropdown-menu">
+                                <li><i class="fa fa-step-backward" aria-hidden="true"></i><a href="./Woreda TDS expert pages/data related/transfer/add_transfer/add_transfer.php">Add Transfer</a></li>
+                                <li><i class="fa fa-step-backward" aria-hidden="true"></i><a href="./Woreda TDS expert pages/data related/transfer/add_transfer/Insert_Request.php">Insert TDS Request</a></li>
+
                                 <li><i class="fa fa-step-backward" aria-hidden="true"></i><a href="./woreda admin pages/data related/transfer/before computed/before_computed.php">Before Computed</a></li>
                                 <li><i class="fa fa-step-forward" aria-hidden="true"></i><a href="./woreda admin pages/data related/transfer/after computed/after_computed.php">After Computed</a></li>
                             </ul>

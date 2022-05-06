@@ -390,9 +390,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         </div>
                     </div>
                 </div>
-
-
-
                 <script src="../../../../../../../vendors/jquery/dist/jquery.min.js"></script>
                 <script src="../../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
                 <script src="../../../../../../../vendors/jquery/dist/jquery.validate.js"></script>
@@ -400,7 +397,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 <script src="../../../../../../../assets/js/main.js"></script>
                 <script src="../../../../../../../vendors/sweetalert/sweetalert2@11.js"></script>
                 <script src="./add user/insert user.js"></script>
-
                 <script>
                     jQuery(document).ready(function() {
                         jQuery("#job_level_id").change(function() {
@@ -408,7 +404,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                             if(jobValue=="Region TDS expert"){
                                 jQuery("#address_name_id").removeAttr("required");
                             }
-
                             jQuery.ajax({
                                 url: "add user/get address.php",
                                 method: "POST",
@@ -417,24 +412,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                     jQuery("#address_name_id").html(data);
                                 }
                             });
-
-                            // if (jobValue == "Region TDS expert") {
-                            //     jQuery("#address_name_id").removeAttr("required");
-                            //     jQuery("#address_name_id").val(function() {
-                            //         jQuery('#address_name_id').attr('readonly', true);
-                            //         document.getElementById("address_name_id").innerHTML = "Read-Only attribute enabled";
-                            //         console.log(jobValue);
-                            //     });
-
-                            // }
-                            // if (jobValue == "Zone Admin") {
-                            //     jQuery("#address_name_id").val(function() {
-                            //         jQuery("#address_name_id").removeAttr("readonly");
-                            //         document.getElementById("address_name_id").innerHTML = "Read-Only attribute disabled";
-                            //         console.log(jobValue);
-                            //     });
-
-                            // }
 
                         });
                     });
