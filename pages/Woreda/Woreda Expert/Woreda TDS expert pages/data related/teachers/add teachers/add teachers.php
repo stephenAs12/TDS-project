@@ -1,9 +1,8 @@
+
 <?php
-
-    session_start();
-
+session_start();
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && isset($_SESSION['user_first_login']) && $_SESSION['user_first_login'] == "1" && $_SESSION['user_role']=='Woreda TDS expert') {
 ?>
-
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -15,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TDS | Admin Panel</title>
+    <title>Adding Teachers</title>
     <meta name="description" content="TDS | Admin Panel">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -60,7 +59,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="../../../../admin index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
+                        <a href="../../../../woreda TDS expert index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
                     </li>
                     <h3 class="menu-title">Account Related</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -236,7 +235,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary"><a href="./page-login.php" style="text-decoration: none; color: white;">Confirm</a></button>
+                        <button type="button" class="btn btn-primary"><a href="../../../../../../../authentication/logout.php" style="text-decoration: none; color: white;">Confirm</a></button>
                     </div>
                 </div>
             </div>
@@ -260,9 +259,9 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="../../../../admin index.php">Dashboard</a></li>
+                            <li><a href="../../../../woreda TDS expert index.php">Dashboard</a></li>
                             <li><a href="#">Teachers</a></li>
-                            <li class="active">Add Teachers</li>
+                            <li class="../../teachers/add teachers/add teachers.php">Add Teachers</li>
                         </ol>
                     </div>
                 </div>
@@ -346,14 +345,14 @@
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
                                             </div>
-                                            <input type="number" name="service_name" id="service_id" placeholder="Service" class="form-control" autocomplete="off" required>
+                                            <input type="number" name="service_name" id="service_id" placeholder="Service" class="form-control" autocomplete="off" minlength="1" maxlength="2" required>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
                                             </div>
-                                            <input type="number" name="other_name" id="other_id" placeholder="Other Service" class="form-control" autocomplete="off" required>
+                                            <input type="number" name="other_name" id="other_id" placeholder="Other Service" class="form-control" autocomplete="off">
                                         </div>
                                     </div>
 
@@ -458,8 +457,8 @@
                                         </div>
 
                                         <div>
-                                            <div class="input-group-addon col-md-2">Nominee</div>
-                                            <div class="col col-md-4">
+                                            <div id="nominee_label" class="input-group-addon col-md-2">Nominee</div>
+                                            <div id="nominee_div" class="col col-md-4">
                                                 <div class="form-check">
                                                     <div class="radio">
                                                         <label for="nominee_yes_id" class="form-check-label ">
@@ -518,8 +517,34 @@
         });
     </script>
 
+<script>
+            jQuery(document).ready(function() {
+                jQuery('input[name="married_radio"]').change(function() {
+                    var marriedData = jQuery(this).val();
+                    console.log(marriedData);
+                    if (marriedData == "No") {
+                        jQuery('input[name="nominee_radio"]').prop('checked', false);
+                        jQuery('input[name="nominee_radio"]').removeAttr("required");
+                        jQuery("#nominee_label").hide();
+                        jQuery("#nominee_div").hide();                   
+                    }
+                    if (marriedData == "Yes") {
+                        jQuery('input[name="nominee_radio"]').prop('checked', false);
+                        jQuery("#nominee_label").show();
+                        jQuery("#nominee_div").show();
+                    }
+                });
+            });
+        </script>
+
 </body>
 
 </html>
-
 <?php
+
+} else {
+    header("location: ../../../authentication/login.php");
+}
+
+?>
+

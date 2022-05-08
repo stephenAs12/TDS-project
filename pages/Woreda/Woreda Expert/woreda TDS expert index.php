@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) == 'Woreda Admin') {
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'Woreda TDS expert') {
 ?>
     <!doctype html>
     <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -13,7 +13,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TDS | Admin Panel</title>
+        <title>Woreda TDS Expert</title>
         <meta name="description" content="TDS | Admin Panel">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -51,10 +51,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <a class="navbar-brand" href="./woreda admin index.php"><img width="45" height="45" src="../../../images/amhara.png" alt="Amhara Education Bureau">
+                    <a class="navbar-brand" href="./woreda TDS expert index.php"><img width="45" height="45" src="../../../images/amhara.png" alt="Amhara Education Bureau">
                         <p class="org-name">ANRSE</p>
                     </a>
-                    <a class="navbar-brand hidden" href="./"><img class="amhara-logo" width="30" height="30" src="../../../images/amhara.png" alt="Amhara Education Bureau"></a>
+                    <a class="navbar-brand hidden" href="./woreda TDS expert index.php"><img class="amhara-logo" width="30" height="30" src="../../../images/amhara.png" alt="Amhara Education Bureau"></a>
 
                 </div>
 
@@ -64,7 +64,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                             <a href="./admin index.php"> <i class="menu-icon fa fa-dashboard"></i><span style="color: white;">Dashboard</span> </a>
                         </li>
                         <h3 class="menu-title">Account Related</h3><!-- /.menu-title -->
-                        <li class="menu-item-has-children dropdown">
+                        <!-- <li class="menu-item-has-children dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>User Management</a>
                             <ul class="sub-menu children dropdown-menu">
 
@@ -72,15 +72,15 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                 <li><i class="fa fa-eye"></i><a href="./woreda admin pages/account related/user management/view users/view_user.php">View Users</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <li class="menu-item-has-children dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-user-secret"></i>My Account</a>
                             <ul class="sub-menu children dropdown-menu">
 
-                                <li><i class="fa fa-eye"></i><a href="./woreda admin pages/account related/my account/view my account/view my account.php">View
+                                <li><i class="fa fa-eye"></i><a href="./Woreda TDS expert pages/account related/my account/view my account/view my account.php">View
                                         my account</a></li>
-                                <li><i class="fa fa-pencil-square-o"></i><a href="./woreda admin pages/account related/my account/update my account/update my account.php">Update my
+                                <li><i class="fa fa-pencil-square-o"></i><a href="./Woreda TDS expert pages/account related/my account/update my account/update my account.php">Update my
                                         account</a></li>
                             </ul>
                         </li>
@@ -91,20 +91,18 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Teachers</a>
                             <ul class="sub-menu children dropdown-menu">
                                 <li><i class="menu-icon fa fa-plus-square"></i><a href="./Woreda TDS expert pages/data related/teachers/add teachers/add teachers.php">Add</a></li>
-                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="./Woreda TDS expert pages/data related/teachers/update teachers/update teachers.php">Update</a></li>
-                                <li><i class="menu-icon fa fa-eye"></i><a href="./Woreda TDS expert pages/data related/teachers/view teachers/view teachers.php">View Teachers</a></li>
+                                <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="./Woreda TDS expert pages/data related/teachers/update teachers/update teacher.php">Update</a></li>
+                                <li><i class="menu-icon fa fa-eye"></i><a href="./Woreda TDS expert pages/data related/teachers/view teachers/view teacher.php">View Teachers</a></li>
                             </ul>
 
                         </li>
-                        
+
                         <li class="menu-item-has-children dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-exchange"></i>Transfer</a>
                             <ul class="sub-menu children dropdown-menu">
                                 <li><i class="fa fa-step-backward" aria-hidden="true"></i><a href="./Woreda TDS expert pages/data related/transfer/add_transfer/add_transfer.php">Add Transfer</a></li>
-                                <li><i class="fa fa-step-backward" aria-hidden="true"></i><a href="./Woreda TDS expert pages/data related/transfer/add_transfer/Insert_Request.php">Insert TDS Request</a></li>
-
-                                <li><i class="fa fa-step-backward" aria-hidden="true"></i><a href="./woreda admin pages/data related/transfer/before computed/before_computed.php">Before Computed</a></li>
-                                <li><i class="fa fa-step-forward" aria-hidden="true"></i><a href="./woreda admin pages/data related/transfer/after computed/after_computed.php">After Computed</a></li>
+                                <li><i class="fa fa-step-backward" aria-hidden="true"></i><a href="./Woreda TDS expert pages/data related/transfer/before computed/before_computed.php">Before Computed</a></li>
+                                <li><i class="fa fa-step-forward" aria-hidden="true"></i><a href="./Woreda TDS expert pages/data related/transfer/after computed/after_computed.php">After Computed</a></li>
                             </ul>
 
                         </li>
@@ -114,8 +112,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         <li class="menu-item-has-children dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-rebel"></i>Resource</a>
                             <ul class="sub-menu children dropdown-menu">
-                                <li><i class="menu-icon fa fa-plus-square"></i><a href="./woreda admin pages/resource related/resources/add resources/add resources.php">Add Resource</a></li>
-                                <li><i class="menu-icon fa fa-eye"></i><a href="./woreda admin pages/resource related/resources/view resources/view resources.php">View Resource</a></li>
+                                <li><i class="menu-icon fa fa-plus-square"></i><a href="./Woreda TDS expert pages/resource related/resources/add resources/add resources.php">Add Resource</a></li>
+                                <li><i class="menu-icon fa fa-eye"></i><a href="./Woreda TDS expert pages/resource related/resources/view resources/view resources.php">View Resource</a></li>
 
                             </ul>
 
@@ -124,7 +122,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                         <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
                         <li>
-                            <a href="./woreda admin pages/extras/developers/developers.php"> <i class="menu-icon fa fa-file-code-o"></i>Developers </a>
+                            <a href="./Woreda TDS expert pages/extras/developers/developers.php"> <i class="menu-icon fa fa-file-code-o"></i>Developers </a>
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -160,11 +158,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="notification">
                                     <p class="red">You have 3 Notification</p>
-                                    <a class="dropdown-item media bg-flat-color-4" href="./woreda admin pages/data related/transfer/before computed/before_computed.php">
+                                    <a class="dropdown-item media bg-flat-color-4" href="./Woreda TDS expert pages/data related/transfer/before computed/before_computed.php">
                                         <i class="fa fa-check"></i>
                                         <p style="color: black;">Transfer data inserted</p>
                                     </a>
-                                    <a class="dropdown-item media bg-flat-color-4" href="./woreda admin pages/data related/transfer/after computed/after_computed.php">
+                                    <a class="dropdown-item media bg-flat-color-4" href="./Woreda TDS expert pages/data related/transfer/after computed/after_computed.php">
                                         <i class="fa fa-info"></i>
                                         <p style="color: black;">View transfer result</p>
                                     </a>
@@ -184,8 +182,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                             <div class="user-menu dropdown-menu">
 
-                                    <p><?php echo $_SESSION['user_fname'].' '.$_SESSION['user_mname']; ?></p>
-                                <a class="nav-link" href="./woreda admin pages/account related/my account/view my account/view my account.php"><i class="fa fa-user"></i>
+                                <p><?php echo $_SESSION['user_fname'] . ' ' . $_SESSION['user_mname']; ?></p>
+                                <a class="nav-link" href="./Woreda TDS expert pages/account related/my account/view my account/view my account.php"><i class="fa fa-user"></i>
                                     My Profile</a>
 
                                 <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-power-off"></i>Logout</a>
@@ -233,7 +231,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         </div>
                         <div class="modal-body">
                             <p>
-                                Hello <?php echo  $_SESSION['user_fname'];?>,
+                                Hello <?php echo  $_SESSION['user_fname']; ?>,
 
                                 When logging out you are redirected to a Login page ¿Are you sure…?
 
@@ -290,9 +288,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                 $connectQuery = mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
 
-                $zoneQuery = "SELECT zone_id FROM zone ORDER BY zone_id";
-                $run_zoneQuery = mysqli_query($connectQuery, $zoneQuery);
-                $zoneRow = mysqli_num_rows($run_zoneQuery);
+                $woredaId = $_SESSION['user_woreda'];
+
+                $schoolQuery = "SELECT school_id FROM school WHERE woreda_id=$woredaId";
+                $run_schoolQuery = mysqli_query($connectQuery, $schoolQuery);
+                $schoolRow = mysqli_num_rows($run_schoolQuery);
 
                 $woredaQuery = "SELECT woreda_id FROM woreda ORDER BY woreda_id";
                 $run_woredaQuery = mysqli_query($connectQuery, $woredaQuery);
@@ -302,9 +302,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 $run_woredaTdsQuery = mysqli_query($connectQuery, $woredaTdsQuery);
                 $woredaTdsRow = mysqli_num_rows($run_woredaTdsQuery);
 
-                $zoneTdsQuery = "SELECT user_id FROM users WHERE urole='zone Director' ORDER BY user_id";
-                $run_zoneTdsQuery = mysqli_query($connectQuery, $zoneTdsQuery);
-                $zoneTdsRow = mysqli_num_rows($run_zoneTdsQuery);
+                $teacherQuery = "SELECT teacher_id FROM teachers WHERE woreda=$woredaId";
+                $run_teacherQuery = mysqli_query($connectQuery, $teacherQuery);
+                $teacherRow = mysqli_num_rows($run_teacherQuery);
 
                 ?>
                 <div class="col-sm-6 col-lg-3">
@@ -325,7 +325,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                             <h4 class="mb-0">
                                 <span class="count">
                                     <?php
-                                    echo $zoneRow;
+                                    echo $schoolRow;
                                     ?>
                                 </span>
                             </h4>
@@ -406,7 +406,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                 </div>
                             </div>
                             <h4 class="mb-0">
-                                <span class="count">4612</span>
+                                <span class="count">
+                                    <?php
+                                    echo $teacherRow;
+                                    ?>
+                                </span>
                             </h4>
                             <p class="text-light">Teachers</p>
 

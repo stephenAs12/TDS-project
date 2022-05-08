@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
     $connect =  mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
     $email=$_SESSION['user_email'];
     $newPass= $_POST['password'];
@@ -16,18 +14,11 @@ session_start();
                     if(mysqli_query($connect, $query)){
                         header('location: change password.php?success=success');
                     }
-					
-					
 				}
                 else
                 {
                     header('location: change password.php? success=password is not the same');
                    
-                }
-				
+                }	
 			}
-
- 
     // header('location:view_user.php');
-    
-?>

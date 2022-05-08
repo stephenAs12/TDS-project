@@ -11,7 +11,14 @@ session_start();
     $Sex       = ($_POST['sex_radio']) ? $_POST['sex_radio'] : '';
     $Disability       = ($_POST['disable_radio']) ? $_POST['disable_radio'] : '';
     $martialStatus       = ($_POST['married_radio']) ? $_POST['married_radio'] : '';
-    $Nominee       = ($_POST['nominee_radio']) ? $_POST['nominee_radio'] : '';
+
+    if (isset($_POST['nominee_radio'])) {
+        $Nominee       = ($_POST['nominee_radio']) ? $_POST['nominee_radio'] : '';
+    }else{
+        $Nominee       = 'No';
+    }
+    
+    
     $Zone       = $_SESSION['user_address'];
     $Woreda       = $_SESSION['user_woreda'];
     $School       = ($_POST['school_name']) ? $_POST['school_name'] : '';

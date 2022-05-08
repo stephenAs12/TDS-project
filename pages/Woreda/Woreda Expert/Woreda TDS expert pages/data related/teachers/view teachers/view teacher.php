@@ -1,10 +1,7 @@
 <?php
-
-
 session_start();
-if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && isset($_SESSION['user_first_login']) && $_SESSION['user_first_login'] == "1" &&  $_SESSION['user_role'] == 'Woreda TDS expert') {
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SESSION['user_role']) && isset($_SESSION['user_first_login']) && $_SESSION['user_first_login'] == "1" && $_SESSION['user_role'] == 'Woreda TDS expert') {
 ?>
-
     <!doctype html>
     <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
     <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -16,7 +13,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TDS | Admin Panel</title>
+        <title>Adding Teachers</title>
         <meta name="description" content="TDS | Admin Panel">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,17 +23,27 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
         <link rel="stylesheet" href="../../../../../../../vendors/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../../../../../../vendors/font-awesome/css/font-awesome.min.css">
-        <!-- <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css"> -->
         <link rel="stylesheet" href="../../../../../../../vendors/flag-icon-css/css/flag-icon.min.css">
-        <!-- <link rel="stylesheet" href="../../vendors/selectFX/css/cs-skin-elastic.css"> -->
-        <link rel="stylesheet" href="../../../../../../../vendors/chosen/chosen.min.css">
-
+        <link rel="stylesheet" href="../../../../../../../assets/table/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="../../../../../../../assets/table/css/fixedHeader.dataTables.min.css">
+        <link rel="stylesheet" href="../../../../../../../assets/table/css/fixedHeader.bootstrap4.min.css">
+        <link rel="stylesheet" href="../../../../../../../assets/table/css/buttons.dataTables.min.css">
+        <link rel="stylesheet" href="../../../../../../../assets/table/css/main-style.css">
         <link rel="stylesheet" href="../../../../../../../assets/css/style.css">
 
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
 
-
+        <style>
+            div.scroll {
+                margin: 4px, 4px;
+                padding: 4px;
+                width: 1000px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                white-space: nowrap;
+            }
+        </style>
 
     </head>
 
@@ -253,7 +260,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1>Woreda Expert</h1>
+                            <h1>Admin's Dashboard</h1>
                         </div>
                     </div>
                 </div>
@@ -262,230 +269,118 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
                                 <li><a href="../../../../woreda TDS expert index.php">Dashboard</a></li>
-                                <li class="active">Add Teachers</li>
+                                <li><a href="#">Teachers</a></li>
+                                <li class="../../teachers/add teachers/add teachers.php">Add Teachers</li>
                             </ol>
                         </div>
                     </div>
                 </div>
             </div>
 
-
             <?php
 
-            function password_generate($chars)
-            {
-                $data = '123456789';
-                return substr(str_shuffle($data), 0, $chars);
-            }
+            $connectQuery = mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
 
-            $teacherId = password_generate(2);
+            if (mysqli_connect_errno()) {
+                echo mysqli_connect_error();
+                exit();
+            } else {
+                $userWoreda = $_SESSION['user_woreda'];
+                $selectQuery = "SELECT * FROM teachers WHERE woreda=$userWoreda";
+                $result = mysqli_query($connectQuery, $selectQuery);
+                if (mysqli_num_rows($result) > 0) {
+                } else {
+                    $msg = "No Record found";
+                }
+            }
 
             ?>
 
             <div class="content mt-3">
                 <div class="animated fadeIn">
-
-
                     <div class="row">
-
                         <div class="col-lg-12">
                             <div class="card">
-                                <div class="card-header">Add Teacher</div>
-                                <div class="card-body card-block">
-                                    <form id="teacher_form_id" class="">
-                                        <div class="form-group col-md-3">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="text" name="first_name_name" id="first_name_id" placeholder="Insert Id" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
+                                <div class="card-header">
+                                    <strong class="card-title">Registered Users List</strong>
+                                </div>
+                                <div class="card-body">
 
-                                       
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <select name="education_level_name" id="education_level_id" class='form-control' required>
-                                                    <option value="" selected disabled hidden>Please Select Transfer Level</option>
-                                                    <option value="">Region To Region</option>
-                                                    <option value="">Zone To Zone</option>
-                                                    <option value="">Woreda To Woreda</option>
-                                                    <option value="">School To School</option>
-                                                    <option value="">Gudignt To Gudignt</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <select name="education_level_name" id="education_level_id" class='form-control' required>
-                                                    <option value="" selected disabled hidden>Please Select Transfer Level</option>
-                                                    <option value="">Region To Region</option>
-                                                    <option value="">Zone To Zone</option>
-                                                    <option value="">Woreda To Woreda</option>
-                                                    <option value="">School To School</option>
-                                                    <option value="">Gudignt To Gudignt</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!--                                         
-                                       <p>Apply for Region to Region Transfer</p>
-                                        <div class="form-group col-md-6">
-                                            <div class="input-group"> 
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="text" name="first_name_name" id="first_name_id" placeholder="Region1" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="text" name="first_name_name" id="first_name_id" placeholder="Region2" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
-                                        <p>Apply for Zone to Zone Transfer</p>
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="number" name="first_name_name" id="first_name_id" placeholder="choice1" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="number" name="first_name_name" id="first_name_id" placeholder="Choice2" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="number" name="first_name_name" id="first_name_id" placeholder="173" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="number" name="first_name_name" id="first_name_id" placeholder="choice1" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="number" name="first_name_name" id="first_name_id" placeholder="Choice2" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="number" name="first_name_name" id="first_name_id" placeholder="173" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
-                                        <p>Apply for Woreda to Woreda Transfer</p>
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="number" name="first_name_name" id="first_name_id" placeholder="1st choice" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="number" name="first_name_name" id="first_name_id" placeholder="2nd choice" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="number" name="first_name_name" id="first_name_id" placeholder="3rd choice" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
-                                        <p>Apply for School to School Transfer</p>
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="text" name="first_name_name" id="first_name_id" placeholder="school3" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="text" name="first_name_name" id="first_name_id" placeholder="school2" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
-                                                </div>
-                                                <input type="text" name="first_name_name" id="first_name_id" placeholder="school1" class="form-control" autocomplete="off" minlength="3" required>
-                                            </div>
-                                        </div>
-                                         -->
+                                    <div class="scroll">
+                                        <table id="example" class="display table table-striped table-bordered" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Name</th>
+                                                    <th>Sex</th>
+                                                    <th>Disabled</th>
+                                                    <th>Married</th>
+                                                    <th>Nominee</th>
+                                                    <th>School</th>
+                                                    <th>Education Level</th>
+                                                    <th>Major</th>
+                                                    <th>Employment Period</th>
+                                                    <th>Service</th>
+                                                    <th>Other Service</th>
+                                                </tr>
+                                            </thead>
+                                            <?php
+                                            while ($row = mysqli_fetch_array($result)) {
 
+                                                echo '
+                                                <tr>
+                                                    <td>' . $row["knownid"] . '</td>
+                                                    <td>' . $row["fname"] . ' ' . $row["mname"] . ' ' . $row["lname"] . '</td>
+                                                    <td>' . $row["sex"] . '</td>
+                                                    <td>' . $row["disability"] . '</td>
+                                                    <td>' . $row["marital_status"] . '</td>
+                                                    <td>' . $row["nominee"] . '</td>
+                                                    <td>' . $row["school"] . '</td>
+                                                    <td>' . $row["education_level"] . '</td>
+                                                    <td>' . $row["major"] . '</td>
+                                                    <td>' . $row["employment_period"] . '</td>
+                                                    <td>' . $row["service"] . '</td>
+                                                    <td>' . $row["other_service"] . '</td>
+                                                </tr>
+                                                ';
+                                            }
+                                            ?>
 
-                                        <?php
+                                        </table>
+                                    </div>
 
-                                        $conn = mysqli_connect("localhost", "root", "", "tds v1.0.1");
-                                        $woredaName = $_SESSION['user_woreda'];
-
-                                        if ($conn === false) {
-                                            die("ERROR: Could not connect. "
-                                                . mysqli_connect_error());
-                                        }
-                                        $school_resualt = mysqli_query($conn, "SELECT * FROM school WHERE woreda_id=$woredaName");
-                                        ?>
-                                    </form>
                                 </div>
                             </div>
                         </div>
-
-
-                        <!-- woreda insertion -->
                     </div>
                 </div><!-- .animated -->
             </div><!-- .content -->
         </div><!-- /#right-panel -->
         <!-- Right Panel -->
 
-        <script src="../../../../../../../vendors/jquery/dist/jquery-3.4.1.js"></script>
         <script src="../../../../../../../vendors/jquery/dist/jquery.min.js"></script>
-        <script src="../../../../../../../vendors/jquery/dist/jquery.validate.js"></script>
         <script src="../../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
         <script src="../../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="../../../../../../../assets/js/main.js"></script>
-        <script src="../../../../../../../vendors/chosen/chosen.jquery.min.js"></script>
-        <script src="../../../../../../../vendors/sweetalert/sweetalert2@11.js"></script>
-        <script src="insert teachers.js"></script>
-        <script>
-            jQuery(document).ready(function() {
-                jQuery(".standardSelect").chosen({
-                    disable_search_threshold: 10,
-                    no_results_text: "Oops, nothing found!",
-                    width: "100%"
-                });
-            });
-        </script>
+        <script src="../../../../../../../assets/table/js/jquery-3.5.1.js"></script>
+        <script src="../../../../../../../assets/table/js/jquery.dataTables.min.js"></script>
+        <script src="../../../../../../../assets/table/js/dataTables.bootstrap4.min.js"></script>
+        <script src="../../../../../../../assets/table/js/dataTables.fixedHeader.min.js"></script>
+        <script src="../../../../../../../assets/table/js/dataTables.buttons.min.js"></script>
+        <script src="../../../../../../../assets/table/js/jszip.min.js"></script>
+        <script src="../../../../../../../assets/table/js/pdfmake.min.js"></script>
+        <script src="../../../../../../../assets/table/js/vfs_fonts.js"></script>
+        <script src="../../../../../../../assets/table/js/buttons.html5.min.js"></script>
+        <script src="../../../../../../../assets/table/js/buttons.print.min.js"></script>
+        <script src="../../../../../../../assets/table/js/main.js"></script>
 
     </body>
 
     </html>
-
 <?php
 
 } else {
-    header("location: ../../../../../../../authentication/login.php");
+    header("location: ../../../authentication/login.php");
 }
+
 ?>
