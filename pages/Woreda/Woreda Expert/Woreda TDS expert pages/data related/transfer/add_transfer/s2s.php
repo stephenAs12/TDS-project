@@ -6,6 +6,8 @@ session_start();
 
     $knownID       = $_SESSION['teacher_id'];
     $transferType       = 'School To School';
+    $zone = $_SESSION['user_address'];
+    $woreda = $_SESSION['user_woreda'];
 
     $schoolOne       = ($_POST['s2s_school1_name']) ? $_POST['s2s_school1_name'] : '';
     $schoolTwo       = ($_POST['s2s_school2_name']) ? $_POST['s2s_school2_name'] : '';
@@ -18,7 +20,7 @@ session_start();
     // }
  
     
-    $sql = "INSERT INTO transfer_request(teacher_id,request_type,school_one,school_two, school_three) VALUES ('$knownID','$transferType','$schoolOne','$schoolTwo', '$schoolThree')";
+    $sql = "INSERT INTO transfer_request(current_zone, current_woreda, teacher_id,request_type,school_one,school_two, school_three) VALUES ('$zone', '$woreda', '$knownID','$transferType','$schoolOne','$schoolTwo', '$schoolThree')";
 
     if ($schoolOne != $schoolTwo) {
         if(mysqli_query($connect, $sql)) {

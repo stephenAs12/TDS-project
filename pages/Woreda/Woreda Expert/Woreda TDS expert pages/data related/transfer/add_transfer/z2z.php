@@ -6,6 +6,8 @@ session_start();
 
     $knownID       = $_SESSION['teacher_id'];
     $transferType       = 'Zone To Zone';
+    $zone = $_SESSION['user_address'];
+    $woreda = $_SESSION['user_woreda'];
 
     $zoneOne       = ($_POST['z2z_zone1_name']) ? $_POST['z2z_zone1_name'] : '';
     $zoneOneWoredaOne       = ($_POST['z2z_woreda11_name']) ? $_POST['z2z_woreda11_name'] : '';
@@ -24,7 +26,7 @@ session_start();
     // }
  
     
-    $sql = "INSERT INTO transfer_request(teacher_id,request_type,zone_one,z1_woreda_one, z1_woreda_two, z1_woreda_any, zone_two, z2_woreda_one, z2_woreda_two, z2_woreda_any) VALUES ('$knownID','$transferType','$zoneOne','$zoneOneWoredaOne', '$zoneOneWoredaTwo', '$zoneOneWoreda173', '$zoneTwo', '$zoneTwoWoredaOne', '$zoneTwoWoredaTwo', '$zoneTwoWoreda173')";
+    $sql = "INSERT INTO transfer_request(current_zone, current_woreda, teacher_id,request_type,zone_one,z1_woreda_one, z1_woreda_two, z1_woreda_any, zone_two, z2_woreda_one, z2_woreda_two, z2_woreda_any) VALUES ('$zone', '$woreda', '$knownID','$transferType','$zoneOne','$zoneOneWoredaOne', '$zoneOneWoredaTwo', '$zoneOneWoreda173', '$zoneTwo', '$zoneTwoWoredaOne', '$zoneTwoWoredaTwo', '$zoneTwoWoreda173')";
 
     if ($zoneOne != $zoneTwo) {
         if(mysqli_query($connect, $sql)) {

@@ -6,6 +6,8 @@ session_start();
 
     $knownID       = $_SESSION['teacher_id'];
     $transferType       = 'Region To Region';
+    $zone = $_SESSION['user_address'];
+    $woreda = $_SESSION['user_woreda'];
     $regionOne       = ($_POST['r2r_region1_name']) ? $_POST['r2r_region1_name'] : '';
     if (isset($_POST['r2r_region2_name'])) {
         $regionTwo       = ($_POST['r2r_region2_name']) ? $_POST['r2r_region2_name'] : '';
@@ -14,7 +16,7 @@ session_start();
     }
  
     
-    $sql = "INSERT INTO transfer_request(teacher_id,request_type,region_one,region_two) VALUES ('$knownID','$transferType','$regionOne','$regionTwo')";
+    $sql = "INSERT INTO transfer_request(current_zone, current_woreda, teacher_id,request_type,region_one,region_two) VALUES ('$zone', '$woreda', '$knownID','$transferType','$regionOne','$regionTwo')";
 
     if ($regionOne != $regionTwo) {
         if(mysqli_query($connect, $sql)) {

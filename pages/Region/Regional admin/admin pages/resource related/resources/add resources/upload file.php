@@ -19,7 +19,7 @@
             $tname = $_FILES["file"]["tmp_name"];
 
             #upload directory path
-            $uploads_dir = './../../../../../../file';
+            $uploads_dir = '../../../../../../../file/';
             #TO move the uploaded file to specific location
 
             $imageFileType = strtolower(pathinfo($pname, PATHINFO_EXTENSION));

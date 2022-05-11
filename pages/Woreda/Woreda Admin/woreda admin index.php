@@ -105,7 +105,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                             <ul class="sub-menu children dropdown-menu">
                                 <li><i class="menu-icon fa fa-plus-square"></i><a href="./woreda admin pages/data related/required teacher/add requirement/add requirement.php">require teacher</a></li>
                                 <li><i class="menu-icon fa fa-pencil-square-o"></i><a href="./woreda admin pages/data related/school/update school/update school.php">Update</a></li>
-                                <li><i class="menu-icon fa fa-eye"></i><a href="./woreda admin pages/data related/school/view school/view schools.php">View required teacher</a></li>
+                                <li><i class="menu-icon fa fa-eye"></i><a href="./woreda admin pages/data related/required teacher/view required teacher/view required teacher.php">View required teacher</a></li>
                             </ul>
 
                         </li>

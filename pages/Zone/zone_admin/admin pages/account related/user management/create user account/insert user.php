@@ -1,11 +1,12 @@
 <?php
 session_start();
+
 ?>
 <?php
-function password_generate($chars) 
+function password_generate($chars)
 {
-  $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
-  return substr(str_shuffle($data), 0, $chars);
+    $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+    return substr(str_shuffle($data), 0, $chars);
 }
 $hasehd_password = password_hash('estif', PASSWORD_DEFAULT);
 echo $hasehd_password;
@@ -15,12 +16,17 @@ $middleName       = (htmlspecialchars(stripslashes($_POST['middle_name_name'])))
 $lastName       = (htmlspecialchars(stripslashes($_POST['last_name_name']))) ? htmlspecialchars(stripslashes($_POST['last_name_name']))  : '';
 // $userImage   = ($_POST['user_image_name']) ? $_POST['user_image_name'] : '';
 $jobLevel       = (htmlspecialchars(stripslashes($_POST['job_level_name']))) ? htmlspecialchars(stripslashes($_POST['job_level_name']))  : '';
-$addressName    = (htmlspecialchars(stripslashes($_POST['address_name_name']))) ? htmlspecialchars(stripslashes($_POST['address_name_name']))  : '';
+
 $userPhone       = (htmlspecialchars(stripslashes($_POST['user_phone_name']))) ? htmlspecialchars(stripslashes($_POST['user_phone_name']))  : '';
 $userEmail       = (htmlspecialchars(stripslashes($_POST['user_email_name']))) ? htmlspecialchars(stripslashes($_POST['user_email_name']))  : '';
 $userPass = password_generate(12);
 $userPassword = password_hash($userPass, PASSWORD_DEFAULT);
-$woredaadmin=$_SESSION['user_address'];
+$woredaadmin = $_SESSION['user_address'];
+if (empty($_POST['address_name_name'])) {
+    $addressName = 302;
+} else {
+    $addressName    = (htmlspecialchars(stripslashes($_POST['address_name_name']))) ? htmlspecialchars(stripslashes($_POST['address_name_name']))  : '';
+}
 
 // $userPassword = encrypt_decrypt($userPass, 'encrypt');
 $sql = "INSERT INTO users(fname, mname, lname, urole, aname, wname, uphone, uemail, password) VALUES ('$firstName','$middleName','$lastName','$jobLevel','$woredaadmin', '$addressName', '$userPhone','$userEmail','$userPassword')";
@@ -65,7 +71,7 @@ if (mysqli_query($connect, $sql)) {
         $response = "Something is wrong: <br><br>" . $mail->ErrorInfo;
     }
     // exit(json_encode(array("response" => $response)));
-} else {
+} 
+else {
     echo mysqli_error($connect);
 }
-

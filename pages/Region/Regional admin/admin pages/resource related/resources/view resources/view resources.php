@@ -352,7 +352,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                         </div>
                                         <hr>
                                         <div class="card-text text-sm-center">
-                                        <a href="../../../../../../file/' . $row["file_name"] . '"><button class="btn btn-primary btn-sm">View</button></a>
+                                        <a href="../../../../../../../file/' . $row["file_name"] . '"><button class="btn btn-primary btn-sm">View</button></a>
                                         <a href="delete resource.php?id=' . $row['id'] . '&file_name=' . $row['file_name'] . '"><button class="btn btn-danger btn-sm">Delete</button></a>
                                         </div>
                                     </div>

@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -24,12 +29,14 @@
     <link rel="stylesheet" href="../../../../../../../assets/table/css/fixedHeader.bootstrap4.min.css">
     <link rel="stylesheet" href="../../../../../../../assets/table/css/buttons.dataTables.min.css">
     <link rel="stylesheet" href="../../../../../../../assets/table/css/main-style.css">
+    <link rel="stylesheet" href="../../../../../../../assets/css/style.css">
 
     <link rel="stylesheet" href="../../../../../../../assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
 </head>
+
 <body>
     <!-- Left Panel -->
 
@@ -250,16 +257,17 @@
             </div>
         </div>
         <?php
+
         $connectQuery = mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
+
         if (mysqli_connect_errno()) {
             echo mysqli_connect_error();
             exit();
-        } 
-        else {
-            $selectQuery = "SELECT zone.zone_name, woreda.woreda_name, woreda.woreda_code, woreda.multiplication_point
-            FROM woreda
-            INNER JOIN zone
-            ON woreda.zoneid=zone.zone_id ORDER BY zone.zone_name ASC;";
+        } else {
+            $userWoreda = $_SESSION['user_woreda'];
+            $selectQuery = "SELECT required.education_level, required.major, required.number, school.school_name 
+            FROM required 
+            INNER JOIN school ON required.school = school.school_id WHERE required.woreda = $userWoreda";
             $result = mysqli_query($connectQuery, $selectQuery);
             if (mysqli_num_rows($result) > 0) {
             } else {
@@ -272,55 +280,43 @@
         <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
-
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Registered Woreda List</strong>
+                                <strong class="card-title">Registered Users List</strong>
                             </div>
                             <div class="card-body">
 
-                                <div>
-                                    <table id="example" class="table table-striped">
+                                <div class="scroll">
+                                    <table id="example" class="display table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Zone Name</th>
-                                                <th>Woreda Name</th>
-                                                <th>Woreda Code</th>
-                                                <th>Multiplayer</th>
+                                                <th>School</th>
+                                                <th>Education Level</th>
+                                                <th>Major</th>
+                                                <th>Quantity</th>
                                             </tr>
                                         </thead>
                                         <?php
-
                                         while ($row = mysqli_fetch_array($result)) {
 
                                             echo '
-                                                <tr>
-                                                    <td>' . $row["zone_name"] . '</td>
-                                                    <td>' . $row["woreda_name"] . '</td>
-                                                    <td>' . $row["woreda_code"] . '</td>
-                                                    <td>' . $row["multiplication_point"] . '</td>
-                                                </tr>
-                                                ';
+                                    <tr>
+                                        <td>' . $row["school_name"] . '</td>
+                                        <td>' . $row["education_level"] . '</td>
+                                        <td>' . $row["major"] . '</td>
+                                        <td>' . $row["number"] . '</td>
+                                    </tr>
+                                    ';
                                         }
-
                                         ?>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Zone Name</th>
-                                                <th>Woreda Name</th>
-                                                <th>Woreda Code</th>
-                                                <th>Multiplayer</th>
-                                            </tr>
-                                        </tfoot>
+
                                     </table>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
@@ -329,22 +325,21 @@
     </div><!-- /#right-panel -->
 
     <!-- Right Panel -->
-    <script src="../../../../../../vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../../../../../assets/js/main.js"></script>
-    <script src="../../../../../../assets/table/js/jquery-3.5.1.js"></script>
-    <script src="../../../../../../assets/table/js/jquery.dataTables.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.fixedHeader.min.js"></script>
-    <script src="../../../../../../assets/table/js/dataTables.buttons.min.js"></script>
-    <script src="../../../../../../assets/table/js/jszip.min.js"></script>
-    <script src="../../../../../../assets/table/js/pdfmake.min.js"></script>
-    <script src="../../../../../../assets/table/js/vfs_fonts.js"></script>
-    <script src="../../../../../../assets/table/js/buttons.html5.min.js"></script>
-    <script src="../../../../../../assets/table/js/buttons.print.min.js"></script>
-    <script src="../../../../../../assets/table/js/main.js"></script>
-    <!-- <script src="../../../../../../assets/table/js/secondary.js"></script> -->
+    <script src="../../../../../../../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../../../../../../assets/js/main.js"></script>
+    <script src="../../../../../../../assets/table/js/jquery-3.5.1.js"></script>
+    <script src="../../../../../../../assets/table/js/jquery.dataTables.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../../../../../../../assets/table/js/dataTables.buttons.min.js"></script>
+    <script src="../../../../../../../assets/table/js/jszip.min.js"></script>
+    <script src="../../../../../../../assets/table/js/pdfmake.min.js"></script>
+    <script src="../../../../../../../assets/table/js/vfs_fonts.js"></script>
+    <script src="../../../../../../../assets/table/js/buttons.html5.min.js"></script>
+    <script src="../../../../../../../assets/table/js/buttons.print.min.js"></script>
+    <script src="../../../../../../../assets/table/js/main.js"></script>
 
 
 

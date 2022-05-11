@@ -286,9 +286,41 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 exit();
             } else {
                 $userWoreda = $_SESSION['user_woreda'];
-                $selectQuery = "SELECT * FROM transfer_request WHERE request_type='Region To Region'";
-                $result = mysqli_query($connectQuery, $selectQuery);
-                if (mysqli_num_rows($result) > 0) {
+                $selectQuery1 = "SELECT * FROM transfer_request WHERE current_woreda = $userWoreda AND request_type = 'Region To Region'";
+                $result1 = mysqli_query($connectQuery, $selectQuery1);
+
+                $selectQuery2 = "SELECT * FROM transfer_request WHERE current_woreda = $userWoreda AND request_type = 'Zone To Zone'";
+                $result2 = mysqli_query($connectQuery, $selectQuery2);
+
+                $selectQuery3 = "SELECT * FROM transfer_request WHERE current_woreda = $userWoreda AND request_type = 'Woreda To Woreda'";
+                $result3 = mysqli_query($connectQuery, $selectQuery3);
+
+                $selectQuery4 = "SELECT * FROM transfer_request WHERE current_woreda = $userWoreda AND request_type = 'Gudignt To Gudignt'";
+                $result4 = mysqli_query($connectQuery, $selectQuery4);
+
+                $selectQuery5 = "SELECT * FROM transfer_request WHERE current_woreda = $userWoreda AND request_type = 'School To School'";
+                $result5 = mysqli_query($connectQuery, $selectQuery5);
+                if (mysqli_num_rows($result1) > 0) {
+                } else {
+                    $msg = "No Record found";
+                }
+
+                if (mysqli_num_rows($result2) > 0) {
+                } else {
+                    $msg = "No Record found";
+                }
+
+                if (mysqli_num_rows($result3) > 0) {
+                } else {
+                    $msg = "No Record found";
+                }
+
+                if (mysqli_num_rows($result4) > 0) {
+                } else {
+                    $msg = "No Record found";
+                }
+
+                if (mysqli_num_rows($result5) > 0) {
                 } else {
                     $msg = "No Record found";
                 }
@@ -302,9 +334,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <strong class="card-title">Registered Users List</strong>
+                                    <strong class="card-title">Transfer Query List</strong>
+
+                                  
+
                                 </div>
                                 <div class="card-body">
+                                      <select name="transfer_level_name" id="transfer_level_id" class='form-control' required>
+                                                <option value="" selected disabled hidden>Please Transfer Level</option>
+                                                <option value="Region To Region">Region To Region</option>
+                                                <option value="Zone To Zone">Zone To Zone</option>
+                                                <option value="Woreda To Woreda">Woreda To Woreda</option>
+                                                <option value="Gudignt To Gudignt">Gudignt To Gudignt</option>
+                                                <option value="School To School">School To School</option>
+                                            </select>
+                                        </div>
 
                                     <div class="scroll">
                                         <table id="example" class="display table table-striped table-bordered" style="width:100%">
@@ -313,11 +357,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                                     <th>ID</th>
                                                     <th>Type</th>
                                                     <th>Region one</th>
-                                                    <th>Region one</th>
+                                                    <th>Region two</th>
                                                 </tr>
                                             </thead>
                                             <?php
-                                            while ($row = mysqli_fetch_array($result)) {
+                                            while ($row = mysqli_fetch_array($result1)) {
 
                                                 echo '
                                                 <tr>
@@ -358,6 +402,67 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
         <script src="../../../../../../../assets/table/js/buttons.print.min.js"></script>
         <script src="../../../../../../../assets/table/js/main.js"></script>
 
+        <script>
+            jQuery(document).ready(function() {
+
+                // jQuery("#transfer_level_id").hide();
+                jQuery("#region_label_id").hide();
+                jQuery("#zone_id").hide();
+                jQuery("#zone_label_id").hide();
+                jQuery("#woreda_id").hide();
+                jQuery("#woreda_label_id").hide();
+                jQuery("#school_id").hide();
+                jQuery("#school_label_id").hide();
+
+                jQuery("#transfer_type_id").change(function() {
+                    var transferType = jQuery(this).val();
+
+                    if (transferType == "Region To Region") {
+                        jQuery("#region_id").show();
+                        jQuery("#region_label_id").show();
+
+                        jQuery("#zone_id").hide();
+                        jQuery("#zone_label_id").hide();
+                        jQuery("#woreda_id").hide();
+                        jQuery("#woreda_label_id").hide();
+                        jQuery("#school_id").hide();
+                        jQuery("#school_label_id").hide();
+                    }
+                    if (transferType == "Zone To Zone") {
+                        jQuery("#zone_label_id").show();
+                        jQuery("#zone_id").show();
+
+                        jQuery("#region_id").hide();
+                        jQuery("#region_label_id").hide();
+                        jQuery("#woreda_id").hide();
+                        jQuery("#woreda_label_id").hide();
+                        jQuery("#school_id").hide();
+                        jQuery("#school_label_id").hide();
+                    }
+                    if (transferType == "Woreda To Woreda") {
+                        jQuery("#woreda_label_id").show();
+                        jQuery("#woreda_id").show();
+
+                        jQuery("#region_id").hide();
+                        jQuery("#region_label_id").hide();
+                        jQuery("#zone_id").hide();
+                        jQuery("#zone_label_id").hide();
+                        jQuery("#school_id").hide();
+                        jQuery("#school_label_id").hide();
+                    }
+                    if (transferType == "School To School") {
+                        jQuery("#school_label_id").show();
+                        jQuery("#school_id").show();
+                        jQuery("#region_id").hide();
+                        jQuery("#region_label_id").hide();
+                        jQuery("#zone_id").hide();
+                        jQuery("#zone_label_id").hide();
+                        jQuery("#woreda_id").hide();
+                        jQuery("#woreda_label_id").hide();
+                    }
+                });
+            });
+        </script>
     </body>
 
     </html>
