@@ -5,6 +5,7 @@ session_start();
     $connect =  mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
 
     $knownID       = $_SESSION['teacher_id'];
+    $teacherSchool       = $_SESSION['teacher_school'];
     $transferType       = 'School To School';
     $zone = $_SESSION['user_address'];
     $woreda = $_SESSION['user_woreda'];
@@ -20,14 +21,19 @@ session_start();
     // }
  
     
-    $sql = "INSERT INTO transfer_request(current_zone, current_woreda, teacher_id,request_type,school_one,school_two, school_three) VALUES ('$zone', '$woreda', '$knownID','$transferType','$schoolOne','$schoolTwo', '$schoolThree')";
+    $sql = "INSERT INTO transfer_request(current_zone, current_woreda, choice_key, teacher_id,request_type,school_one,school_two, school_three) VALUES ('$zone', '$woreda', '$knownID $transferType', '$knownID','$transferType','$schoolOne','$schoolTwo', '$schoolThree')";
 
-    if ($schoolOne != $schoolTwo) {
-        if(mysqli_query($connect, $sql)) {
-            echo true;
+    if ($schoolOne != $schoolTwo && $schoolOne != $schoolThree && $schoolTwo != $schoolThree) {
+        if ($teacherSchool!=$schoolOne && $teacherSchool!=$schoolTwo && $teacherSchool!=$schoolThree) {
+            if(mysqli_query($connect, $sql)) {
+                echo true;
+            } else {
+                 echo $knownID.' '.mysqli_error($connect);
+            }
         } else {
-             echo $knownID.' '.mysqli_error($connect);
+            echo "You're attempting to input your current school.";
         }
+        
     }else{
         echo "You're attempting to input the same value twice.";
     }

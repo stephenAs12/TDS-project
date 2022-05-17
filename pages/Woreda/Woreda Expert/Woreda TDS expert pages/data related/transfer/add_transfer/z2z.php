@@ -26,14 +26,19 @@ session_start();
     // }
  
     
-    $sql = "INSERT INTO transfer_request(current_zone, current_woreda, teacher_id,request_type,zone_one,z1_woreda_one, z1_woreda_two, z1_woreda_any, zone_two, z2_woreda_one, z2_woreda_two, z2_woreda_any) VALUES ('$zone', '$woreda', '$knownID','$transferType','$zoneOne','$zoneOneWoredaOne', '$zoneOneWoredaTwo', '$zoneOneWoreda173', '$zoneTwo', '$zoneTwoWoredaOne', '$zoneTwoWoredaTwo', '$zoneTwoWoreda173')";
+    $sql = "INSERT INTO transfer_request(current_zone, current_woreda, choice_key, teacher_id,request_type,zone_one,z1_woreda_one, z1_woreda_two, z1_woreda_any, zone_two, z2_woreda_one, z2_woreda_two, z2_woreda_any) VALUES ('$zone', '$woreda', '$knownID $transferType', '$knownID','$transferType','$zoneOne','$zoneOneWoredaOne', '$zoneOneWoredaTwo', '$zoneOneWoreda173', '$zoneTwo', '$zoneTwoWoredaOne', '$zoneTwoWoredaTwo', '$zoneTwoWoreda173')";
 
     if ($zoneOne != $zoneTwo) {
-        if(mysqli_query($connect, $sql)) {
-            echo true;
+        if ($zoneOneWoredaOne!=$zoneOneWoredaTwo && $zoneTwoWoredaOne!=$zoneTwoWoredaTwo) {
+            if(mysqli_query($connect, $sql)) {
+                echo true;
+            } else {
+                 echo $knownID.' '.mysqli_error($connect);
+            }
         } else {
-             echo $knownID.' '.mysqli_error($connect);
+            echo "You're attempting to input the same value twice.";
         }
+        
     }else{
         echo "You're attempting to input the same value twice.";
     }

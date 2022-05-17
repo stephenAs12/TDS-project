@@ -16,7 +16,7 @@ session_start();
     }
  
     
-    $sql = "INSERT INTO transfer_request(current_zone, current_woreda, teacher_id,request_type,region_one,region_two) VALUES ('$zone', '$woreda', '$knownID','$transferType','$regionOne','$regionTwo')";
+    $sql = "INSERT INTO transfer_request(current_zone, current_woreda, choice_key, teacher_id,request_type,region_one,region_two) VALUES ('$zone', '$woreda', '$knownID $transferType', '$knownID','$transferType','$regionOne','$regionTwo')";
 
     if ($regionOne != $regionTwo) {
         if(mysqli_query($connect, $sql)) {

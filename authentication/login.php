@@ -29,7 +29,7 @@
 		    <label for="exampleInputEmail1" 
 		           class="form-label">Email address
 		    </label>
-		    <input type="email" 
+		    <input type="text" 
 		           name="email" 
 		           value="<?php if(isset($_GET['email']))echo(htmlspecialchars($_GET['email'])) ?>" 
 		           class="form-control" 

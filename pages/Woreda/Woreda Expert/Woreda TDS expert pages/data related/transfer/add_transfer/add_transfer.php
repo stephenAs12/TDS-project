@@ -316,6 +316,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                                     if ($row['woreda'] == $_SESSION['user_woreda']) {
 
                                                         $_SESSION['teacher_id'] = $row['knownid'];
+                                                        $_SESSION['teacher_school'] = $row['school'];
 
                                         ?>
                                                         <div class="form-group col-md-4">
@@ -494,7 +495,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                                                                         <option value="" selected disabled hidden>Region 1</option>
                                                                                         <option value="Addis Ababa (city)">Addis Ababa (city)</option>
                                                                                         <option value="Afar Region">Afar Region</option>
-                                                                                        <option value="Amhara Region">Amhara Region</option>
                                                                                         <option value="	Benishangul-Gumuz Region"> Benishangul-Gumuz Region</option>
                                                                                         <option value="Dire Dawa (city)">Dire Dawa (city)</option>
                                                                                         <option value="	Gambela Region">Gambela Region</option>
@@ -518,7 +518,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                                                                         <option value="" selected disabled hidden>Region 2</option>
                                                                                         <option value="Addis Ababa (city)">Addis Ababa (city)</option>
                                                                                         <option value="Afar Region">Afar Region</option>
-                                                                                        <option value="Amhara Region">Amhara Region</option>
                                                                                         <option value="	Benishangul-Gumuz Region">Benishangul-Gumuz Region</option>
                                                                                         <option value="Dire Dawa (city)">Dire Dawa (city)</option>
                                                                                         <option value="	Gambela Region">Gambela Region</option>
@@ -702,6 +701,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                                             $userZone =  $_SESSION['user_address'];
                                                             $woredaResualt1 = mysqli_query($conn, "SELECT * FROM woreda WHERE zoneid =$userZone");
                                                             $woredaResualt2 = mysqli_query($conn, "SELECT * FROM woreda WHERE zoneid =$userZone");
+                                                            $woredaResualt3 = mysqli_query($conn, "SELECT * FROM woreda WHERE zoneid =$userZone");
 
                                                             ?>
 
@@ -715,7 +715,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                                                         <div id="woreda_id">
 
                                                                             <div class="form-group col-md-12">
-                                                                                <div class="form-group col-md-5">
+                                                                                <div class="form-group col-md-4">
 
                                                                                     <div class="input-group">
                                                                                         <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
@@ -734,7 +734,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="form-group col-md-5">
+                                                                                <div class="form-group col-md-4">
 
                                                                                     <div class="input-group">
                                                                                         <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
@@ -742,7 +742,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                                                                                         <?php
 
-                                                                                        echo "<select name='w2w_woreda2_name' id='w2w_woreda2_id' class='form-control' required>";
+                                                                                        echo "<select name='w2w_woreda2_name' id='w2w_woreda2_id' class='form-control'>";
                                                                                         echo "<option value='' selected hidden> Woreda 2 *</option>";
                                                                                         while ($woredaRow2 = mysqli_fetch_array($woredaResualt2)) {
                                                                                             echo "<option value='$woredaRow2[woreda_id]'>$woredaRow2[woreda_name]</option>";
@@ -753,13 +753,23 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="form-group col-md-2">
+                                                                                <div class="form-group col-md-4">
 
                                                                                     <div class="input-group">
-                                                                                        <input class="form-check-input" type="checkbox" value="173" name="w2w_173_name" id="w2w_173_id">
-                                                                                        <label class="form-check-label" for="w2w_173_id">
-                                                                                            173
-                                                                                        </label>
+                                                                                        <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
+                                                                                        </div>
+
+                                                                                        <?php
+
+                                                                                        echo "<select name='w2w_woreda3_name' id='w2w_woreda3_id' class='form-control'>";
+                                                                                        echo "<option value='' selected hidden> Woreda 3 *</option>";
+                                                                                        while ($woredaRow3 = mysqli_fetch_array($woredaResualt3)) {
+                                                                                            echo "<option value='$woredaRow3[woreda_id]'>$woredaRow3[woreda_name]</option>";
+                                                                                        }
+                                                                                        echo "</select>";
+
+                                                                                        ?>
+
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

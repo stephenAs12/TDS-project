@@ -345,7 +345,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i>
                                             </div>
-                                            <input type="number" name="service_name" id="service_id" placeholder="Service" class="form-control" autocomplete="off" minlength="1" maxlength="2" required>
+                                            <input type="number" name="service_name" id="service_id" placeholder="Service" class="form-control" autocomplete="off" minlength="1" required>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">

@@ -292,7 +292,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 $selectQuery2 = "SELECT * FROM transfer_request WHERE current_woreda = $userWoreda AND request_type = 'Zone To Zone'";
                 $result2 = mysqli_query($connectQuery, $selectQuery2);
 
-                $selectQuery3 = "SELECT * FROM transfer_request WHERE current_woreda = $userWoreda AND request_type = 'Woreda To Woreda'";
+                // $selectQuery3 = "SELECT * FROM transfer_request WHERE current_woreda = $userWoreda AND request_type = 'Woreda To Woreda'";
+                // $result3 = mysqli_query($connectQuery, $selectQuery3);
+
+                $selectQuery3 = "SELECT transfer_request.teacher_id, transfer_request.request_type, transfer_request.woreda_one, transfer_request.woreda_two, transfer_request.woreda_three, teachers.fname, teachers.mname, teachers.lname, teachers.sex, teachers.disability, teachers.marital_status, teachers.nominee, teachers.education_level, teachers.major, teachers.employment_period, teachers.service, teachers.other_service
+                FROM transfer_request
+                INNER JOIN teachers ON transfer_request.teacher_id = teachers.knownid WHERE transfer_request.request_type='Woreda To Woreda' AND current_woreda = $userWoreda";
                 $result3 = mysqli_query($connectQuery, $selectQuery3);
 
                 $selectQuery4 = "SELECT * FROM transfer_request WHERE current_woreda = $userWoreda AND request_type = 'Gudignt To Gudignt'";
@@ -356,19 +361,41 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Type</th>
-                                                    <th>Region one</th>
-                                                    <th>Region two</th>
+                                                    <th>Woreda one</th>
+                                                    <th>Woreda two</th>
+                                                    <th>Woreda three</th>
+                                                    <th>Name</th>
+                                                    <th>Sex</th>
+                                                    <th>Disability</th>
+                                                    <th>Married</th>
+                                                    <th>Nominee</th>
+                                                    <th>Education Level</th>
+                                                    <th>Major</th>
+                                                    <th>Employment Period</th>
+                                                    <th>Service</th>
+                                                    <th>Other Service</th>
                                                 </tr>
                                             </thead>
                                             <?php
-                                            while ($row = mysqli_fetch_array($result1)) {
+                                            while ($row = mysqli_fetch_array($result3)) {
 
                                                 echo '
                                                 <tr>
                                                     <td>' . $row["teacher_id"] . '</td>
                                                     <td>' . $row["request_type"] . '</td>
-                                                    <td>' . $row["region_one"] . '</td>
-                                                    <td>' . $row["region_two"] . '</td>
+                                                    <td>' . $row["woreda_one"] . '</td>
+                                                    <td>' . $row["woreda_two"] . '</td>
+                                                    <td>' . $row["woreda_three"] . '</td>
+                                                    <td>' . $row["fname"] . '</td>
+                                                    <td>' . $row["sex"] . '</td>
+                                                    <td>' . $row["disability"] . '</td>
+                                                    <td>' . $row["marital_status"] . '</td>
+                                                    <td>' . $row["nominee"] . '</td>
+                                                    <td>' . $row["education_level"] . '</td>
+                                                    <td>' . $row["major"] . '</td>
+                                                    <td>' . $row["employment_period"] . '</td>
+                                                    <td>' . $row["service"] . '</td>
+                                                    <td>' . $row["other_service"] . '</td>
                                                 </tr>
                                                 ';
                                             }
