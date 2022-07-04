@@ -254,7 +254,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1><?php echo $_SESSION['user_role']; ?> Dashboard</h1>
+                            <h1><?php echo $_SESSION['user_address']." ".$_SESSION['user_role']; ?> Dashboard</h1>
                         </div>
                     </div>
                 </div>

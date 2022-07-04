@@ -52,6 +52,7 @@ if (mysqli_query($connect, $sql)) {
     $mail->Password = $password;
     $mail->Port = 587; //587
     $mail->SMTPSecure = "tls"; //tls
+    $smtp_debug = true;
     //Email Settings
     $mail->isHTML(true);
     $mail->setFrom($from, $name);
@@ -62,7 +63,8 @@ if (mysqli_query($connect, $sql)) {
     if ($mail->send()) {
         echo true;
     } else {
-        $response = "Something is wrong: <br><br>" . $mail->ErrorInfo;
+        // $response = "Something is wrong: <br><br>" . $mail->ErrorInfo;
+        $response = $mail->ErrorInfo;
     }
     exit(json_encode(array("response" => $response)));
 } else {

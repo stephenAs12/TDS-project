@@ -90,7 +90,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                         <h3 class="menu-title">Data Related</h3><!-- /.menu-title -->
 
-                        <li class="menu-item-has-children dropdown"> 
+                        <li class="menu-item-has-children dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Schools</a>
                             <ul class="sub-menu children dropdown-menu">
                                 <li><i class="menu-icon fa fa-plus-square"></i><a href="./woreda admin pages/data related/school/add school/add school.php">Add</a></li>
@@ -194,7 +194,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                             <div class="user-menu dropdown-menu">
 
-                                    <p><?php echo $_SESSION['user_fname'].' '.$_SESSION['user_mname']; ?></p>
+                                <p><?php echo $_SESSION['user_fname'] . ' ' . $_SESSION['user_mname']; ?></p>
                                 <a class="nav-link" href="./woreda admin pages/account related/my account/view my account/view my account.php"><i class="fa fa-user"></i>
                                     My Profile</a>
 
@@ -243,7 +243,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                         </div>
                         <div class="modal-body">
                             <p>
-                                Hello <?php echo  $_SESSION['user_fname'];?>,
+                                Hello <?php echo  $_SESSION['user_fname']; ?>,
 
                                 When logging out you are redirected to a Login page ¿Are you sure…?
 
@@ -267,7 +267,37 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1><?php echo $_SESSION['user_role']; ?> Dashboard</h1>
+
+
+                            <?php
+
+                            $connectQuery = mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
+
+                            $woredaID = $_SESSION['user_woreda'];
+                            $woredaName = null;
+
+                            if (mysqli_connect_errno()) {
+                                echo mysqli_connect_error();
+                                exit();
+                            } else {
+                                $selectWoredaName = "SELECT `woreda_name` FROM `woreda` WHERE woreda_id = '$woredaID'";
+                                $resultWoredaName = mysqli_query($connectQuery, $selectWoredaName);
+                                if (mysqli_num_rows($resultWoredaName) > 0) {
+                                } else {
+                                    $msg = "No Record found";
+                                }
+                            }
+
+                            while ($rowWoredaName = mysqli_fetch_array($resultWoredaName)) {
+                                $woredaName = $rowWoredaName["woreda_name"];
+                            }
+
+
+
+
+                            ?>
+
+                            <h1><?php echo $woredaName." ".$_SESSION['user_role']; ?> Dashboard</h1>
                         </div>
                     </div>
                 </div>
@@ -300,9 +330,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                 $connectQuery = mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
 
-                $zoneQuery = "SELECT zone_id FROM zone ORDER BY zone_id";
-                $run_zoneQuery = mysqli_query($connectQuery, $zoneQuery);
-                $zoneRow = mysqli_num_rows($run_zoneQuery);
+                $schoolQuery = "SELECT school_id FROM school WHERE woreda_id = '$woredaID' ORDER BY school_id";
+                $run_schoolQuery = mysqli_query($connectQuery, $schoolQuery);
+                $schoolRow = mysqli_num_rows($run_schoolQuery);
 
                 $woredaQuery = "SELECT woreda_id FROM woreda ORDER BY woreda_id";
                 $run_woredaQuery = mysqli_query($connectQuery, $woredaQuery);
@@ -312,9 +342,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 $run_woredaTdsQuery = mysqli_query($connectQuery, $woredaTdsQuery);
                 $woredaTdsRow = mysqli_num_rows($run_woredaTdsQuery);
 
-                $zoneTdsQuery = "SELECT user_id FROM users WHERE urole='zone Director' ORDER BY user_id";
-                $run_zoneTdsQuery = mysqli_query($connectQuery, $zoneTdsQuery);
-                $zoneTdsRow = mysqli_num_rows($run_zoneTdsQuery);
+                $teacherQuery = "SELECT teacher_id FROM teachers WHERE woreda = '$woredaID' ORDER BY teacher_id";
+                $run_teacherQuery = mysqli_query($connectQuery, $teacherQuery);
+                $teacherRow = mysqli_num_rows($run_teacherQuery);
 
                 ?>
                 <div class="col-sm-6 col-lg-3">
@@ -335,7 +365,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                             <h4 class="mb-0">
                                 <span class="count">
                                     <?php
-                                    echo $zoneRow;
+                                    echo $schoolRow;
                                     ?>
                                 </span>
                             </h4>
@@ -449,7 +479,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                 </div>
                             </div>
                             <h4 class="mb-0">
-                                <span class="count">4612</span>
+                                <span class="count">
+                                    
+                                    <?php
+                                    echo $teacherRow;
+                                    ?>
+                                </span>
                             </h4>
                             <p class="text-light">Teachers</p>
 

@@ -32,7 +32,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
         <link rel="stylesheet" href="../../../../../../../assets/table/css/buttons.dataTables.min.css">
         <link rel="stylesheet" href="../../../../../../../assets/table/css/main-style.css">
         <link rel="stylesheet" href="../../../../../../../assets/css/style.css">
-
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
 
@@ -275,7 +274,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 exit();
             } else {
                 $userWoreda = $_SESSION['user_woreda'];
-                $selectQuery = "SELECT * FROM transfer_request WHERE current_woreda = $userWoreda AND request_type='Region To Region'";
+                $selectQuery = "SELECT transfer_request.teacher_id, transfer_request.request_type, transfer_request.woreda_one, transfer_request.woreda_two, transfer_request.woreda_three, teachers.fname, teachers.mname, teachers.lname, teachers.sex, teachers.disability, teachers.marital_status, teachers.nominee, teachers.education_level, teachers.major, teachers.employment_period, teachers.service, teachers.other_service
+                FROM transfer_request
+                INNER JOIN teachers ON transfer_request.teacher_id = teachers.knownid WHERE transfer_request.request_type='Woreda To Woreda' AND current_woreda = $userWoreda";
                 $result = mysqli_query($connectQuery, $selectQuery);
                 if (mysqli_num_rows($result) > 0) {
                 } else {
@@ -295,32 +296,54 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                 </div>
                                 <div class="card-body">
 
-                                    <div class="scroll">
-                                        <table id="example" class="display table table-striped table-bordered" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Type</th>
-                                                    <th>Region one</th>
-                                                    <th>Region two</th>
-                                                </tr>
-                                            </thead>
-                                            <?php
-                                            while ($row = mysqli_fetch_array($result)) {
+                                <div class="scroll">
+                                    <table id="example" class="display table table-striped table-bordered" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Type</th>
+                                                <th>Woreda one</th>
+                                                <th>Woreda two</th>
+                                                <th>Woreda three</th>
+                                                <th>Name</th>
+                                                <th>Sex</th>
+                                                <th>Disability</th>
+                                                <th>Married</th>
+                                                <th>Nominee</th>
+                                                <th>Education Level</th>
+                                                <th>Major</th>
+                                                <th>Employment Period</th>
+                                                <th>Service</th>
+                                                <th>Other Service</th>
+                                            </tr>
+                                        </thead>
+                                        <?php
+                                        while ($row = mysqli_fetch_array($result)) {
 
-                                                echo '
+                                            echo '
                                                 <tr>
                                                     <td>' . $row["teacher_id"] . '</td>
                                                     <td>' . $row["request_type"] . '</td>
-                                                    <td>' . $row["region_one"] . '</td>
-                                                    <td>' . $row["region_two"] . '</td>
+                                                    <td>' . $row["woreda_one"] . '</td>
+                                                    <td>' . $row["woreda_two"] . '</td>
+                                                    <td>' . $row["woreda_three"] . '</td>
+                                                    <td>' . $row["fname"] . '</td>
+                                                    <td>' . $row["sex"] . '</td>
+                                                    <td>' . $row["disability"] . '</td>
+                                                    <td>' . $row["marital_status"] . '</td>
+                                                    <td>' . $row["nominee"] . '</td>
+                                                    <td>' . $row["education_level"] . '</td>
+                                                    <td>' . $row["major"] . '</td>
+                                                    <td>' . $row["employment_period"] . '</td>
+                                                    <td>' . $row["service"] . '</td>
+                                                    <td>' . $row["other_service"] . '</td>
                                                 </tr>
                                                 ';
-                                            }
-                                            ?>
+                                        }
+                                        ?>
 
-                                        </table>
-                                    </div>
+                                    </table>
+                                </div>
 
                                 </div>
                             </div>
@@ -337,6 +360,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
         <script src="../../../../../../../vendors/jquery/dist/jquery.min.js"></script>
         <script src="../../../../../../../vendors/popper.js/dist/umd/popper.min.js"></script>
         <script src="../../../../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../../../../../../../assets/js/main.js"></script>
+        <script src="../../../../../../../assets/table/js/jquery-3.5.1.js"></script>
         <script src="../../../../../../../assets/table/js/jquery.dataTables.min.js"></script>
         <script src="../../../../../../../assets/table/js/dataTables.bootstrap4.min.js"></script>
         <script src="../../../../../../../assets/table/js/dataTables.fixedHeader.min.js"></script>

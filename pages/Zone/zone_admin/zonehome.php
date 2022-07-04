@@ -244,7 +244,36 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1><?php echo $_SESSION['user_role']; ?> Dashboard</h1>
+
+                        <?php
+
+                            $connectQuery = mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
+
+                            $zoneID = $_SESSION['user_address'];
+                            $zoneName = null;
+
+                            if (mysqli_connect_errno()) {
+                                echo mysqli_connect_error();
+                                exit();
+                            } else {
+                                $selectZoneName = "SELECT `zone_name` FROM `zone` WHERE zone_id = '$zoneID'";
+                                $resultZoneName = mysqli_query($connectQuery, $selectZoneName);
+                                if (mysqli_num_rows($resultZoneName) > 0) {
+                                } else {
+                                    $msg = "No Record found";
+                                }
+                            }
+
+                            while ($rowZoneName = mysqli_fetch_array($resultZoneName)) {
+                                $zoneName = $rowZoneName["zone_name"];
+                            }
+                        
+                        
+                        
+                        
+                        ?>
+
+                            <h1><?php  echo $zoneName." ".$_SESSION['user_role']; ?> Dashboard</h1>
                         </div>
                     </div>
                 </div>
@@ -275,7 +304,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
 
                 <?php
 
-                $connectQuery = mysqli_connect('localhost', 'root', '', 'tds v1.0.1');
                 $zoneadress = $_SESSION['user_address'];
                 $woredaQuery = "SELECT woreda_id FROM woreda WHERE zoneid='$zoneadress'";
                 $run_woredaQuery = mysqli_query($connectQuery, $woredaQuery);

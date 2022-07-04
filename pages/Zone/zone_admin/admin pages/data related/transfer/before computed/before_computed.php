@@ -306,6 +306,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                             <div class="card">
                                 <div class="card-header">
                                     <strong class="card-title">Transfer Query List</strong>
+                                    <button type="button" class="btn-sm btn-primary" style="margin-left:30px;"><a href="../algorithm/try.php" style="text-decoration: none; color: white;">Load</a></button>
+                                    <button type="button" class="btn-sm btn-success" style="margin-left:30px;"><a href="../algorithm/five.php" style="text-decoration: none; color: white;">Let it work</a></button>
 
 
 
@@ -343,8 +345,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                             </tr>
                                         </thead>
                                         <?php
-                                        $j = 0;
-                                        $rw = null;
                                         while ($row = mysqli_fetch_array($result)) {
 
                                             echo '
@@ -366,29 +366,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email']) && isset($_SES
                                                     <td>' . $row["other_service"] . '</td>
                                                 </tr>
                                                 ';
-
-                                            $rw[$j] = $row["teacher_id"] . "*" . $row["request_type"] . "*" . $row["woreda_one"] . "*" . $row["woreda_two"] . "*" . $row["woreda_three"] . "*" . $row["fname"] . "*" . $row["sex"] . "*" . $row["disability"] . "*" . $row["marital_status"] . "*" . $row["nominee"] . "*" . $row["education_level"] . "*" . $row["major"] . "*" . $row["employment_period"] . "*" . $row["service"] + $row["other_service"];
-                                            $j++;
                                         }
-                                        $delimiter = '*';
-
-                                        for ($i = 0; $i < $j; $i++) {
-                                            // $rw[$i]= $row["service"];
-                                            // echo " ";
-                                            // echo $rw[2];
-                                            $teacherVal = explode($delimiter, $rw[$i]);
-                                            // foreach ($teacherVal as $value) {
-                                            //     echo $value;
-                                            //     echo "<br>";
-                                            // }
-                                            echo $teacherVal[10]." ".$teacherVal[11];
-                                            // echo "<br>";
-                                        }
-                                        // echo " max = " . max($rw);
-                                        // sort($rw, SORT_NATURAL);
-                                        // print_r($rw);
-                                        // echo " one " . $rw[0];
-                                        // echo " two " . $rw[1];
                                         ?>
 
                                     </table>
